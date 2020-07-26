@@ -1,0 +1,1892 @@
+﻿{
+  "paragraphs": [
+    {
+      "title": "Carga de datos",
+      "text": "val datosDF = spark.read.format(\"csv\")\n                    .option(\"sep\", \"\\t\")\n                    .option(\"inferSchema\", \"true\")\n                    .option(\"header\", \"true\")\n                    .load(\"/datos/Datos_ENEMDU_PEA_v2.csv\")\n                    \ndatosDF.show",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T03:54:37+0000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+----+---+---------+------+----------+----------+----+-----------------+--------------------+-----------+---------------+--------------------+-------------------+--------------------+--------------------+----------------+\n|          id_persona|anio|mes|provincia|canton|      area|    genero|edad|     estado_civil|nivel_de_instruccion|      etnia|ingreso_laboral| condicion_actividad|      sectorizacion|     grupo_ocupacion|      rama_actividad|factor_expansion|\n+--------------------+----+---+---------+------+----------+----------+----+-----------------+--------------------+-----------+---------------+--------------------+-------------------+--------------------+--------------------+----------------+\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana|1 - Hombre|  32|    1 - Casado(a)|     06 - Secundaria|6 - Mestizo|            650|1 - Empleo Adecua...|  1 - Sector Formal|08 - Operadores d...|08 - H. Transport...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana| 2 - Mujer|  31|    1 - Casado(a)|     06 - Secundaria|6 - Mestizo|           null|5 - Empleo no rem...|  1 - Sector Formal|09 - Trabajadores...|03 - C. Industria...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana|1 - Hombre|  57|    1 - Casado(a)|     06 - Secundaria|6 - Mestizo|            250|4 - Otro empleo n...|  1 - Sector Formal|07 - Oficiales op...|06 - F. Construcción|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana|1 - Hombre|  29|    1 - Casado(a)|09 - Superior Uni...|6 - Mestizo|           1212|1 - Empleo Adecua...|  1 - Sector Formal|02 - Profesionale...|15 - O .Administr...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana|1 - Hombre|  60|    1 - Casado(a)|     06 - Secundaria|6 - Mestizo|            700|1 - Empleo Adecua...|  1 - Sector Formal|08 - Operadores d...|08 - H. Transport...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana| 2 - Mujer|  52|    1 - Casado(a)|     06 - Secundaria|6 - Mestizo|            200|4 - Otro empleo n...|  1 - Sector Formal|07 - Oficiales op...|03 - C. Industria...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana| 2 - Mujer|  33|   6 - Soltero(a)|09 - Superior Uni...|6 - Mestizo|            565|1 - Empleo Adecua...|  1 - Sector Formal|03 - Técnicos y p...|11 - K. Actividad...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana| 2 - Mujer|  27|  5 - Unión libre|       04 - Primaria|6 - Mestizo|            350|4 - Otro empleo n...|  1 - Sector Formal|09 - Trabajadores...|09 - I. Actividad...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana|1 - Hombre|  22|  5 - Unión libre|       04 - Primaria|6 - Mestizo|            320|4 - Otro empleo n...|2 - Sector Informal|09 - Trabajadores...|06 - F. Construcción|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana|1 - Hombre|  18|   6 - Soltero(a)|07 - Educación  M...|6 - Mestizo|            320|4 - Otro empleo n...|2 - Sector Informal|09 - Trabajadores...|06 - F. Construcción|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana|1 - Hombre|  15|   6 - Soltero(a)|05 - Educación Bá...|6 - Mestizo|            320|4 - Otro empleo n...|2 - Sector Informal|09 - Trabajadores...|06 - F. Construcción|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana|1 - Hombre|  32|    1 - Casado(a)|09 - Superior Uni...|6 - Mestizo|            860|1 - Empleo Adecua...|  1 - Sector Formal|02 - Profesionale...|07 - G. Comercio,...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana|1 - Hombre|  23|   6 - Soltero(a)|07 - Educación  M...|6 - Mestizo|            680|7 - Desempleo abi...|               null|                null|                null|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana|1 - Hombre|  27|    1 - Casado(a)|09 - Superior Uni...|6 - Mestizo|            860|1 - Empleo Adecua...|  1 - Sector Formal|01 - Personal dir...|07 - G. Comercio,...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana|1 - Hombre|  40|  5 - Unión libre|       04 - Primaria|6 - Mestizo|            350|4 - Otro empleo n...|  1 - Sector Formal|09 - Trabajadores...|07 - G. Comercio,...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana| 2 - Mujer|  26|  5 - Unión libre|       04 - Primaria|6 - Mestizo|             55|2 - Subempleo por...|2 - Sector Informal|09 - Trabajadores...|05 - E. Distribuc...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana|1 - Hombre|  76|3 - Divorciado(a)|       04 - Primaria|6 - Mestizo|            520|1 - Empleo Adecua...|  1 - Sector Formal|01 - Personal dir...|03 - C. Industria...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana| 2 - Mujer|  31|    1 - Casado(a)|09 - Superior Uni...|6 - Mestizo|            520|1 - Empleo Adecua...|  1 - Sector Formal|01 - Personal dir...|03 - C. Industria...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana|1 - Hombre|  35|    1 - Casado(a)|08 - Superior no ...|6 - Mestizo|            520|1 - Empleo Adecua...|  1 - Sector Formal|01 - Personal dir...|03 - C. Industria...|158.173348022363|\n|20150601015000200...|2015|  6|        1|   101|1 - Urbana| 2 - Mujer|  49|3 - Divorciado(a)|     06 - Secundaria|6 - Mestizo|            180|2 - Subempleo por...|  1 - Sector Formal|05 - Trabajad. de...|07 - G. Comercio,...|158.173348022363|\n+--------------------+----+---+---------+------+----------+----------+----+-----------------+--------------------+-----------+---------------+--------------------+-------------------+--------------------+--------------------+----------------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mdatosDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id_persona: decimal(26,0), anio: int ... 15 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=34",
+              "$$hashKey": "object:16387"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=35",
+              "$$hashKey": "object:16388"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=36",
+              "$$hashKey": "object:16389"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104636_1227543622",
+      "id": "20200627-135956_359637786",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "dateStarted": "2020-07-26T03:54:37+0000",
+      "dateFinished": "2020-07-26T03:54:43+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:8927"
+    },
+    {
+      "title": "Carga de datos de tipo cantón",
+      "text": "val CantonProvinciaDF = spark.read.format(\"csv\")\n                    .option(\"sep\", \"\\t\")\n                    .option(\"inferSchema\", \"true\")\n                    .option(\"header\", \"true\")\n                    .load(\"/datos/DatosCodProvinciaAndConCanton.csv\")\n                    \nz.show(CantonProvinciaDF)",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T03:52:12+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "cod_provincia": "string",
+                      "nombre_provincia": "string",
+                      "cod_canton": "string",
+                      "nombre_canton": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "cod_provincia\tnombre_provincia\tcod_canton\tnombre_canton\n1\tAZUAY\t101\tCUENCA\n1\tAZUAY\t102\tGIRON\n1\tAZUAY\t103\tGUALACEO\n1\tAZUAY\t104\tNABON\n1\tAZUAY\t105\tPAUTE\n1\tAZUAY\t106\tPUCARA\n1\tAZUAY\t107\tSAN FERNANDO\n1\tAZUAY\t108\tSANTA ISABEL\n1\tAZUAY\t109\tSIGSIG\n1\tAZUAY\t110\tO�A\n1\tAZUAY\t111\tCHORDELEG\n1\tAZUAY\t112\tEL PAN\n1\tAZUAY\t113\tSEVILLA DE ORO\n1\tAZUAY\t114\tGUACHAPALA\n1\tAZUAY\t115\tCAMILO PONCE ENRIQUEZ\n2\tBOLIVAR\t201\tGUARANDA\n2\tBOLIVAR\t202\tCHILLANES\n2\tBOLIVAR\t203\tCHIMBO\n2\tBOLIVAR\t204\tECHEANDIA\n2\tBOLIVAR\t205\tSAN MIGUEL\n2\tBOLIVAR\t206\tCALUMA\n2\tBOLIVAR\t207\tLAS NAVES\n3\tCA�AR\t301\tAZOGUES\n3\tCA�AR\t302\tBIBLIAN\n3\tCA�AR\t303\tCA�AR\n3\tCA�AR\t304\tLA TRONCAL\n3\tCA�AR\t305\tEL TAMBO\n3\tCA�AR\t306\tDELEG\n3\tCA�AR\t307\tSUSCAL\n4\tCARCHI\t401\tTULCAN\n4\tCARCHI\t402\tBOLIVAR\n4\tCARCHI\t403\tESPEJO\n4\tCARCHI\t404\tMIRA\n4\tCARCHI\t405\tMONTUFAR\n4\tCARCHI\t406\tSAN PEDRO DE HUACA\n5\tCOTOPAXI\t501\tLATACUNGA\n5\tCOTOPAXI\t502\tLA MANA\n5\tCOTOPAXI\t503\tPANGUA\n5\tCOTOPAXI\t504\tPUJILI\n5\tCOTOPAXI\t505\tSALCEDO\n5\tCOTOPAXI\t506\tSAQUISILI\n5\tCOTOPAXI\t507\tSIGCHOS\n6\tCHIMBORAZO\t601\tRIOBAMBA\n6\tCHIMBORAZO\t602\tALAUSI\n6\tCHIMBORAZO\t603\tCOLTA\n6\tCHIMBORAZO\t604\tCHAMBO\n6\tCHIMBORAZO\t605\tCHUNCHI\n6\tCHIMBORAZO\t606\tGUAMOTE\n6\tCHIMBORAZO\t607\tGUANO\n6\tCHIMBORAZO\t608\tPALLATANGA\n6\tCHIMBORAZO\t609\tPENIPE\n6\tCHIMBORAZO\t610\tCUMANDA\n7\tEL ORO\t701\tMACHALA\n7\tEL ORO\t702\tARENILLAS\n7\tEL ORO\t703\tATAHUALPA\n7\tEL ORO\t704\tBALSAS\n7\tEL ORO\t705\tCHILLA\n7\tEL ORO\t706\tEL GUABO\n7\tEL ORO\t707\tHUAQUILLAS\n7\tEL ORO\t708\tMARCABELI\n7\tEL ORO\t709\tPASAJE\n7\tEL ORO\t710\tPI�AS\n7\tEL ORO\t711\tPORTOVELO\n7\tEL ORO\t712\tSANTA ROSA\n7\tEL ORO\t713\tZARUMA\n7\tEL ORO\t714\tLAS LAJAS\n8\tESMERALDAS\t801\tESMERALDAS\n8\tESMERALDAS\t802\tELOY ALFARO\n8\tESMERALDAS\t803\tMUISNE\n8\tESMERALDAS\t804\tQUININDE\n8\tESMERALDAS\t805\tSAN LORENZO\n8\tESMERALDAS\t806\tATACAMES\n8\tESMERALDAS\t807\tRIO VERDE\n9\tGUAYAS\t901\tGUAYAQUIL\n9\tGUAYAS\t902\tALFREDO BAQUERIZO MORENO\n9\tGUAYAS\t903\tBALAO\n9\tGUAYAS\t904\tBALZAR\n9\tGUAYAS\t905\tCOLIMES\n9\tGUAYAS\t906\tDAULE\n9\tGUAYAS\t907\tDURAN\n9\tGUAYAS\t908\tEL EMPALME\n9\tGUAYAS\t909\tEL TRIUNFO\n9\tGUAYAS\t910\tMILAGRO\n9\tGUAYAS\t911\tNARANJAL\n9\tGUAYAS\t912\tNARANJITO\n9\tGUAYAS\t913\tPALESTINA\n9\tGUAYAS\t914\tPEDRO CARBO\n9\tGUAYAS\t916\tSAMBORONDON\n9\tGUAYAS\t918\tSANTA LUCIA\n9\tGUAYAS\t919\tSALITRE\n9\tGUAYAS\t920\tSAN JACINTO DE YAGUACHI\n9\tGUAYAS\t921\tPLAYAS (GENERAL VILLAMIL)\n9\tGUAYAS\t922\tSIMON BOLIVAR\n9\tGUAYAS\t923\tCORONEL MARCELINO MARIDUE�A\n9\tGUAYAS\t924\tLOMAS DE SARGENTILLO\n9\tGUAYAS\t925\tNOBOL (VICENTE PIEDRAHITA)\n9\tGUAYAS\t927\tGENERAL ANTONIO ELIZALDE\n9\tGUAYAS\t928\tISIDRO AYORA\n10\tIMBABURA\t1001\tIBARRA\n10\tIMBABURA\t1002\tANTONIO ANTE\n10\tIMBABURA\t1003\tCOTACACHI\n10\tIMBABURA\t1004\tOTAVALO\n10\tIMBABURA\t1005\tPIMAMPIRO\n10\tIMBABURA\t1006\tSAN MIGUEL DE URCUQUI\n11\tLOJA\t1101\tLOJA\n11\tLOJA\t1102\tCALVAS\n11\tLOJA\t1103\tCATAMAYO\n11\tLOJA\t1104\tCELICA\n11\tLOJA\t1105\tCHAHUARPAMBA\n11\tLOJA\t1106\tESPINDOLA\n11\tLOJA\t1107\tGONZANAMA\n11\tLOJA\t1108\tMACARA\n11\tLOJA\t1109\tPALTAS\n11\tLOJA\t1110\tPUYANGO\n11\tLOJA\t1111\tSARAGURO\n11\tLOJA\t1112\tSOZORANGA\n11\tLOJA\t1113\tZAPOTILLO\n11\tLOJA\t1114\tPINDAL\n11\tLOJA\t1115\tQUILANGA\n11\tLOJA\t1116\tOLMEDO\n12\tLOS RIOS\t1201\tBABAHOYO\n12\tLOS RIOS\t1202\tBABA\n12\tLOS RIOS\t1203\tMONTALVO\n12\tLOS RIOS\t1204\tPUEBLO VIEJO\n12\tLOS RIOS\t1205\tQUEVEDO\n12\tLOS RIOS\t1206\tURDANETA\n12\tLOS RIOS\t1207\tVENTANAS\n12\tLOS RIOS\t1208\tVINCES\n12\tLOS RIOS\t1209\tPALENQUE\n12\tLOS RIOS\t1210\tBUENA FE\n12\tLOS RIOS\t1211\tVALENCIA\n12\tLOS RIOS\t1212\tMOCACHE\n12\tLOS RIOS\t1213\tQUINSALOMA\n13\tMANABI\t1301\tPORTOVIEJO\n13\tMANABI\t1302\tBOLIVAR\n13\tMANABI\t1303\tCHONE\n13\tMANABI\t1304\tEL CARMEN\n13\tMANABI\t1305\tFLAVIO ALFARO\n13\tMANABI\t1306\tJIPIJAPA\n13\tMANABI\t1307\tJUNIN\n13\tMANABI\t1308\tMANTA\n13\tMANABI\t1309\tMONTECRISTI\n13\tMANABI\t1310\tPAJAN\n13\tMANABI\t1311\tPICHINCHA\n13\tMANABI\t1312\tROCAFUERTE\n13\tMANABI\t1313\tSANTA ANA\n13\tMANABI\t1314\tSUCRE\n13\tMANABI\t1315\tTOSAGUA\n13\tMANABI\t1316\t24 DE MAYO\n13\tMANABI\t1317\tPEDERNALES\n13\tMANABI\t1318\tOLMEDO\n13\tMANABI\t1319\tPUERTO LOPEZ\n13\tMANABI\t1320\tJAMA\n13\tMANABI\t1321\tJARAMIJO\n13\tMANABI\t1322\tSAN VICENTE\n14\tMORONA SANTIAGO\t1401\tMORONA\n14\tMORONA SANTIAGO\t1402\tGUALAQUIZA\n14\tMORONA SANTIAGO\t1403\tLIMON - INDANZA\n14\tMORONA SANTIAGO\t1404\tPALORA\n14\tMORONA SANTIAGO\t1405\tSANTIAGO\n14\tMORONA SANTIAGO\t1406\tSUCUA\n14\tMORONA SANTIAGO\t1407\tHUAMBOYA\n14\tMORONA SANTIAGO\t1408\tSAN JUAN BOSCO\n14\tMORONA SANTIAGO\t1409\tTAISHA\n14\tMORONA SANTIAGO\t1410\tLOGRO�O\n14\tMORONA SANTIAGO\t1411\tPABLO SEXTO\n14\tMORONA SANTIAGO\t1412\tTIWINTZA\n15\tNAPO\t1501\tTENA\n15\tNAPO\t1503\tARCHIDONA\n15\tNAPO\t1504\tEL CHACO\n15\tNAPO\t1507\tQUIJOS\n15\tNAPO\t1509\tCARLOS JULIO AROSEMENA T.\n16\tPASTAZA\t1601\tPASTAZA\n16\tPASTAZA\t1602\tMERA\n16\tPASTAZA\t1603\tSANTA CLARA\n16\tPASTAZA\t1604\tARAJUNO\n17\tPICHINCHA\t1701\tQUITO\n17\tPICHINCHA\t1702\tCAYAMBE\n17\tPICHINCHA\t1703\tMEJIA\n17\tPICHINCHA\t1704\tPEDRO MONCAYO\n17\tPICHINCHA\t1705\tRUMI�AHUI\n17\tPICHINCHA\t1707\tSAN MIGUEL DE LOS BANCOS\n17\tPICHINCHA\t1708\tPEDRO VICENTE MALDONADO\n17\tPICHINCHA\t1709\tPUERTO QUITO\n18\tTUNGURAHUA\t1801\tAMBATO\n18\tTUNGURAHUA\t1802\tBA�OS DE AGUA SANTA\n18\tTUNGURAHUA\t1803\tCEVALLOS\n18\tTUNGURAHUA\t1804\tMOCHA\n18\tTUNGURAHUA\t1805\tPATATE\n18\tTUNGURAHUA\t1806\tQUERO\n18\tTUNGURAHUA\t1807\tSAN PEDRO DE PELILEO\n18\tTUNGURAHUA\t1808\tSANTIAGO DE PILLARO\n18\tTUNGURAHUA\t1809\tTISALEO\n19\tZAMORA CHINCHIPE\t1901\tZAMORA\n19\tZAMORA CHINCHIPE\t1902\tCHINCHIPE\n19\tZAMORA CHINCHIPE\t1903\tNANGARITZA\n19\tZAMORA CHINCHIPE\t1904\tYACUAMBI\n19\tZAMORA CHINCHIPE\t1905\tYANTZAZA\n19\tZAMORA CHINCHIPE\t1906\tEL PANGUI\n19\tZAMORA CHINCHIPE\t1907\tCENTINELA DEL CONDOR\n19\tZAMORA CHINCHIPE\t1908\tPALANDA\n19\tZAMORA CHINCHIPE\t1909\tPAQUISHA\n20\tGALAPAGOS\t2001\tSAN CRISTOBAL\n20\tGALAPAGOS\t2002\tISABELA\n20\tGALAPAGOS\t2003\tSANTA CRUZ\n21\tSUCUMBIOS\t2101\tLAGO AGRIO\n21\tSUCUMBIOS\t2102\tGONZALO PIZARRO\n21\tSUCUMBIOS\t2103\tPUTUMAYO\n21\tSUCUMBIOS\t2104\tSHUSHUFINDI\n21\tSUCUMBIOS\t2105\tSUCUMBIOS\n21\tSUCUMBIOS\t2106\tCASCALES\n21\tSUCUMBIOS\t2107\tCUYABENO\n22\tORELLANA\t2201\tFRANCISCO DE ORELLANA\n22\tORELLANA\t2202\tAGUARICO\n22\tORELLANA\t2203\tLA JOYA DE LOS SACHAS\n22\tORELLANA\t2204\tLORETO\n23\tSANTO DOMINGO DE LOS TS�CHILAS\t2301\tSANTO DOMINGO\n23\tSANTO DOMINGO DE LOS TS�CHILAS\t2302\tLA CONCORDIA\n24\tSANTA ELENA\t2401\tSANTA ELENA\n24\tSANTA ELENA\t2402\tLA LIBERTAD\n24\tSANTA ELENA\t2403\tSALINAS\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mCantonProvinciaDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [cod_provincia: int, nombre_provincia: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=31",
+              "$$hashKey": "object:15467"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=32",
+              "$$hashKey": "object:15468"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=33",
+              "$$hashKey": "object:15469"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104640_2132846031",
+      "id": "paragraph_1595550620280_-674617903",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "dateStarted": "2020-07-26T03:52:12+0000",
+      "dateFinished": "2020-07-26T03:52:12+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8928"
+    },
+    {
+      "title": "TODO Descartar Outliers",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:31:37+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104641_1467643148",
+      "id": "paragraph_1595703728444_1126382310",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8929"
+    },
+    {
+      "title": "Variable Ingresos: TODO Algoritmo de tendencias y su gráfica (seria genial hacerlo por cada rama de actividad)",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:31:37+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104642_921082977",
+      "id": "20200702-192924_1928009883",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8930"
+    },
+    {
+      "title": "Variable Ingresos: ¿Cual es el ingreso laboral máximo y promedio de cada rama de actividad?",
+      "text": "z.show(datosDF.groupBy(\"rama_actividad\")\n        .agg(\n            max(\"ingreso_laboral\").as(\"SueldoMaximo\"),\n            avg(\"ingreso_laboral\").as(\"SueldoPromedio\")\n        ))\n        \n        // TODO Realizar un redondeo un un corte a los decimales\n        ",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:31:37+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "rama_actividad0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "SueldoMaximo1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "SueldoPromedio2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {
+                          "priority": 0,
+                          "direction": "desc"
+                        },
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rama_actividad": "string",
+                      "SueldoMaximo": "string",
+                      "SueldoPromedio": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "rama_actividad\tSueldoMaximo\tSueldoPromedio\n11 - K. Actividades financieras y de seguros\t40000\t958.8430639887903\n07 - G. Comercio, reparación vehículos\t146030\t475.90089729398744\n08 - H. Transporte y almacenamiento\t17000\t505.5524149558663\n15 - O .Administración pública, defensa y seguridad social\t26771\t1066.8357761762086\n19 - S. Otras actividades de servicios\t9886\t299.0756843800322\nnull\t3640\t48.432308698495746\n01 - A. Agricultura, ganadería caza y silvicultura y pesca\t30015\t266.7872302821664\n21 - U  Actividades de organizaciones extraterritoriales\t11850\t1709.1052631578948\n14 - N. Actividades y servicios administrativos y de apoyo\t17000\t482.4607137267178\n03 - C. Industrias manufactureras\t55000\t480.24952539614895\n04 - D. Suministros de electricidad, gas, aire acondicionado\t18000\t1051.2075471698113\n18 - R. Artes, entretenimiento y recreación\t10500\t531.7453793103448\n20 - T  Actividades en hogares privados con servicio doméstico\t3455\t326.20922146636434\n22 - No especificado\t700\t407.1818181818182\n13 - M. Actividades profesionales, científicas y técnicas\t15000\t714.2027082478457\n16 - P. Enseñanza\t25194\t879.209165731388\n09 - I. Actividades de alojamiento y servicios de comida\t27000\t414.07745071005104\n10 - J. Información y comunicación\t120000\t680.4303797468355\n05 - E. Distribución de agua, alcantarillado\t14900\t704.983606557377\n06 - F. Construcción\t100000\t461.87737311686413\n17 - Q. Actividades, servicios sociales y de salud\t14848\t896.7538367926442\n12 - L. Actividades inmobiliarias\t82200\t764.2232841007819\n02 - B. Explotación de minas y canteras\t15000\t913.464972234088\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=5",
+              "$$hashKey": "object:10218"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=6",
+              "$$hashKey": "object:10219"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=7",
+              "$$hashKey": "object:10220"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=8",
+              "$$hashKey": "object:10221"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=9",
+              "$$hashKey": "object:10222"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104643_-1706599982",
+      "id": "20200702-191926_297083296",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "dateStarted": "2020-07-26T00:31:37+0000",
+      "dateFinished": "2020-07-26T00:31:48+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8931"
+    },
+    {
+      "title": "Variable Ingresos: TODO ¿Cuales son principales actividades a las que se dedican los encuestados que no reciben ningun ingreso?",
+      "text": "datosDF.groupBy()",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:31:48+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres4\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.RelationalGroupedDataset\u001b[0m = RelationalGroupedDataset: [grouping expressions: [], value: [id_persona: decimal(26,0), anio: int ... 15 more fields], type: GroupBy]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104644_575962206",
+      "id": "20200702-195854_1744029708",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "dateStarted": "2020-07-26T00:31:48+0000",
+      "dateFinished": "2020-07-26T00:31:49+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8932"
+    },
+    {
+      "title": "Variable Ingresos: En base a un rango de edades ¿Quienes son los que reciben más ingresos en promedio?",
+      "text": "import org.apache.spark.sql.functions._\n\n\nz.show(datosDF.withColumn(\"edad\", when($\"edad\" >= 15 and $\"edad\" <= 25, lit(\"15-25\"))\n\t\t         \t.when($\"edad\" > 25 and $\"edad\" <= 35, lit(\"26-35\"))\n\t\t         \t.when($\"edad\" > 35 and $\"edad\" <= 45, lit(\"36-45\"))\n\t\t         \t.when($\"edad\" > 45 and $\"edad\" <= 55, lit(\"46-55\"))\n\t\t         \t.when($\"edad\" > 55 and $\"edad\" <= 65, lit(\"56-65\"))\n\t\t         \t.when($\"edad\" > 65 and $\"edad\" <= 75, lit(\"66-75\"))\n\t\t          \t.otherwise(\"otros\")\n              ).groupBy(\"edad\").agg(avg($\"ingreso_laboral\")).orderBy(avg($\"ingreso_laboral\")) )\n         ",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:31:49+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "edad": "string",
+                      "avg(ingreso_laboral)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "edad",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "avg(ingreso_laboral)",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "edad\tavg(ingreso_laboral)\notros\t198.6514279736374\n66-75\t302.97071691740865\n15-25\t331.5962854481893\n56-65\t487.15662890081495\n26-35\t516.9264729169965\n46-55\t556.7992070383195\n36-45\t561.2936419970779\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.functions._\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=10",
+              "$$hashKey": "object:10414"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104644_1614107572",
+      "id": "paragraph_1595695684953_2022984322",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "dateStarted": "2020-07-26T00:31:49+0000",
+      "dateFinished": "2020-07-26T00:31:57+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8933"
+    },
+    {
+      "title": "Variable Ingresos: ¿Cuantas personas reciben un sueldo mayor o igual al salario básico?",
+      "text": "datosDF.select(\"ingreso_laboral\").where($\"ingreso_laboral\" >= 390).count\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:31:57+0000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=11",
+              "$$hashKey": "object:11949"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104645_52265727",
+      "id": "20200627-140536_295482208",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "dateStarted": "2020-07-26T00:31:57+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8934",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres6\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 239593\n"
+          }
+        ]
+      },
+      "dateFinished": "2020-07-26T00:32:01+0000"
+    },
+    {
+      "title": "Variable ingresos: ¿A que actividad se dedican principalmente aquellas personas que perciben 1000$ o más?",
+      "text": "z.show(datosDF.select(\"rama_actividad\").where($\"ingreso_laboral\" >= 1000).groupBy(\"rama_actividad\").count.orderBy(desc(\"count\")))",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:32:01+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rama_actividad": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "rama_actividad\tcount\n15 - O .Administración pública, defensa y seguridad social\t10865\n16 - P. Enseñanza\t7052\n07 - G. Comercio, reparación vehículos\t6982\n17 - Q. Actividades, servicios sociales y de salud\t4830\n03 - C. Industrias manufactureras\t3945\n01 - A. Agricultura, ganadería caza y silvicultura y pesca\t2680\n08 - H. Transporte y almacenamiento\t2439\n13 - M. Actividades profesionales, científicas y técnicas\t2004\n09 - I. Actividades de alojamiento y servicios de comida\t1652\n06 - F. Construcción\t1616\n02 - B. Explotación de minas y canteras\t1390\n11 - K. Actividades financieras y de seguros\t1344\n10 - J. Información y comunicación\t863\n04 - D. Suministros de electricidad, gas, aire acondicionado\t772\n14 - N. Actividades y servicios administrativos y de apoyo\t732\n19 - S. Otras actividades de servicios\t509\n18 - R. Artes, entretenimiento y recreación\t453\n05 - E. Distribución de agua, alcantarillado\t308\n12 - L. Actividades inmobiliarias\t158\n20 - T  Actividades en hogares privados con servicio doméstico\t37\nnull\t31\n21 - U  Actividades de organizaciones extraterritoriales\t31\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=12",
+              "$$hashKey": "object:12079"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104645_1574704314",
+      "id": "20200627-173715_1162485375",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8935",
+      "dateFinished": "2020-07-26T00:32:08+0000",
+      "dateStarted": "2020-07-26T00:32:01+0000"
+    },
+    {
+      "title": "Variable Ingresos: ¿Cuales son los 10 mayores sueldos entre los encuestados?",
+      "text": "datosDF.select(\"ingreso_laboral\").orderBy(desc(\"ingreso_laboral\")).show(10)",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:32:08+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------+\n|ingreso_laboral|\n+---------------+\n|         146030|\n|         120000|\n|         100000|\n|          83000|\n|          82200|\n|          81352|\n|          80000|\n|          70000|\n|          60504|\n|          60000|\n+---------------+\nonly showing top 10 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=13",
+              "$$hashKey": "object:12228"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104645_415748990",
+      "id": "20200627-183107_969232580",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8936",
+      "dateFinished": "2020-07-26T00:32:12+0000",
+      "dateStarted": "2020-07-26T00:32:08+0000"
+    },
+    {
+      "title": "Variable Ingresos: ¿Cual es el salario promedio percibido por un profesional científico e intelectual de la enseñanza?",
+      "text": "datosDF.filter(\"grupo_ocupacion == '02 - Profesionales científicos e intelectuales'\").filter(\"rama_actividad == '16 - P. Enseñanza'\").select(avg(\"ingreso_laboral\").as(\"sueldo promedio\")).show",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:32:12+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------+\n|  sueldo promedio|\n+-----------------+\n|902.0888548793662|\n+-----------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=14",
+              "$$hashKey": "object:12703"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104645_339651293",
+      "id": "20200628-092544_151926918",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8937",
+      "dateFinished": "2020-07-26T00:32:16+0000",
+      "dateStarted": "2020-07-26T00:32:12+0000"
+    },
+    {
+      "title": "Variable Sectorización: ¿Cuantas personas al momento de la encuesta no se encuentran vinculadas a ningun sector?",
+      "text": "datosDF.select(\"sectorizacion\").where($\"sectorizacion\".isNull).count",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:32:16+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres10\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26261\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=15",
+              "$$hashKey": "object:12739"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104646_1553626476",
+      "id": "20200627-141122_543518986",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8938",
+      "dateFinished": "2020-07-26T00:32:20+0000",
+      "dateStarted": "2020-07-26T00:32:16+0000"
+    },
+    {
+      "title": "Variable nivel_instrucción: ¿Que nivel formativo han recibido mayoritariamente los encuestados?",
+      "text": "datosDF.select(\"nivel_de_instruccion\").groupBy(\"nivel_de_instruccion\").count().orderBy(desc(\"count\")).show",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:32:20+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+------+\n|nivel_de_instruccion| count|\n+--------------------+------+\n|       04 - Primaria|201133|\n|     06 - Secundaria|176127|\n|09 - Superior Uni...|109625|\n|07 - Educación  M...| 58749|\n|05 - Educación Bá...| 28548|\n|        01 - Ninguno| 22978|\n|08 - Superior no ...| 11875|\n|     10 - Post-grado| 10381|\n|02 - Centro de al...|  3360|\n+--------------------+------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=16",
+              "$$hashKey": "object:12802"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104646_-1720103029",
+      "id": "20200627-173323_844044057",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8939",
+      "dateFinished": "2020-07-26T00:32:26+0000",
+      "dateStarted": "2020-07-26T00:32:20+0000"
+    },
+    {
+      "title": "Variable nivel_instrucción: ¿Cuantas personas tienen formación de tercer nivel universitaria?",
+      "text": "datosDF.select(\"nivel_de_instruccion\").filter( \"nivel_de_instruccion == '09 - Superior Universitario' \").count",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:32:26+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres13\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 109625\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=17",
+              "$$hashKey": "object:12838"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104646_-8721924",
+      "id": "20200627-195113_2010980559",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8940",
+      "dateFinished": "2020-07-26T00:32:29+0000",
+      "dateStarted": "2020-07-26T00:32:26+0000"
+    },
+    {
+      "title": "Variable nivel_instruccion: Según su nivel de instrucción ¿A que sector pertenecen los encuestados?",
+      "text": "z.show(datosDF.stat.crosstab(\"nivel_de_instruccion\", \"sectorizacion\"))",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:32:29+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "nivel_de_instruccion_sectorizacion0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "1 - Sector Formal1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2 - Sector Informal2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "3 - Empleo Doméstico3",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {
+                          "priority": 0,
+                          "direction": "asc"
+                        },
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "4 - No Clasificados por Sector4",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "null5",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "nivel_de_instruccion_sectorizacion": "string",
+                      "1 - Sector Formal": "string",
+                      "2 - Sector Informal": "string",
+                      "3 - Empleo Doméstico": "string",
+                      "4 - No Clasificados por Sector": "string",
+                      "null": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "nivel_de_instruccion_sectorizacion",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "1 - Sector Formal",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "nivel_de_instruccion_sectorizacion\t1 - Sector Formal\t2 - Sector Informal\t3 - Empleo Doméstico\t4 - No Clasificados por Sector\tnull\n04 - Primaria\t53467\t124603\t6337\t13248\t3478\n06 - Secundaria\t92302\t64686\t4588\t7535\t7016\n07 - Educación  Media\t21751\t25969\t875\t3816\t6338\n10 - Post-grado\t9785\t261\t0\t24\t311\n08 - Superior no universitario\t8948\t1882\t99\t193\t753\n02 - Centro de alfabetización\t380\t2739\t56\t146\t39\n09 - Superior Universitario\t87383\t13799\t430\t1301\t6712\n01 - Ninguno\t1965\t18987\t361\t1469\t196\n05 - Educación Básica\t5788\t18263\t493\t2586\t1418\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=18",
+              "$$hashKey": "object:13038"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=19",
+              "$$hashKey": "object:13039"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=20",
+              "$$hashKey": "object:13040"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=21",
+              "$$hashKey": "object:13041"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=22",
+              "$$hashKey": "object:13042"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104647_-1670014926",
+      "id": "paragraph_1595136956597_-972022444",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8941",
+      "dateFinished": "2020-07-26T00:32:35+0000",
+      "dateStarted": "2020-07-26T00:32:29+0000"
+    },
+    {
+      "title": "Variable Edad: ¿En que grupos de ocupación trabajan mayoritariamennte los menores de 30 años?",
+      "text": "z.show(datosDF.select(\"grupo_ocupacion\").where($\"edad\" < 30).groupBy(\"grupo_ocupacion\").count.orderBy(asc(\"grupo_ocupacion\")) )",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:32:35+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "grupo_ocupacion": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "grupo_ocupacion",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "grupo_ocupacion\tcount\nnull\t14833\n01 - Personal direct./admin. pública y empresas\t598\n02 - Profesionales científicos e intelectuales\t9105\n03 - Técnicos y profesionales de nivel medio\t7613\n04 - Empleados de oficina\t7965\n05 - Trabajad. de los servicios y comerciantes\t33479\n06 - Trabajad. calificados agropecuarios y pesqueros\t18005\n07 - Oficiales operarios y artesanos\t14790\n08 - Operadores de instalac. máquinas y montad.\t8206\n09 - Trabajadores no calificados, ocupaciones elementales\t61253\n10 - Fuerzas Armadas\t448\n99 - No especificado\t4\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=23",
+              "$$hashKey": "object:13917"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104647_399926616",
+      "id": "20200627-191530_2146631291",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8942",
+      "dateFinished": "2020-07-26T00:32:41+0000",
+      "dateStarted": "2020-07-26T00:32:35+0000"
+    },
+    {
+      "title": "Variable Rama actividad: Segun la rama de actividad a la que se dedican ¿Donde se localizan los encuestados?",
+      "text": "z.show(datosDF.stat.crosstab(\"rama_actividad\", \"area\"))",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:32:41+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "rama_actividad_area0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "1 - Urbana1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {
+                          "priority": 0,
+                          "direction": "desc"
+                        },
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2 - Rural2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rama_actividad_area": "string",
+                      "1 - Urbana": "string",
+                      "2 - Rural": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "rama_actividad_area\t1 - Urbana\t2 - Rural\n08 - H. Transporte y almacenamiento\t24655\t6342\nnull\t21082\t5179\n04 - D. Suministros de electricidad, gas, aire acondicionado\t1394\t374\n11 - K. Actividades financieras y de seguros\t3987\t380\n03 - C. Industrias manufactureras\t43429\t15103\n07 - G. Comercio, reparación vehículos\t83475\t17492\n14 - N. Actividades y servicios administrativos y de apoyo\t10867\t2302\n16 - P. Enseñanza\t21770\t5179\n20 - T  Actividades en hogares privados con servicio doméstico\t10093\t3166\n13 - M. Actividades profesionales, científicas y técnicas\t9599\t735\n21 - U  Actividades de organizaciones extraterritoriales\t57\t2\n19 - S. Otras actividades de servicios\t12672\t2401\n05 - E. Distribución de agua, alcantarillado\t1315\t430\n09 - I. Actividades de alojamiento y servicios de comida\t28160\t6998\n18 - R. Artes, entretenimiento y recreación\t3294\t623\n22 - No especificado\t11\t1\n12 - L. Actividades inmobiliarias\t1113\t103\n17 - Q. Actividades, servicios sociales y de salud\t13083\t2032\n02 - B. Explotación de minas y canteras\t2589\t2228\n15 - O .Administración pública, defensa y seguridad social\t19267\t5611\n01 - A. Agricultura, ganadería caza y silvicultura y pesca\t32958\t161027\n06 - F. Construcción\t22924\t11777\n10 - J. Información y comunicación\t4820\t677\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=24",
+              "$$hashKey": "object:14225"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=25",
+              "$$hashKey": "object:14226"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=26",
+              "$$hashKey": "object:14227"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=27",
+              "$$hashKey": "object:14228"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=28",
+              "$$hashKey": "object:14229"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104647_-1789795323",
+      "id": "paragraph_1595138185788_-1429443571",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8943",
+      "dateFinished": "2020-07-26T00:32:47+0000",
+      "dateStarted": "2020-07-26T00:32:41+0000"
+    },
+    {
+      "title": "Variable Rama Actividad:  Brecha salarial entre hombres y mujeres entre las distintas ramas de actividad",
+      "text": "z.show( datosDF.groupBy(\"rama_actividad\").pivot(\"genero\").avg(\"ingreso_laboral\").orderBy(\"rama_actividad\") )",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:32:47+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rama_actividad": "string",
+                      "1 - Hombre": "string",
+                      "2 - Mujer": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-15"
+                  },
+                  "xLabelStatus": "rotate",
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "rama_actividad",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "1 - Hombre",
+                  "index": 1,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "2 - Mujer",
+                  "index": 2,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "rama_actividad\t1 - Hombre\t2 - Mujer\nnull\t63.87981366459627\t31.256560773480665\n01 - A. Agricultura, ganadería caza y silvicultura y pesca\t301.4636116587627\t177.1517313572629\n02 - B. Explotación de minas y canteras\t924.9813898704358\t801.5949656750572\n03 - C. Industrias manufactureras\t544.6302032047265\t361.10492020542273\n04 - D. Suministros de electricidad, gas, aire acondicionado\t1145.9055472263867\t746.8048192771084\n05 - E. Distribución de agua, alcantarillado\t699.8033261026753\t727.0276923076923\n06 - F. Construcción\t449.01623905825534\t865.7535545023696\n07 - G. Comercio, reparación vehículos\t584.7462725056264\t366.051175886055\n08 - H. Transporte y almacenamiento\t502.4654562350334\t543.6008810572687\n09 - I. Actividades de alojamiento y servicios de comida\t539.169948630137\t354.647701850722\n10 - J. Información y comunicación\t805.9235233868214\t500.953125\n11 - K. Actividades financieras y de seguros\t1054.5831611570247\t879.8350383631714\n12 - L. Actividades inmobiliarias\t808.3759213759214\t657.5756676557863\n13 - M. Actividades profesionales, científicas y técnicas\t786.4018070235254\t605.1043276661514\n14 - N. Actividades y servicios administrativos y de apoyo\t561.8588205581513\t353.0609178843383\n15 - O .Administración pública, defensa y seguridad social\t1092.4528681253696\t1011.2136620441705\n16 - P. Enseñanza\t943.0063482466747\t841.5367130786624\n17 - Q. Actividades, servicios sociales y de salud\t1130.8\t804.2480898028488\n18 - R. Artes, entretenimiento y recreación\t540.0824303405573\t511.0509125840538\n19 - S. Otras actividades de servicios\t404.96201824613667\t235.26110861759426\n20 - T  Actividades en hogares privados con servicio doméstico\t417.9237668161435\t321.32449645728843\n21 - U  Actividades de organizaciones extraterritoriales\t2021.1333333333334\t1362.4074074074074\n22 - No especificado\t386.6666666666667\t431.8\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=29",
+              "$$hashKey": "object:14995"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=30",
+              "$$hashKey": "object:14996"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104648_-774177068",
+      "id": "paragraph_1595138468316_106559560",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8944",
+      "dateFinished": "2020-07-26T00:32:59+0000",
+      "dateStarted": "2020-07-26T00:32:47+0000"
+    },
+    {
+      "title": "Variable provincia/canton: ¿Cual fue el salario promedio de hombres y mujeres de cada cantón del pais?",
+      "text": "// Realizamos un primer \nvar promedioCanton = datosDF.groupBy(\"provincia\", \"canton\").pivot(\"genero\").avg(\"ingreso_laboral\")\n\n// Realizamos la unión \nval promediosSinFiltrar = promedioCanton.join( CantonProvinciaDF,promedioCanton(\"canton\") === CantonProvinciaDF(\"cod_canton\"), \"inner\") \n\n// Se filtra las columnas de interes\nval promediosColumnasFiltradas = promediosSinFiltrar.select(\"nombre_provincia\", \"nombre_canton\", \"1 - Hombre\", \"2 - Mujer\")\n\n// Aplicamos un formato a los sueldos\nval sueldosFormateados = promediosColumnasFiltradas.withColumn(\"1 - Hombre\", format_number( col(\"1 - Hombre\"), 2) )\n                                    .withColumn(\"2 - Mujer\", format_number( col(\"2 - Mujer\"), 2) )\n\nz.show( sueldosFormateados )\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T05:35:18+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "nombre_provincia0",
+                        "visible": true,
+                        "width": 160,
+                        "sort": {
+                          "priority": 0,
+                          "direction": "asc"
+                        },
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "nombre_canton1",
+                        "visible": true,
+                        "width": 247,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "1 - Hombre2",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2 - Mujer3",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "nombre_provincia": "string",
+                      "nombre_canton": "string",
+                      "1 - Hombre": "string",
+                      "2 - Mujer": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": true
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "nombre_provincia",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "nombre_canton",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "nombre_provincia\tnombre_canton\t1 - Hombre\t2 - Mujer\nMORONA SANTIAGO\tMORONA\t568.84\t472.68\nCARCHI\tMONTUFAR\t418.70\t350.92\nLOS RIOS\tBUENA FE\t422.98\t291.55\nTUNGURAHUA\tMOCHA\t327.28\t229.29\nAZUAY\tGUACHAPALA\t256.53\t205.38\nCARCHI\tSAN PEDRO DE HUACA\t394.39\t299.27\nGALAPAGOS\tSAN CRISTOBAL\t1,392.07\t1,121.78\nAZUAY\tGIRON\t352.55\t222.63\nMORONA SANTIAGO\tLOGRO�O\t292.58\t240.55\nMANABI\tSAN VICENTE\t336.46\t314.32\nLOS RIOS\tPUEBLO VIEJO\t403.10\t239.07\nMANABI\tJARAMIJO\t727.57\t381.08\nCARCHI\tTULCAN\t480.00\t377.96\nMANABI\tJIPIJAPA\t309.76\t325.38\nCHIMBORAZO\tCUMANDA\t446.62\t375.59\nPASTAZA\tPASTAZA\t548.62\t473.63\nMORONA SANTIAGO\tPALORA\t400.78\t406.52\nMANABI\tJAMA\t478.70\t345.53\nIMBABURA\tCOTACACHI\t339.47\t256.50\nMORONA SANTIAGO\tTAISHA\t277.03\t161.69\nCHIMBORAZO\tGUANO\t373.30\t262.42\nPICHINCHA\tCAYAMBE\t500.23\t362.07\nZAMORA CHINCHIPE\tYACUAMBI\t317.03\t224.10\nCHIMBORAZO\tGUAMOTE\t277.61\t134.50\nGUAYAS\tBALAO\t387.17\t255.98\nESMERALDAS\tESMERALDAS\t546.30\t458.85\nCOTOPAXI\tSALCEDO\t428.72\t299.15\nSUCUMBIOS\tSUCUMBIOS\t430.07\t377.96\nLOS RIOS\tVINCES\t359.66\t283.15\nCARCHI\tMIRA\t337.53\t268.36\nLOJA\tESPINDOLA\t185.89\t147.10\nPICHINCHA\tMEJIA\t521.40\t364.97\nMANABI\tPORTOVIEJO\t462.95\t417.36\nGUAYAS\tSIMON BOLIVAR\t328.46\t240.20\nSUCUMBIOS\tLAGO AGRIO\t529.88\t416.43\nORELLANA\tAGUARICO\t378.40\t379.77\nSUCUMBIOS\tGONZALO PIZARRO\t468.14\t376.47\nLOJA\tPALTAS\t286.23\t223.68\nIMBABURA\tIBARRA\t597.87\t422.70\nESMERALDAS\tMUISNE\t281.84\t268.60\nCA�AR\tEL TAMBO\t464.50\t250.79\nLOJA\tOLMEDO\t178.05\t82.07\nBOLIVAR\tCHIMBO\t347.48\t282.27\nCOTOPAXI\tPANGUA\t392.65\t354.72\nLOJA\tPINDAL\t509.42\t132.62\nMORONA SANTIAGO\tSUCUA\t407.68\t329.10\nCA�AR\tCA�AR\t368.99\t268.22\nGUAYAS\tNOBOL (VICENTE PIEDRAHITA)\t331.00\t403.12\nAZUAY\tPAUTE\t432.52\t262.23\nCHIMBORAZO\tCOLTA\t255.99\t141.90\nSANTA ELENA\tSALINAS\t382.89\t340.81\nMORONA SANTIAGO\tHUAMBOYA\t323.29\t244.51\nSANTA ELENA\tSANTA ELENA\t371.24\t320.71\nZAMORA CHINCHIPE\tEL PANGUI\t473.33\t278.29\nGUAYAS\tPALESTINA\t295.49\t176.93\nTUNGURAHUA\tQUERO\t470.15\t212.41\nESMERALDAS\tELOY ALFARO\t333.08\t353.04\nLOS RIOS\tPALENQUE\t277.16\t257.64\nMANABI\tMONTECRISTI\t458.53\t331.56\nCOTOPAXI\tSAQUISILI\t417.90\t298.45\nCHIMBORAZO\tALAUSI\t289.37\t210.91\nMANABI\tPUERTO LOPEZ\t337.78\t155.34\nMANABI\tOLMEDO\t227.82\t154.79\nNAPO\tARCHIDONA\t433.45\t428.83\nMORONA SANTIAGO\tPABLO SEXTO\t549.44\t392.19\nGALAPAGOS\tSANTA CRUZ\t1,367.49\t1,034.64\nLOJA\tLOJA\t659.17\t430.40\nCOTOPAXI\tLA MANA\t453.48\t326.10\nTUNGURAHUA\tCEVALLOS\t438.20\t266.93\nGUAYAS\tDURAN\t519.68\t390.32\nAZUAY\tNABON\t298.69\t211.76\nZAMORA CHINCHIPE\tPALANDA\t274.98\t193.96\nMORONA SANTIAGO\tSANTIAGO\t563.57\t867.19\nAZUAY\tCAMILO PONCE ENRIQUEZ\t465.76\t263.10\nSUCUMBIOS\tSHUSHUFINDI\t486.63\t395.63\nCARCHI\tBOLIVAR\t330.71\t235.06\nMANABI\tJUNIN\t340.64\t251.31\nAZUAY\tO�A\t442.06\t143.03\nLOJA\tMACARA\t387.46\t362.79\nCA�AR\tLA TRONCAL\t476.51\t316.10\nMANABI\tBOLIVAR\t328.34\t273.84\nGUAYAS\tPEDRO CARBO\t260.88\t238.63\nEL ORO\tSANTA ROSA\t469.73\t365.39\nMANABI\tFLAVIO ALFARO\t348.32\t290.87\nLOS RIOS\tQUINSALOMA\t340.69\t238.19\nIMBABURA\tPIMAMPIRO\t369.10\t299.97\nPICHINCHA\tRUMI�AHUI\t881.22\t725.41\nAZUAY\tSEVILLA DE ORO\t572.28\t265.38\nEL ORO\tPASAJE\t476.79\t371.24\nNAPO\tCARLOS JULIO AROSEMENA T.\t341.98\t371.20\nMORONA SANTIAGO\tSAN JUAN BOSCO\t546.02\t523.25\nSUCUMBIOS\tPUTUMAYO\t442.77\t315.44\nBOLIVAR\tCHILLANES\t320.25\t252.29\nGUAYAS\tEL TRIUNFO\t458.32\t324.62\nSANTA ELENA\tLA LIBERTAD\t459.94\t371.12\nGUAYAS\tBALZAR\t311.95\t207.51\nMANABI\tPEDERNALES\t375.18\t290.78\nMANABI\tSUCRE\t318.82\t241.66\nLOS RIOS\tVALENCIA\t433.50\t353.95\nSUCUMBIOS\tCUYABENO\t302.77\t279.41\nPICHINCHA\tQUITO\t767.54\t620.59\nCOTOPAXI\tPUJILI\t365.83\t265.21\nMORONA SANTIAGO\tLIMON - INDANZA\t429.64\t333.48\nCA�AR\tBIBLIAN\t432.28\t248.51\nSUCUMBIOS\tCASCALES\t344.93\t389.78\nAZUAY\tEL PAN\t357.61\t118.61\nAZUAY\tCUENCA\t696.99\t525.89\nZAMORA CHINCHIPE\tNANGARITZA\t390.17\t229.90\nEL ORO\tPI�AS\t594.33\t360.58\nGUAYAS\tGUAYAQUIL\t558.28\t429.48\nGUAYAS\tCOLIMES\t290.47\t230.97\nGUAYAS\tSALITRE\t272.44\t206.64\nLOJA\tPUYANGO\t449.49\t323.40\nMANABI\tPICHINCHA\t292.66\t165.16\nEL ORO\tBALSAS\t503.84\t334.31\nIMBABURA\tOTAVALO\t422.90\t335.40\nNAPO\tEL CHACO\t546.48\t413.08\nESMERALDAS\tSAN LORENZO\t385.26\t366.08\nLOJA\tCALVAS\t366.46\t331.87\nAZUAY\tGUALACEO\t379.74\t246.04\nEL ORO\tEL GUABO\t472.41\t280.07\nBOLIVAR\tGUARANDA\t435.63\t370.05\nLOS RIOS\tMONTALVO\t362.35\t254.78\nCHIMBORAZO\tCHAMBO\t747.87\t235.08\nTUNGURAHUA\tTISALEO\t484.30\t335.64\nZAMORA CHINCHIPE\tCHINCHIPE\t359.12\t300.50\nTUNGURAHUA\tSANTIAGO DE PILLARO\t481.76\t274.42\nGUAYAS\tCORONEL MARCELINO MARIDUE�A\t345.52\t113.38\nEL ORO\tHUAQUILLAS\t455.72\t293.35\nIMBABURA\tANTONIO ANTE\t486.38\t344.95\nMANABI\tCHONE\t434.78\t385.20\nMANABI\tTOSAGUA\t413.48\t255.48\nPICHINCHA\tSAN MIGUEL DE LOS BANCOS\t421.20\t365.01\nTUNGURAHUA\tBA�OS DE AGUA SANTA\t536.64\t420.46\nGUAYAS\tEL EMPALME\t390.98\t217.09\nCA�AR\tSUSCAL\t337.14\t163.68\nMORONA SANTIAGO\tGUALAQUIZA\t521.54\t394.32\nZAMORA CHINCHIPE\tYANTZAZA\t528.11\t415.23\nCHIMBORAZO\tCHUNCHI\t345.31\t318.23\nGUAYAS\tSAN JACINTO DE YAGUACHI\t398.07\t314.53\nCHIMBORAZO\tPENIPE\t295.79\t299.93\nORELLANA\tLA JOYA DE LOS SACHAS\t500.56\t378.89\nGUAYAS\tISIDRO AYORA\t319.61\t199.67\nGUAYAS\tDAULE\t491.97\t492.92\nESMERALDAS\tATACAMES\t339.20\t344.14\nGALAPAGOS\tISABELA\t1,295.86\t935.24\nBOLIVAR\tSAN MIGUEL\t401.25\t415.77\nLOS RIOS\tBABAHOYO\t425.11\t375.55\nGUAYAS\tGENERAL ANTONIO ELIZALDE\t345.32\t309.40\nTUNGURAHUA\tAMBATO\t686.40\t522.07\nCOTOPAXI\tLATACUNGA\t589.75\t392.83\nPASTAZA\tMERA\t665.93\t421.55\nEL ORO\tARENILLAS\t367.70\t271.37\nMANABI\tSANTA ANA\t322.88\t206.29\nLOS RIOS\tVENTANAS\t427.86\t436.64\nLOS RIOS\tQUEVEDO\t484.27\t345.49\nMANABI\tMANTA\t555.63\t446.96\nLOJA\tCATAMAYO\t404.55\t255.00\nBOLIVAR\tCALUMA\t438.15\t380.10\nESMERALDAS\tQUININDE\t367.03\t285.05\nNAPO\tTENA\t431.02\t425.93\nPICHINCHA\tPEDRO MONCAYO\t523.38\t523.67\nZAMORA CHINCHIPE\tZAMORA\t538.91\t477.38\nMANABI\tEL CARMEN\t357.95\t257.62\nEL ORO\tATAHUALPA\t503.08\t418.12\nLOJA\tZAPOTILLO\t408.85\t255.86\nGUAYAS\tLOMAS DE SARGENTILLO\t336.47\t302.51\nPASTAZA\tARAJUNO\t324.32\t253.44\nGUAYAS\tSANTA LUCIA\t231.94\t186.65\nPICHINCHA\tPUERTO QUITO\t308.18\t244.68\nBOLIVAR\tECHEANDIA\t368.40\t273.56\nLOS RIOS\tURDANETA\t342.96\t297.84\nLOJA\tSOZORANGA\t300.51\t310.29\nBOLIVAR\tLAS NAVES\t424.21\t359.81\nEL ORO\tZARUMA\t482.49\t379.72\nORELLANA\tFRANCISCO DE ORELLANA\t544.14\t433.09\nESMERALDAS\tRIO VERDE\t281.05\t234.00\nGUAYAS\tSAMBORONDON\t760.16\t595.24\nCA�AR\tAZOGUES\t547.67\t411.94\nMORONA SANTIAGO\tTIWINTZA\t573.06\t390.46\nLOS RIOS\tMOCACHE\t344.30\t230.36\nORELLANA\tLORETO\t353.30\t364.93\nEL ORO\tMARCABELI\t420.57\t212.71\nGUAYAS\tALFREDO BAQUERIZO MORENO\t347.20\t313.97\nIMBABURA\tSAN MIGUEL DE URCUQUI\t359.67\t283.29\nCA�AR\tDELEG\t469.22\t479.93\nLOS RIOS\tBABA\t367.24\t252.20\nLOJA\tCHAHUARPAMBA\t356.19\t151.36\nAZUAY\tSAN FERNANDO\t421.58\t330.50\nAZUAY\tSIGSIG\t311.45\t156.58\nZAMORA CHINCHIPE\tPAQUISHA\t425.42\t324.69\nNAPO\tQUIJOS\t682.60\t473.13\nEL ORO\tLAS LAJAS\t369.75\t321.98\nLOJA\tGONZANAMA\t276.54\t205.42\nEL ORO\tPORTOVELO\t465.37\t431.19\nPICHINCHA\tPEDRO VICENTE MALDONADO\t381.41\t294.23\nMANABI\tPAJAN\t247.22\t214.33\nMANABI\tROCAFUERTE\t326.52\t255.49\nTUNGURAHUA\tPATATE\t403.93\t315.17\nSANTO DOMINGO DE LOS TS�CHILAS\tLA CONCORDIA\t424.63\t250.78\nGUAYAS\tMILAGRO\t527.12\t418.34\nAZUAY\tCHORDELEG\t302.22\t164.81\nCHIMBORAZO\tRIOBAMBA\t604.53\t457.85\nAZUAY\tSANTA ISABEL\t344.34\t224.98\nCOTOPAXI\tSIGCHOS\t393.59\t308.53\nZAMORA CHINCHIPE\tCENTINELA DEL CONDOR\t428.09\t364.42\nSANTO DOMINGO DE LOS TS�CHILAS\tSANTO DOMINGO\t508.01\t384.11\nLOJA\tSARAGURO\t460.22\t269.58\nPASTAZA\tSANTA CLARA\t510.15\t433.74\nEL ORO\tMACHALA\t552.58\t435.80\nCHIMBORAZO\tPALLATANGA\t290.29\t169.43\nMANABI\t24 DE MAYO\t360.25\t316.30\nLOJA\tCELICA\t412.15\t391.77\nTUNGURAHUA\tSAN PEDRO DE PELILEO\t427.44\t313.24\nGUAYAS\tNARANJAL\t459.68\t294.49\nCARCHI\tESPEJO\t398.89\t316.55\nEL ORO\tCHILLA\t147.00\t58.00\nLOJA\tQUILANGA\t226.13\t129.57\nGUAYAS\tPLAYAS (GENERAL VILLAMIL)\t396.62\t267.40\nAZUAY\tPUCARA\t299.26\t174.45\nGUAYAS\tNARANJITO\t425.29\t290.04\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mpromedioCanton\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [provincia: int, canton: int ... 2 more fields]\n\u001b[1m\u001b[34mpromediosSinFiltrar\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [provincia: int, canton: int ... 6 more fields]\n\u001b[1m\u001b[34mpromediosColumnasFiltradas\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [nombre_provincia: string, nombre_canton: string ... 2 more fields]\n\u001b[1m\u001b[34msueldosFormateados\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [nombre_provincia: string, nombre_canton: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=119",
+              "$$hashKey": "object:34315"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=120",
+              "$$hashKey": "object:34316"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=121",
+              "$$hashKey": "object:34317"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=122",
+              "$$hashKey": "object:34318"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=123",
+              "$$hashKey": "object:34319"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=124",
+              "$$hashKey": "object:34320"
+            },
+            {
+              "jobUrl": "http://48759f18f68e:4040/jobs/job?id=125",
+              "$$hashKey": "object:34321"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104649_-1975681469",
+      "id": "paragraph_1595138906808_-1644830297",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "dateStarted": "2020-07-26T05:34:35+0000",
+      "dateFinished": "2020-07-26T05:34:43+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8945"
+    },
+    {
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:08:24+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104650_375699336",
+      "id": "paragraph_1595705001000_1471498605",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "READY",
+      "$$hashKey": "object:8946"
+    },
+    {
+      "title": "TODO Variable rama_actividad: Segun su rango de ingresos ¿Cual es la principal actividad a la que se dedican los encuestados?",
+      "text": "import org.apache.spark.sql.functions._\n\n\nz.show( datosDF.withColumn(\"ingreso_laboral\"), when( $\"ingreso_laboral\" >= 0 && $\"ingreso_laboral\" <= 250 || col(\"ingreso_laboral\") >= NULL )\n                           \t\t\t.when( $\"ingreso_laboral\" >= 251 && $\"ingreso_laboral\" <= 500 )\n                           \t\t\t.otherwise(\"otros\")\n                          ).groupBy(\"rama_actividad\").count.agg(max(struct(\"count\" +: grouping: _*)))\n        )",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T04:01:31+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "<console>:8: \u001b[31merror: \u001b[0m';' expected but ')' found.\n        )\n        ^\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104651_-1450109435",
+      "id": "paragraph_1595697882109_-1465339620",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "ERROR",
+      "$$hashKey": "object:8947",
+      "dateFinished": "2020-07-26T04:01:31+0000",
+      "dateStarted": "2020-07-26T04:01:31+0000"
+    },
+    {
+      "user": "anonymous",
+      "dateUpdated": "2020-07-26T00:08:24+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1595722104651_1207657528",
+      "id": "paragraph_1595699254394_295558251",
+      "dateCreated": "2020-07-26T00:08:24+0000",
+      "status": "READY",
+      "$$hashKey": "object:8948"
+    }
+  ],
+  "name": "AvanceDanielT-25Julio-ProgAvanzda",
+  "id": "2FF3NJDER",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0-preview1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {
+    "isRunning": true
+  },
+  "path": "/AvanceDanielT-25Julio-ProgAvanzda"
+}
