@@ -1,774 +1,774 @@
 ﻿{
-  "paragraphs": [
-    {
-      "text": "import org.apache.spark.sql.types._\nval myDataSchema = StructType(\n    Array(\n        StructField(\"id_persona\", DecimalType(26, 0), true), \n        StructField(\"anio\", IntegerType, true), \n        StructField(\"mes\", IntegerType, true), \n        StructField(\"provincia\", IntegerType, true), \n        StructField(\"canton\", IntegerType, true), \n        StructField(\"area\", StringType, true), \n        StructField(\"genero\", StringType, true), \n        StructField(\"edad\", IntegerType, true), \n        StructField(\"estado_civil\", StringType, true), \n        StructField(\"nivel_de_instruccion\", StringType, true), \n        StructField(\"etnia\", StringType, true), \n        StructField(\"ingreso_laboral\", IntegerType, true), \n        StructField(\"condicion_actividad\", StringType, true), \n        StructField(\"sectorizacion\", StringType, true), \n        StructField(\"grupo_ocupacion\", StringType, true), \n        StructField(\"rama_actividad\", StringType, true), \n        StructField(\"factor_expansion\", DoubleType, true)\n    ));",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T08:36:39-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "import org.apache.spark.sql.types._\n\u001b[1m\u001b[34mmyDataSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m = StructType(StructField(id_persona,DecimalType(26,0),true), StructField(anio,IntegerType,true), StructField(mes,IntegerType,true), StructField(provincia,IntegerType,true), StructField(canton,IntegerType,true), StructField(area,StringType,true), StructField(genero,StringType,true), StructField(edad,IntegerType,true), StructField(estado_civil,StringType,true), StructField(nivel_de_instruccion,StringType,true), StructField(etnia,StringType,true), StructField(ingreso_laboral,IntegerType,true), StructField(condicion_actividad,StringType,true), StructField(sectorizacion,StringType,true), StructField(grupo_ocupacion,StringType,true), StructField(rama_actividad,StringType,true), St..."
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595165346868_1945979669",
-      "id": "paragraph_1595165346868_1945979669",
-      "dateCreated": "2020-07-19T08:29:06-0500",
-      "dateStarted": "2020-07-19T08:36:39-0500",
-      "dateFinished": "2020-07-19T08:36:42-0500",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:6244"
+ "paragraphs": [
+  {
+   "text": "import org.apache.spark.sql.types._\nval myDataSchema = StructType(\n    Array(\n        StructField(\"id_persona\", DecimalType(26, 0), true), \n        StructField(\"anio\", IntegerType, true), \n        StructField(\"mes\", IntegerType, true), \n        StructField(\"provincia\", IntegerType, true), \n        StructField(\"canton\", IntegerType, true), \n        StructField(\"area\", StringType, true), \n        StructField(\"genero\", StringType, true), \n        StructField(\"edad\", IntegerType, true), \n        StructField(\"estado_civil\", StringType, true), \n        StructField(\"nivel_de_instruccion\", StringType, true), \n        StructField(\"etnia\", StringType, true), \n        StructField(\"ingreso_laboral\", IntegerType, true), \n        StructField(\"condicion_actividad\", StringType, true), \n        StructField(\"sectorizacion\", StringType, true), \n        StructField(\"grupo_ocupacion\", StringType, true), \n        StructField(\"rama_actividad\", StringType, true), \n        StructField(\"factor_expansion\", DoubleType, true)\n    ));",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T08:36:39-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "scala",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
     },
-    {
-      "text": "val df = spark.read.option(\"myDataSchema\",\"true\").option(\"header\",\"true\").option(\"delimiter\",\"\\t\").csv(\"/home/david/Datos_ENEMDU_PEA_v2.csv\")\nval data2 = df.drop(\"id_persona\")\nval pro=data2.withColumn(\"provincia\", when($\"provincia\" ===  1 , lit(\"Azuay\"))\n                .otherwise(when($\"provincia\" ===  2 , lit(\"Bovilar\"))\n                        .otherwise(when($\"provincia\" === 3, lit(\"Caniar\"))\n                        .otherwise(when($\"provincia\" === 4, lit(\"Carchi\"))\n                        .otherwise(when($\"provincia\" === 5, lit(\"Cotopaxi\"))\n.otherwise(when($\"provincia\" === 6, lit(\"Chimborazo\"))\n.otherwise(when($\"provincia\" === 7, lit(\"El Oro\"))\n.otherwise(when($\"provincia\" === 8, lit(\"Esmeraldas\"))\n.otherwise(when($\"provincia\" === 9, lit(\"Guayas\"))\n.otherwise(when($\"provincia\" === 10, lit(\"Imbabura\"))\n.otherwise(when($\"provincia\" === 11, lit(\"Loja\"))\n.otherwise(when($\"provincia\" === 12, lit(\"Los Rios\"))\n.otherwise(when($\"provincia\" === 13, lit(\"Manabi\"))\n.otherwise(when($\"provincia\" === 14, lit(\"Morona Santiago\"))\n.otherwise(when($\"provincia\" === 15, lit(\"Napo\"))\n.otherwise(when($\"provincia\" === 16, lit(\"Pastaza\"))\n.otherwise(when($\"provincia\" === 17, lit(\"Pichincha\"))\n.otherwise(when($\"provincia\" === 18, lit(\"Tungurahua\"))\n.otherwise(when($\"provincia\" === 19, lit(\"Zamora Chinchipe\"))\n.otherwise(when($\"provincia\" === 20, lit(\"Galapagos\"))\n.otherwise(when($\"provincia\" === 21, lit(\"Sucumbios\"))\n.otherwise(when($\"provincia\" === 22, lit(\"Orellana\"))\n.otherwise(when($\"provincia\" === 23, lit(\"Santo Domingo de los Tsachilas\"))\n.otherwise(when($\"provincia\" === 24, lit(\"Santa  Elena\"))\n)   ))  )))))))))))))))))))))",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T08:36:42-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id_persona: string, anio: string ... 15 more fields]\n\u001b[1m\u001b[34mdata2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [anio: string, mes: string ... 14 more fields]\n\u001b[1m\u001b[34mpro\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [anio: string, mes: string ... 14 more fields]\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=0",
-              "$$hashKey": "object:6788"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595165379539_-317532458",
-      "id": "paragraph_1595165379539_-317532458",
-      "dateCreated": "2020-07-19T08:29:39-0500",
-      "dateStarted": "2020-07-19T08:36:42-0500",
-      "dateFinished": "2020-07-19T08:37:04-0500",
-      "status": "FINISHED",
-      "$$hashKey": "object:6245"
+    "editorMode": "ace/mode/scala"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "results": {
+    "code": "SUCCESS",
+    "msg": [
+     {
+      "type": "TEXT",
+      "data": "import org.apache.spark.sql.types._\n\u001b[1m\u001b[34mmyDataSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m = StructType(StructField(id_persona,DecimalType(26,0),true), StructField(anio,IntegerType,true), StructField(mes,IntegerType,true), StructField(provincia,IntegerType,true), StructField(canton,IntegerType,true), StructField(area,StringType,true), StructField(genero,StringType,true), StructField(edad,IntegerType,true), StructField(estado_civil,StringType,true), StructField(nivel_de_instruccion,StringType,true), StructField(etnia,StringType,true), StructField(ingreso_laboral,IntegerType,true), StructField(condicion_actividad,StringType,true), StructField(sectorizacion,StringType,true), StructField(grupo_ocupacion,StringType,true), StructField(rama_actividad,StringType,true), St..."
+     }
+    ]
+   },
+   "apps": [],
+   "runtimeInfos": {},
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595165346868_1945979669",
+   "id": "paragraph_1595165346868_1945979669",
+   "dateCreated": "2020-07-19T08:29:06-0500",
+   "dateStarted": "2020-07-19T08:36:39-0500",
+   "dateFinished": "2020-07-19T08:36:42-0500",
+   "status": "READY",
+   "focus": true,
+   "$$hashKey": "object:6244"
+  },
+  {
+   "text": "val df = spark.read.option(\"myDataSchema\",\"true\").option(\"header\",\"true\").option(\"delimiter\",\"\\t\").csv(\"/datos/Datos_ENEMDU_PEA_v2.csv\")\nval data2 = df.drop(\"id_persona\")\nval pro=data2.withColumn(\"provincia\", when($\"provincia\" ===  1 , lit(\"Azuay\"))\n                .otherwise(when($\"provincia\" ===  2 , lit(\"Bovilar\"))\n                        .otherwise(when($\"provincia\" === 3, lit(\"Caniar\"))\n                        .otherwise(when($\"provincia\" === 4, lit(\"Carchi\"))\n                        .otherwise(when($\"provincia\" === 5, lit(\"Cotopaxi\"))\n.otherwise(when($\"provincia\" === 6, lit(\"Chimborazo\"))\n.otherwise(when($\"provincia\" === 7, lit(\"El Oro\"))\n.otherwise(when($\"provincia\" === 8, lit(\"Esmeraldas\"))\n.otherwise(when($\"provincia\" === 9, lit(\"Guayas\"))\n.otherwise(when($\"provincia\" === 10, lit(\"Imbabura\"))\n.otherwise(when($\"provincia\" === 11, lit(\"Loja\"))\n.otherwise(when($\"provincia\" === 12, lit(\"Los Rios\"))\n.otherwise(when($\"provincia\" === 13, lit(\"Manabi\"))\n.otherwise(when($\"provincia\" === 14, lit(\"Morona Santiago\"))\n.otherwise(when($\"provincia\" === 15, lit(\"Napo\"))\n.otherwise(when($\"provincia\" === 16, lit(\"Pastaza\"))\n.otherwise(when($\"provincia\" === 17, lit(\"Pichincha\"))\n.otherwise(when($\"provincia\" === 18, lit(\"Tungurahua\"))\n.otherwise(when($\"provincia\" === 19, lit(\"Zamora Chinchipe\"))\n.otherwise(when($\"provincia\" === 20, lit(\"Galapagos\"))\n.otherwise(when($\"provincia\" === 21, lit(\"Sucumbios\"))\n.otherwise(when($\"provincia\" === 22, lit(\"Orellana\"))\n.otherwise(when($\"provincia\" === 23, lit(\"Santo Domingo de los Tsachilas\"))\n.otherwise(when($\"provincia\" === 24, lit(\"Santa  Elena\"))\n)   ))  )))))))))))))))))))))",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T08:36:42-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "scala",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
     },
-    {
-      "text": "pro.stat.freqItems(Array(\"nivel_de_instruccion\")).show(false)",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T08:37:04-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n|nivel_de_instruccion_freqItems                                                                                                                                                                           |\n+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n|[07 - Educación  Media, 02 - Centro de alfabetización, 10 - Post-grado, 09 - Superior Universitario, 05 - Educación Básica, 04 - Primaria, 08 - Superior no universitario, 06 - Secundaria, 01 - Ninguno]|\n+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=1",
-              "$$hashKey": "object:6846"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595165414162_-191021817",
-      "id": "paragraph_1595165414162_-191021817",
-      "dateCreated": "2020-07-19T08:30:14-0500",
-      "dateStarted": "2020-07-19T08:37:04-0500",
-      "dateFinished": "2020-07-19T08:37:17-0500",
-      "status": "FINISHED",
-      "$$hashKey": "object:6246"
-    },
-    {
-      "text": "%md \n#### Análisis respecto de las variables: provincia, género, ingreso salarial, provincia, año, y nivel de instrucción",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T09:21:55-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/text"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595167438946_-1844565147",
-      "id": "paragraph_1595167438946_-1844565147",
-      "dateCreated": "2020-07-19T09:03:58-0500",
-      "status": "READY",
-      "$$hashKey": "object:6247"
-    },
-    {
-      "text": "def nivelInstruccion2(nInstrc:String, anio:Int)={\n    \n    val aux = pro.select(\"nivel_de_instruccion\",\"ingreso_laboral\",\"anio\",\"genero\").filter($\"nivel_de_instruccion\"  === nInstrc && $\"anio\" ===anio).groupBy(\"nivel_de_instruccion\",\"genero\")\n        .agg(count('nivel_de_instruccion).as(\"count\"), avg('ingreso_laboral),  max('ingreso_laboral))\n        \n    val total = pro.filter($\"nivel_de_instruccion\" === nInstrc && $\"anio\" ===anio).count()\n    \n    val hom = aux.filter('genero === \"1 - Hombre\").drop('genero).select($\"nivel_de_instruccion\",$\"avg(ingreso_laboral)\",$\"max(ingreso_laboral)\",$\"count\".cast(\"Double\")/total *100)\n    val hom2 = hom.withColumnRenamed(hom.schema.last.name,\"Hombres\").withColumn(\"Hombres\", format_number('Hombres, 2) ).withColumnRenamed(\"avg(ingreso_laboral)\",\"SueldoPromedioHombres\")\n                .withColumn(\"SueldoPromedioHombres\", format_number('SueldoPromedioHombres, 2) )\n                .withColumnRenamed(\"max(ingreso_laboral)\",\"SueldoMaxHombres\")\n    \n    val muj = aux.filter('genero =!= \"1 - Hombre\").drop('genero).select($\"nivel_de_instruccion\",$\"avg(ingreso_laboral)\",$\"max(ingreso_laboral)\",$\"count\".cast(\"Double\")/total *100)\n    val muj2 = muj.withColumnRenamed(muj.schema.last.name,\"Mujeres\").withColumn(\"Mujeres\", format_number('Mujeres, 2) ).withColumnRenamed(\"avg(ingreso_laboral)\",\"SueldoPromedioMujeres\")\n                .withColumn(\"SueldoPromedioMujeres\", format_number('SueldoPromedioMujeres, 2) )\n                .withColumnRenamed(\"max(ingreso_laboral)\",\"SueldoMaxMujeres\")\n    \n    println(\" porcentaje basado en todas las personas con ese nivel de instrucción\")\n    hom2.join( muj2 , \"nivel_de_instruccion\").select($\"nivel_de_instruccion\",$\"Hombres\" ,$\"Mujeres\" ,$\"SueldoPromedioHombres\" ,$\"SueldoPromedioMujeres\" ,$\"SueldoMaxHombres\" ,$\"SueldoMaxMujeres\").show\n    \n    \n        \n}   ",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T08:37:18-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mnivelInstruccion2\u001b[0m: \u001b[1m\u001b[32m(nInstrc: String, anio: Int)Unit\u001b[0m\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595165417354_1672938669",
-      "id": "paragraph_1595165417354_1672938669",
-      "dateCreated": "2020-07-19T08:30:17-0500",
-      "dateStarted": "2020-07-19T08:37:18-0500",
-      "dateFinished": "2020-07-19T08:37:20-0500",
-      "status": "FINISHED",
-      "$$hashKey": "object:6248"
-    },
-    {
-      "text": "nivelInstruccion2(\"10 - Post-grado\",2019)\n nivelInstruccion2(\"09 - Superior Universitario\",2019)",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T08:37:21-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": " porcentaje basado en todas las personas con ese nivel de instrucción\n+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|nivel_de_instruccion|Hombres|Mujeres|SueldoPromedioHombres|SueldoPromedioMujeres|SueldoMaxHombres|SueldoMaxMujeres|\n+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|     10 - Post-grado|  48.82|  51.18|             1,805.20|             1,485.12|             999|             997|\n+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n\n porcentaje basado en todas las personas con ese nivel de instrucción\n+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|nivel_de_instruccion|Hombres|Mujeres|SueldoPromedioHombres|SueldoPromedioMujeres|SueldoMaxHombres|SueldoMaxMujeres|\n+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|09 - Superior Uni...|  48.69|  51.31|               896.76|               743.78|             999|             999|\n+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=2",
-              "$$hashKey": "object:6998"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=3",
-              "$$hashKey": "object:6999"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=4",
-              "$$hashKey": "object:7000"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=5",
-              "$$hashKey": "object:7001"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=6",
-              "$$hashKey": "object:7002"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=7",
-              "$$hashKey": "object:7003"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=8",
-              "$$hashKey": "object:7004"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=9",
-              "$$hashKey": "object:7005"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=10",
-              "$$hashKey": "object:7006"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=11",
-              "$$hashKey": "object:7007"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=12",
-              "$$hashKey": "object:7008"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=13",
-              "$$hashKey": "object:7009"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595165434947_1009119675",
-      "id": "paragraph_1595165434947_1009119675",
-      "dateCreated": "2020-07-19T08:30:34-0500",
-      "dateStarted": "2020-07-19T08:37:21-0500",
-      "dateFinished": "2020-07-19T08:38:29-0500",
-      "status": "FINISHED",
-      "$$hashKey": "object:6249"
-    },
-    {
-      "text": "%md \n#### Análisis respecto de las variables: género, ingreso salarial, provincia año, y nivel de instrucción",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T09:22:02-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/text"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595167423496_-1268322788",
-      "id": "paragraph_1595167423496_-1268322788",
-      "dateCreated": "2020-07-19T09:03:43-0500",
-      "status": "READY",
-      "$$hashKey": "object:6250"
-    },
-    {
-      "text": "def nivelInstruccion3(anio:Int)={\n    \n    val aux = pro.select(\"nivel_de_instruccion\",\"ingreso_laboral\",\"anio\",\"genero\").filter($\"anio\" ===anio).groupBy(\"nivel_de_instruccion\",\"genero\")\n        .agg(count('nivel_de_instruccion).as(\"count\"), avg('ingreso_laboral),  max('ingreso_laboral))\n        \n    val total = pro.filter($\"anio\" ===anio).count()\n    \n    val hom = aux.filter('genero === \"1 - Hombre\").drop('genero).select($\"nivel_de_instruccion\",$\"avg(ingreso_laboral)\",$\"max(ingreso_laboral)\",$\"count\".cast(\"Double\")/total *100)\n    val hom2 = hom.withColumnRenamed(hom.schema.last.name,\"Hombres\").withColumn(\"Hombres\", format_number('Hombres, 2) ).withColumnRenamed(\"avg(ingreso_laboral)\",\"SueldoPromedioHombres\")\n                .withColumn(\"SueldoPromedioHombres\", format_number('SueldoPromedioHombres, 2) )\n                .withColumnRenamed(\"max(ingreso_laboral)\",\"SueldoMaxHombres\")\n    \n    val muj = aux.filter('genero =!= \"1 - Hombre\").drop('genero).select($\"nivel_de_instruccion\",$\"avg(ingreso_laboral)\",$\"max(ingreso_laboral)\",$\"count\".cast(\"Double\")/total *100)\n    val muj2 = muj.withColumnRenamed(muj.schema.last.name,\"Mujeres\").withColumn(\"Mujeres\", format_number('Mujeres, 2) ).withColumnRenamed(\"avg(ingreso_laboral)\",\"SueldoPromedioMujeres\")\n                .withColumn(\"SueldoPromedioMujeres\", format_number('SueldoPromedioMujeres, 2) )\n                .withColumnRenamed(\"max(ingreso_laboral)\",\"SueldoMaxMujeres\")\n    \n    \n    hom2.join( muj2 , \"nivel_de_instruccion\").select($\"nivel_de_instruccion\",$\"Hombres\" ,$\"Mujeres\" ,$\"SueldoPromedioHombres\" ,$\"SueldoPromedioMujeres\" ,$\"SueldoMaxHombres\" ,$\"SueldoMaxMujeres\").show(false)\n} ",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T08:38:29-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mnivelInstruccion3\u001b[0m: \u001b[1m\u001b[32m(anio: Int)Unit\u001b[0m\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595165471706_964024010",
-      "id": "paragraph_1595165471706_964024010",
-      "dateCreated": "2020-07-19T08:31:11-0500",
-      "dateStarted": "2020-07-19T08:38:29-0500",
-      "dateFinished": "2020-07-19T08:38:32-0500",
-      "status": "FINISHED",
-      "$$hashKey": "object:6251"
-    },
-    {
-      "text": "%md La función *nivelInstruccion3(2019)*** devuelve una tabla con el análisis de ingreso salarial de todos los niveles de instucción por el año especificado",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T09:21:41-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/text"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595168339428_407188333",
-      "id": "paragraph_1595168339428_407188333",
-      "dateCreated": "2020-07-19T09:18:59-0500",
-      "status": "READY",
-      "$$hashKey": "object:6252"
-    },
-    {
-      "text": "nivelInstruccion3(2019)",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T08:38:32-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "+------------------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|nivel_de_instruccion          |Hombres|Mujeres|SueldoPromedioHombres|SueldoPromedioMujeres|SueldoMaxHombres|SueldoMaxMujeres|\n+------------------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|09 - Superior Universitario   |8.73   |9.20   |896.76               |743.78               |999             |999             |\n|08 - Superior no universitario|1.23   |0.99   |794.83               |580.16               |998             |990             |\n|05 - Educación Básica         |2.79   |1.47   |278.24               |217.42               |97              |990             |\n|10 - Post-grado               |0.93   |0.98   |1,805.20             |1,485.12             |999             |997             |\n|02 - Centro de alfabetización |0.18   |0.28   |193.78               |146.69               |91              |97              |\n|01 - Ninguno                  |1.69   |2.01   |210.38               |132.46               |992             |990             |\n|04 - Primaria                 |18.09  |13.06  |358.28               |232.91               |998             |990             |\n|07 - Educación  Media         |7.35   |4.34   |353.64               |287.94               |995             |988             |\n|06 - Secundaria               |15.64  |11.04  |534.70               |371.82               |998             |999             |\n+------------------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=14",
-              "$$hashKey": "object:7247"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=15",
-              "$$hashKey": "object:7248"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=16",
-              "$$hashKey": "object:7249"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=17",
-              "$$hashKey": "object:7250"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=18",
-              "$$hashKey": "object:7251"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=19",
-              "$$hashKey": "object:7252"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595165473232_1120487662",
-      "id": "paragraph_1595165473232_1120487662",
-      "dateCreated": "2020-07-19T08:31:13-0500",
-      "dateStarted": "2020-07-19T08:38:32-0500",
-      "dateFinished": "2020-07-19T08:39:01-0500",
-      "status": "FINISHED",
-      "$$hashKey": "object:6253"
-    },
-    {
-      "text": "%md \n#### Análisis respecto de las variables: provincia, género, ingreso salarial, provincia y año\nCreamos una función que recibe 3 parametros: *province*, *nInstrc* y *anio*, la cual nos devuelve un **dataframe** que invoca el método **show** para visualizar los datos obtenidos",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T09:22:07-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/text"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h4>Ánalisis respecto de las variables: provincia, género, ingreso salarial, provincia y año</h4>\n<p>Creamos una función que recibe 3 parametros: <em>province</em>, <em>nInstrc</em> y <em>anio</em>, la cual nos devuelve un <strong>dataframe</strong> que invoca el método <strong>show</strong> para visualizar los datos obtenidos</p>\n\n</div>"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595167417604_-1428940452",
-      "id": "paragraph_1595167417604_-1428940452",
-      "dateCreated": "2020-07-19T09:03:37-0500",
-      "dateStarted": "2020-07-19T09:16:32-0500",
-      "dateFinished": "2020-07-19T09:16:33-0500",
-      "status": "FINISHED",
-      "$$hashKey": "object:6254"
-    },
-    {
-      "text": "def nivelInstruccion4(province: String,nInstrc:String, anio:Int)={\n    \n    val aux = pro.select(\"provincia\",\"nivel_de_instruccion\",\"ingreso_laboral\",\"anio\",\"genero\").filter($\"provincia\" === province && $\"nivel_de_instruccion\"  === nInstrc && $\"anio\" ===anio).groupBy(\"provincia\",\"nivel_de_instruccion\",\"genero\")\n        .agg(count('nivel_de_instruccion).as(\"count\"), avg('ingreso_laboral),  max('ingreso_laboral))\n        \n    val total = pro.filter($\"provincia\" === province && $\"nivel_de_instruccion\" === nInstrc && $\"anio\" ===anio).count()\n    \n    val hom = aux.filter('genero === \"1 - Hombre\").drop('genero).select($\"provincia\",$\"nivel_de_instruccion\",$\"avg(ingreso_laboral)\",$\"max(ingreso_laboral)\",$\"count\".cast(\"Double\")/total *100)\n    val hom2 = hom.withColumnRenamed(hom.schema.last.name,\"Hombres\").withColumn(\"Hombres\", format_number('Hombres, 2) ).withColumnRenamed(\"avg(ingreso_laboral)\",\"SueldoPromedioHombres\")\n                .withColumn(\"SueldoPromedioHombres\", format_number('SueldoPromedioHombres, 2) )\n                .withColumnRenamed(\"max(ingreso_laboral)\",\"SueldoMaxHombres\")\n    \n    val muj = aux.filter('genero =!= \"1 - Hombre\").drop('genero).select($\"nivel_de_instruccion\",$\"avg(ingreso_laboral)\",$\"max(ingreso_laboral)\",$\"count\".cast(\"Double\")/total *100)\n    val muj2 = muj.withColumnRenamed(muj.schema.last.name,\"Mujeres\").withColumn(\"Mujeres\", format_number('Mujeres, 2) ).withColumnRenamed(\"avg(ingreso_laboral)\",\"SueldoPromedioMujeres\")\n                .withColumn(\"SueldoPromedioMujeres\", format_number('SueldoPromedioMujeres, 2) )\n                .withColumnRenamed(\"max(ingreso_laboral)\",\"SueldoMaxMujeres\")\n    \n    \n    hom2.join( muj2 , \"nivel_de_instruccion\").select($\"provincia\",$\"nivel_de_instruccion\",$\"Hombres\" ,$\"Mujeres\" ,$\"SueldoPromedioHombres\" ,$\"SueldoPromedioMujeres\" ,$\"SueldoMaxHombres\" ,$\"SueldoMaxMujeres\").show\n}   ",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T08:39:01-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mnivelInstruccion4\u001b[0m: \u001b[1m\u001b[32m(province: String, nInstrc: String, anio: Int)Unit\u001b[0m\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595165492853_2018608952",
-      "id": "paragraph_1595165492853_2018608952",
-      "dateCreated": "2020-07-19T08:31:32-0500",
-      "dateStarted": "2020-07-19T08:39:01-0500",
-      "dateFinished": "2020-07-19T08:39:03-0500",
-      "status": "FINISHED",
-      "$$hashKey": "object:6255"
-    },
-    {
-      "text": "%md Con la función *nivelInstruccion4* podemos obtener el sueldo promedio  tanto de hombres como mujeres segun su nivel de instrucción, provincia, y año",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T09:18:36-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/text"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<p>Con la función <em>nivelInstruccion4</em> podemos obtener el sueldo promedio  tanto de hombres como mujeres segun su nivel de instrucción, provincia, y año</p>\n\n</div>"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595167348930_-1855278975",
-      "id": "paragraph_1595167348930_-1855278975",
-      "dateCreated": "2020-07-19T09:02:28-0500",
-      "dateStarted": "2020-07-19T09:18:36-0500",
-      "dateFinished": "2020-07-19T09:18:36-0500",
-      "status": "FINISHED",
-      "$$hashKey": "object:6256"
-    },
-    {
-      "text": "nivelInstruccion4(\"Loja\",\"10 - Post-grado\",2019)",
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T08:39:03-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "+---------+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|provincia|nivel_de_instruccion|Hombres|Mujeres|SueldoPromedioHombres|SueldoPromedioMujeres|SueldoMaxHombres|SueldoMaxMujeres|\n+---------+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|     Loja|     10 - Post-grado|  46.34|  53.66|             1,645.11|             1,190.36|             800|             996|\n+---------+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=20",
-              "$$hashKey": "object:7478"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=21",
-              "$$hashKey": "object:7479"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=22",
-              "$$hashKey": "object:7480"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=23",
-              "$$hashKey": "object:7481"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=24",
-              "$$hashKey": "object:7482"
-            },
-            {
-              "jobUrl": "http://presariocq42:4040/jobs/job?id=25",
-              "$$hashKey": "object:7483"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595165518249_-2107436131",
-      "id": "paragraph_1595165518249_-2107436131",
-      "dateCreated": "2020-07-19T08:31:58-0500",
-      "dateStarted": "2020-07-19T08:39:03-0500",
-      "dateFinished": "2020-07-19T08:39:38-0500",
-      "status": "FINISHED",
-      "$$hashKey": "object:6257"
-    },
-    {
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T08:39:38-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595165520392_-335237156",
-      "id": "paragraph_1595165520392_-335237156",
-      "dateCreated": "2020-07-19T08:32:00-0500",
-      "status": "FINISHED",
-      "$$hashKey": "object:6258"
-    },
-    {
-      "user": "anonymous",
-      "dateUpdated": "2020-07-19T08:39:38-0500",
-      "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1595165530511_-960530400",
-      "id": "paragraph_1595165530511_-960530400",
-      "dateCreated": "2020-07-19T08:32:10-0500",
-      "status": "FINISHED",
-      "$$hashKey": "object:6259"
+    "editorMode": "ace/mode/scala"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "results": {
+    "code": "SUCCESS",
+    "msg": [
+     {
+      "type": "TEXT",
+      "data": "\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id_persona: string, anio: string ... 15 more fields]\n\u001b[1m\u001b[34mdata2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [anio: string, mes: string ... 14 more fields]\n\u001b[1m\u001b[34mpro\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [anio: string, mes: string ... 14 more fields]\n"
+     }
+    ]
+   },
+   "apps": [],
+   "runtimeInfos": {
+    "jobUrl": {
+     "propertyName": "jobUrl",
+     "label": "SPARK JOB",
+     "tooltip": "View in Spark web UI",
+     "group": "spark",
+     "values": [
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=0",
+       "$$hashKey": "object:6788"
+      }
+     ],
+     "interpreterSettingId": "spark"
     }
-  ],
-  "name": "Avance3Variables",
-  "id": "2FGEMCBJZ",
-  "defaultInterpreterGroup": "spark",
-  "version": "0.9.0-preview1",
-  "noteParams": {},
-  "noteForms": {},
-  "angularObjects": {},
-  "config": {
-    "isZeppelinNotebookCronEnable": false,
-    "looknfeel": "default",
-    "personalizedMode": "false"
+   },
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595165379539_-317532458",
+   "id": "paragraph_1595165379539_-317532458",
+   "dateCreated": "2020-07-19T08:29:39-0500",
+   "dateStarted": "2020-07-19T08:36:42-0500",
+   "dateFinished": "2020-07-19T08:37:04-0500",
+   "status": "READY",
+   "$$hashKey": "object:6245"
   },
-  "info": {
-    "isRunning": false
+  {
+   "text": "pro.stat.freqItems(Array(\"nivel_de_instruccion\")).show(false)",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T08:37:04-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "scala",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/scala"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "results": {
+    "code": "SUCCESS",
+    "msg": [
+     {
+      "type": "TEXT",
+      "data": "+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n|nivel_de_instruccion_freqItems                                                                                                                                                                           |\n+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n|[07 - Educación  Media, 02 - Centro de alfabetización, 10 - Post-grado, 09 - Superior Universitario, 05 - Educación Básica, 04 - Primaria, 08 - Superior no universitario, 06 - Secundaria, 01 - Ninguno]|\n+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n\n"
+     }
+    ]
+   },
+   "apps": [],
+   "runtimeInfos": {
+    "jobUrl": {
+     "propertyName": "jobUrl",
+     "label": "SPARK JOB",
+     "tooltip": "View in Spark web UI",
+     "group": "spark",
+     "values": [
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=1",
+       "$$hashKey": "object:6846"
+      }
+     ],
+     "interpreterSettingId": "spark"
+    }
+   },
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595165414162_-191021817",
+   "id": "paragraph_1595165414162_-191021817",
+   "dateCreated": "2020-07-19T08:30:14-0500",
+   "dateStarted": "2020-07-19T08:37:04-0500",
+   "dateFinished": "2020-07-19T08:37:17-0500",
+   "status": "FINISHED",
+   "$$hashKey": "object:6246"
   },
-  "path": "/Avance3Variables"
+  {
+   "text": "%md \n#### Análisis respecto de las variables: provincia, género, ingreso salarial, provincia, año, y nivel de instrucción",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T09:21:55-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "text",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/text"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "apps": [],
+   "runtimeInfos": {},
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595167438946_-1844565147",
+   "id": "paragraph_1595167438946_-1844565147",
+   "dateCreated": "2020-07-19T09:03:58-0500",
+   "status": "READY",
+   "$$hashKey": "object:6247"
+  },
+  {
+   "text": "def nivelInstruccion2(nInstrc:String, anio:Int)={\n    \n    val aux = pro.select(\"nivel_de_instruccion\",\"ingreso_laboral\",\"anio\",\"genero\").filter($\"nivel_de_instruccion\"  === nInstrc && $\"anio\" ===anio).groupBy(\"nivel_de_instruccion\",\"genero\")\n        .agg(count('nivel_de_instruccion).as(\"count\"), avg('ingreso_laboral),  max('ingreso_laboral))\n        \n    val total = pro.filter($\"nivel_de_instruccion\" === nInstrc && $\"anio\" ===anio).count()\n    \n    val hom = aux.filter('genero === \"1 - Hombre\").drop('genero).select($\"nivel_de_instruccion\",$\"avg(ingreso_laboral)\",$\"max(ingreso_laboral)\",$\"count\".cast(\"Double\")/total *100)\n    val hom2 = hom.withColumnRenamed(hom.schema.last.name,\"Hombres\").withColumn(\"Hombres\", format_number('Hombres, 2) ).withColumnRenamed(\"avg(ingreso_laboral)\",\"SueldoPromedioHombres\")\n                .withColumn(\"SueldoPromedioHombres\", format_number('SueldoPromedioHombres, 2) )\n                .withColumnRenamed(\"max(ingreso_laboral)\",\"SueldoMaxHombres\")\n    \n    val muj = aux.filter('genero =!= \"1 - Hombre\").drop('genero).select($\"nivel_de_instruccion\",$\"avg(ingreso_laboral)\",$\"max(ingreso_laboral)\",$\"count\".cast(\"Double\")/total *100)\n    val muj2 = muj.withColumnRenamed(muj.schema.last.name,\"Mujeres\").withColumn(\"Mujeres\", format_number('Mujeres, 2) ).withColumnRenamed(\"avg(ingreso_laboral)\",\"SueldoPromedioMujeres\")\n                .withColumn(\"SueldoPromedioMujeres\", format_number('SueldoPromedioMujeres, 2) )\n                .withColumnRenamed(\"max(ingreso_laboral)\",\"SueldoMaxMujeres\")\n    \n    println(\" porcentaje basado en todas las personas con ese nivel de instrucción\")\n    hom2.join( muj2 , \"nivel_de_instruccion\").select($\"nivel_de_instruccion\",$\"Hombres\" ,$\"Mujeres\" ,$\"SueldoPromedioHombres\" ,$\"SueldoPromedioMujeres\" ,$\"SueldoMaxHombres\" ,$\"SueldoMaxMujeres\").show\n    \n    \n        \n}   ",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T08:37:18-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "scala",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/scala"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "results": {
+    "code": "SUCCESS",
+    "msg": [
+     {
+      "type": "TEXT",
+      "data": "\u001b[1m\u001b[34mnivelInstruccion2\u001b[0m: \u001b[1m\u001b[32m(nInstrc: String, anio: Int)Unit\u001b[0m\n"
+     }
+    ]
+   },
+   "apps": [],
+   "runtimeInfos": {},
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595165417354_1672938669",
+   "id": "paragraph_1595165417354_1672938669",
+   "dateCreated": "2020-07-19T08:30:17-0500",
+   "dateStarted": "2020-07-19T08:37:18-0500",
+   "dateFinished": "2020-07-19T08:37:20-0500",
+   "status": "FINISHED",
+   "$$hashKey": "object:6248"
+  },
+  {
+   "text": "nivelInstruccion2(\"10 - Post-grado\",2019)\n nivelInstruccion2(\"09 - Superior Universitario\",2019)",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T08:37:21-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "scala",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/scala"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "results": {
+    "code": "SUCCESS",
+    "msg": [
+     {
+      "type": "TEXT",
+      "data": " porcentaje basado en todas las personas con ese nivel de instrucción\n+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|nivel_de_instruccion|Hombres|Mujeres|SueldoPromedioHombres|SueldoPromedioMujeres|SueldoMaxHombres|SueldoMaxMujeres|\n+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|     10 - Post-grado|  48.82|  51.18|             1,805.20|             1,485.12|             999|             997|\n+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n\n porcentaje basado en todas las personas con ese nivel de instrucción\n+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|nivel_de_instruccion|Hombres|Mujeres|SueldoPromedioHombres|SueldoPromedioMujeres|SueldoMaxHombres|SueldoMaxMujeres|\n+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|09 - Superior Uni...|  48.69|  51.31|               896.76|               743.78|             999|             999|\n+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n\n"
+     }
+    ]
+   },
+   "apps": [],
+   "runtimeInfos": {
+    "jobUrl": {
+     "propertyName": "jobUrl",
+     "label": "SPARK JOB",
+     "tooltip": "View in Spark web UI",
+     "group": "spark",
+     "values": [
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=2",
+       "$$hashKey": "object:6998"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=3",
+       "$$hashKey": "object:6999"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=4",
+       "$$hashKey": "object:7000"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=5",
+       "$$hashKey": "object:7001"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=6",
+       "$$hashKey": "object:7002"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=7",
+       "$$hashKey": "object:7003"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=8",
+       "$$hashKey": "object:7004"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=9",
+       "$$hashKey": "object:7005"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=10",
+       "$$hashKey": "object:7006"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=11",
+       "$$hashKey": "object:7007"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=12",
+       "$$hashKey": "object:7008"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=13",
+       "$$hashKey": "object:7009"
+      }
+     ],
+     "interpreterSettingId": "spark"
+    }
+   },
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595165434947_1009119675",
+   "id": "paragraph_1595165434947_1009119675",
+   "dateCreated": "2020-07-19T08:30:34-0500",
+   "dateStarted": "2020-07-19T08:37:21-0500",
+   "dateFinished": "2020-07-19T08:38:29-0500",
+   "status": "FINISHED",
+   "$$hashKey": "object:6249"
+  },
+  {
+   "text": "%md \n#### Análisis respecto de las variables: género, ingreso salarial, provincia año, y nivel de instrucción",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T09:22:02-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "text",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/text"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "apps": [],
+   "runtimeInfos": {},
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595167423496_-1268322788",
+   "id": "paragraph_1595167423496_-1268322788",
+   "dateCreated": "2020-07-19T09:03:43-0500",
+   "status": "READY",
+   "$$hashKey": "object:6250"
+  },
+  {
+   "text": "def nivelInstruccion3(anio:Int)={\n    \n    val aux = pro.select(\"nivel_de_instruccion\",\"ingreso_laboral\",\"anio\",\"genero\").filter($\"anio\" ===anio).groupBy(\"nivel_de_instruccion\",\"genero\")\n        .agg(count('nivel_de_instruccion).as(\"count\"), avg('ingreso_laboral),  max('ingreso_laboral))\n        \n    val total = pro.filter($\"anio\" ===anio).count()\n    \n    val hom = aux.filter('genero === \"1 - Hombre\").drop('genero).select($\"nivel_de_instruccion\",$\"avg(ingreso_laboral)\",$\"max(ingreso_laboral)\",$\"count\".cast(\"Double\")/total *100)\n    val hom2 = hom.withColumnRenamed(hom.schema.last.name,\"Hombres\").withColumn(\"Hombres\", format_number('Hombres, 2) ).withColumnRenamed(\"avg(ingreso_laboral)\",\"SueldoPromedioHombres\")\n                .withColumn(\"SueldoPromedioHombres\", format_number('SueldoPromedioHombres, 2) )\n                .withColumnRenamed(\"max(ingreso_laboral)\",\"SueldoMaxHombres\")\n    \n    val muj = aux.filter('genero =!= \"1 - Hombre\").drop('genero).select($\"nivel_de_instruccion\",$\"avg(ingreso_laboral)\",$\"max(ingreso_laboral)\",$\"count\".cast(\"Double\")/total *100)\n    val muj2 = muj.withColumnRenamed(muj.schema.last.name,\"Mujeres\").withColumn(\"Mujeres\", format_number('Mujeres, 2) ).withColumnRenamed(\"avg(ingreso_laboral)\",\"SueldoPromedioMujeres\")\n                .withColumn(\"SueldoPromedioMujeres\", format_number('SueldoPromedioMujeres, 2) )\n                .withColumnRenamed(\"max(ingreso_laboral)\",\"SueldoMaxMujeres\")\n    \n    \n    hom2.join( muj2 , \"nivel_de_instruccion\").select($\"nivel_de_instruccion\",$\"Hombres\" ,$\"Mujeres\" ,$\"SueldoPromedioHombres\" ,$\"SueldoPromedioMujeres\" ,$\"SueldoMaxHombres\" ,$\"SueldoMaxMujeres\").show(false)\n} ",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T08:38:29-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "scala",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/scala"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "results": {
+    "code": "SUCCESS",
+    "msg": [
+     {
+      "type": "TEXT",
+      "data": "\u001b[1m\u001b[34mnivelInstruccion3\u001b[0m: \u001b[1m\u001b[32m(anio: Int)Unit\u001b[0m\n"
+     }
+    ]
+   },
+   "apps": [],
+   "runtimeInfos": {},
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595165471706_964024010",
+   "id": "paragraph_1595165471706_964024010",
+   "dateCreated": "2020-07-19T08:31:11-0500",
+   "dateStarted": "2020-07-19T08:38:29-0500",
+   "dateFinished": "2020-07-19T08:38:32-0500",
+   "status": "FINISHED",
+   "$$hashKey": "object:6251"
+  },
+  {
+   "text": "%md La función *nivelInstruccion3(2019)*** devuelve una tabla con el análisis de ingreso salarial de todos los niveles de instucción por el año especificado",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T09:21:41-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "text",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/text"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "apps": [],
+   "runtimeInfos": {},
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595168339428_407188333",
+   "id": "paragraph_1595168339428_407188333",
+   "dateCreated": "2020-07-19T09:18:59-0500",
+   "status": "READY",
+   "$$hashKey": "object:6252"
+  },
+  {
+   "text": "nivelInstruccion3(2019)",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T08:38:32-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "scala",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/scala"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "results": {
+    "code": "SUCCESS",
+    "msg": [
+     {
+      "type": "TEXT",
+      "data": "+------------------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|nivel_de_instruccion          |Hombres|Mujeres|SueldoPromedioHombres|SueldoPromedioMujeres|SueldoMaxHombres|SueldoMaxMujeres|\n+------------------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|09 - Superior Universitario   |8.73   |9.20   |896.76               |743.78               |999             |999             |\n|08 - Superior no universitario|1.23   |0.99   |794.83               |580.16               |998             |990             |\n|05 - Educación Básica         |2.79   |1.47   |278.24               |217.42               |97              |990             |\n|10 - Post-grado               |0.93   |0.98   |1,805.20             |1,485.12             |999             |997             |\n|02 - Centro de alfabetización |0.18   |0.28   |193.78               |146.69               |91              |97              |\n|01 - Ninguno                  |1.69   |2.01   |210.38               |132.46               |992             |990             |\n|04 - Primaria                 |18.09  |13.06  |358.28               |232.91               |998             |990             |\n|07 - Educación  Media         |7.35   |4.34   |353.64               |287.94               |995             |988             |\n|06 - Secundaria               |15.64  |11.04  |534.70               |371.82               |998             |999             |\n+------------------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n\n"
+     }
+    ]
+   },
+   "apps": [],
+   "runtimeInfos": {
+    "jobUrl": {
+     "propertyName": "jobUrl",
+     "label": "SPARK JOB",
+     "tooltip": "View in Spark web UI",
+     "group": "spark",
+     "values": [
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=14",
+       "$$hashKey": "object:7247"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=15",
+       "$$hashKey": "object:7248"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=16",
+       "$$hashKey": "object:7249"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=17",
+       "$$hashKey": "object:7250"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=18",
+       "$$hashKey": "object:7251"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=19",
+       "$$hashKey": "object:7252"
+      }
+     ],
+     "interpreterSettingId": "spark"
+    }
+   },
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595165473232_1120487662",
+   "id": "paragraph_1595165473232_1120487662",
+   "dateCreated": "2020-07-19T08:31:13-0500",
+   "dateStarted": "2020-07-19T08:38:32-0500",
+   "dateFinished": "2020-07-19T08:39:01-0500",
+   "status": "FINISHED",
+   "$$hashKey": "object:6253"
+  },
+  {
+   "text": "%md \n#### Análisis respecto de las variables: provincia, género, ingreso salarial, provincia y año\nCreamos una función que recibe 3 parametros: *province*, *nInstrc* y *anio*, la cual nos devuelve un **dataframe** que invoca el método **show** para visualizar los datos obtenidos",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T09:22:07-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "text",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/text"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "results": {
+    "code": "SUCCESS",
+    "msg": [
+     {
+      "type": "HTML",
+      "data": "<div class=\"markdown-body\">\n<h4>Ánalisis respecto de las variables: provincia, género, ingreso salarial, provincia y año</h4>\n<p>Creamos una función que recibe 3 parametros: <em>province</em>, <em>nInstrc</em> y <em>anio</em>, la cual nos devuelve un <strong>dataframe</strong> que invoca el método <strong>show</strong> para visualizar los datos obtenidos</p>\n\n</div>"
+     }
+    ]
+   },
+   "apps": [],
+   "runtimeInfos": {},
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595167417604_-1428940452",
+   "id": "paragraph_1595167417604_-1428940452",
+   "dateCreated": "2020-07-19T09:03:37-0500",
+   "dateStarted": "2020-07-19T09:16:32-0500",
+   "dateFinished": "2020-07-19T09:16:33-0500",
+   "status": "FINISHED",
+   "$$hashKey": "object:6254"
+  },
+  {
+   "text": "def nivelInstruccion4(province: String,nInstrc:String, anio:Int)={\n    \n    val aux = pro.select(\"provincia\",\"nivel_de_instruccion\",\"ingreso_laboral\",\"anio\",\"genero\").filter($\"provincia\" === province && $\"nivel_de_instruccion\"  === nInstrc && $\"anio\" ===anio).groupBy(\"provincia\",\"nivel_de_instruccion\",\"genero\")\n        .agg(count('nivel_de_instruccion).as(\"count\"), avg('ingreso_laboral),  max('ingreso_laboral))\n        \n    val total = pro.filter($\"provincia\" === province && $\"nivel_de_instruccion\" === nInstrc && $\"anio\" ===anio).count()\n    \n    val hom = aux.filter('genero === \"1 - Hombre\").drop('genero).select($\"provincia\",$\"nivel_de_instruccion\",$\"avg(ingreso_laboral)\",$\"max(ingreso_laboral)\",$\"count\".cast(\"Double\")/total *100)\n    val hom2 = hom.withColumnRenamed(hom.schema.last.name,\"Hombres\").withColumn(\"Hombres\", format_number('Hombres, 2) ).withColumnRenamed(\"avg(ingreso_laboral)\",\"SueldoPromedioHombres\")\n                .withColumn(\"SueldoPromedioHombres\", format_number('SueldoPromedioHombres, 2) )\n                .withColumnRenamed(\"max(ingreso_laboral)\",\"SueldoMaxHombres\")\n    \n    val muj = aux.filter('genero =!= \"1 - Hombre\").drop('genero).select($\"nivel_de_instruccion\",$\"avg(ingreso_laboral)\",$\"max(ingreso_laboral)\",$\"count\".cast(\"Double\")/total *100)\n    val muj2 = muj.withColumnRenamed(muj.schema.last.name,\"Mujeres\").withColumn(\"Mujeres\", format_number('Mujeres, 2) ).withColumnRenamed(\"avg(ingreso_laboral)\",\"SueldoPromedioMujeres\")\n                .withColumn(\"SueldoPromedioMujeres\", format_number('SueldoPromedioMujeres, 2) )\n                .withColumnRenamed(\"max(ingreso_laboral)\",\"SueldoMaxMujeres\")\n    \n    \n    hom2.join( muj2 , \"nivel_de_instruccion\").select($\"provincia\",$\"nivel_de_instruccion\",$\"Hombres\" ,$\"Mujeres\" ,$\"SueldoPromedioHombres\" ,$\"SueldoPromedioMujeres\" ,$\"SueldoMaxHombres\" ,$\"SueldoMaxMujeres\").show\n}   ",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T08:39:01-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "scala",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/scala"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "results": {
+    "code": "SUCCESS",
+    "msg": [
+     {
+      "type": "TEXT",
+      "data": "\u001b[1m\u001b[34mnivelInstruccion4\u001b[0m: \u001b[1m\u001b[32m(province: String, nInstrc: String, anio: Int)Unit\u001b[0m\n"
+     }
+    ]
+   },
+   "apps": [],
+   "runtimeInfos": {},
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595165492853_2018608952",
+   "id": "paragraph_1595165492853_2018608952",
+   "dateCreated": "2020-07-19T08:31:32-0500",
+   "dateStarted": "2020-07-19T08:39:01-0500",
+   "dateFinished": "2020-07-19T08:39:03-0500",
+   "status": "FINISHED",
+   "$$hashKey": "object:6255"
+  },
+  {
+   "text": "%md Con la función *nivelInstruccion4* podemos obtener el sueldo promedio  tanto de hombres como mujeres segun su nivel de instrucción, provincia, y año",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T09:18:36-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "text",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/text"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "results": {
+    "code": "SUCCESS",
+    "msg": [
+     {
+      "type": "HTML",
+      "data": "<div class=\"markdown-body\">\n<p>Con la función <em>nivelInstruccion4</em> podemos obtener el sueldo promedio  tanto de hombres como mujeres segun su nivel de instrucción, provincia, y año</p>\n\n</div>"
+     }
+    ]
+   },
+   "apps": [],
+   "runtimeInfos": {},
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595167348930_-1855278975",
+   "id": "paragraph_1595167348930_-1855278975",
+   "dateCreated": "2020-07-19T09:02:28-0500",
+   "dateStarted": "2020-07-19T09:18:36-0500",
+   "dateFinished": "2020-07-19T09:18:36-0500",
+   "status": "FINISHED",
+   "$$hashKey": "object:6256"
+  },
+  {
+   "text": "nivelInstruccion4(\"Loja\",\"10 - Post-grado\",2019)",
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T08:39:03-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "scala",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/scala"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "results": {
+    "code": "SUCCESS",
+    "msg": [
+     {
+      "type": "TEXT",
+      "data": "+---------+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|provincia|nivel_de_instruccion|Hombres|Mujeres|SueldoPromedioHombres|SueldoPromedioMujeres|SueldoMaxHombres|SueldoMaxMujeres|\n+---------+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n|     Loja|     10 - Post-grado|  46.34|  53.66|             1,645.11|             1,190.36|             800|             996|\n+---------+--------------------+-------+-------+---------------------+---------------------+----------------+----------------+\n\n"
+     }
+    ]
+   },
+   "apps": [],
+   "runtimeInfos": {
+    "jobUrl": {
+     "propertyName": "jobUrl",
+     "label": "SPARK JOB",
+     "tooltip": "View in Spark web UI",
+     "group": "spark",
+     "values": [
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=20",
+       "$$hashKey": "object:7478"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=21",
+       "$$hashKey": "object:7479"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=22",
+       "$$hashKey": "object:7480"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=23",
+       "$$hashKey": "object:7481"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=24",
+       "$$hashKey": "object:7482"
+      },
+      {
+       "jobUrl": "http://presariocq42:4040/jobs/job?id=25",
+       "$$hashKey": "object:7483"
+      }
+     ],
+     "interpreterSettingId": "spark"
+    }
+   },
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595165518249_-2107436131",
+   "id": "paragraph_1595165518249_-2107436131",
+   "dateCreated": "2020-07-19T08:31:58-0500",
+   "dateStarted": "2020-07-19T08:39:03-0500",
+   "dateFinished": "2020-07-19T08:39:38-0500",
+   "status": "FINISHED",
+   "$$hashKey": "object:6257"
+  },
+  {
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T08:39:38-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "scala",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/scala"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "apps": [],
+   "runtimeInfos": {},
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595165520392_-335237156",
+   "id": "paragraph_1595165520392_-335237156",
+   "dateCreated": "2020-07-19T08:32:00-0500",
+   "status": "FINISHED",
+   "$$hashKey": "object:6258"
+  },
+  {
+   "user": "anonymous",
+   "dateUpdated": "2020-07-19T08:39:38-0500",
+   "config": {
+    "colWidth": 12,
+    "fontSize": 9,
+    "enabled": true,
+    "results": {},
+    "editorSetting": {
+     "language": "scala",
+     "editOnDblClick": false,
+     "completionKey": "TAB",
+     "completionSupport": true
+    },
+    "editorMode": "ace/mode/scala"
+   },
+   "settings": {
+    "params": {},
+    "forms": {}
+   },
+   "apps": [],
+   "runtimeInfos": {},
+   "progressUpdateIntervalMs": 500,
+   "jobName": "paragraph_1595165530511_-960530400",
+   "id": "paragraph_1595165530511_-960530400",
+   "dateCreated": "2020-07-19T08:32:10-0500",
+   "status": "FINISHED",
+   "$$hashKey": "object:6259"
+  }
+ ],
+ "name": "Avance3Variables",
+ "id": "2FF42A8E5",
+ "defaultInterpreterGroup": "spark",
+ "version": "0.9.0-preview1",
+ "noteParams": {},
+ "noteForms": {},
+ "angularObjects": {},
+ "config": {
+  "isZeppelinNotebookCronEnable": false,
+  "looknfeel": "default",
+  "personalizedMode": "false"
+ },
+ "info": {
+  "isRunning": false
+ },
+ "path": "/Avance3Variables"
 }

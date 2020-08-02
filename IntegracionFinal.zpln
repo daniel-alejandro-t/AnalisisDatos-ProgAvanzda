@@ -1,0 +1,3416 @@
+﻿{
+  "paragraphs": [
+    {
+      "title": "Carga de datos",
+      "text": "val datosDF = spark.read.format(\"csv\")\n                    .option(\"sep\", \"\\t\")\n                    .option(\"inferSchema\", \"true\")\n                    .option(\"header\", \"true\")\n                    .load(\"/datos/Datos_ENEMDU_PEA_v2.csv\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T23:14:19+0000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdatosDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id_persona: decimal(26,0), anio: int ... 15 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=382",
+              "$$hashKey": "object:1485"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=383",
+              "$$hashKey": "object:1486"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878684_881300349",
+      "id": "20200627-135956_359637786",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "dateStarted": "2020-08-01T23:14:19+0000",
+      "dateFinished": "2020-08-01T23:14:26+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:105"
+    },
+    {
+      "title": "Carga de dataset con los nombres de la provincia en vez del num",
+      "text": "val data2 = datosDF.drop(\"id_persona\")\n\nval data3=data2.withColumn(\"provincia\", when($\"provincia\" ===  1 , lit(\"Azuay\"))\n                .otherwise(when($\"provincia\" ===  2 , lit(\"Bovilar\"))\n                        .otherwise(when($\"provincia\" === 3, lit(\"Caniar\"))\n                        .otherwise(when($\"provincia\" === 4, lit(\"Carchi\"))\n                        .otherwise(when($\"provincia\" === 5, lit(\"Cotopaxi\"))\n                        .otherwise(when($\"provincia\" === 6, lit(\"Chimborazo\"))\n                        .otherwise(when($\"provincia\" === 7, lit(\"El Oro\"))\n                        .otherwise(when($\"provincia\" === 8, lit(\"Esmeraldas\"))\n                        .otherwise(when($\"provincia\" === 9, lit(\"Guayas\"))\n                        .otherwise(when($\"provincia\" === 10, lit(\"Imbabura\"))\n                        .otherwise(when($\"provincia\" === 11, lit(\"Loja\"))\n                        .otherwise(when($\"provincia\" === 12, lit(\"Los Rios\"))\n                        .otherwise(when($\"provincia\" === 13, lit(\"Manabi\"))\n                        .otherwise(when($\"provincia\" === 14, lit(\"Morona Santiago\"))\n                        .otherwise(when($\"provincia\" === 15, lit(\"Napo\"))\n                        .otherwise(when($\"provincia\" === 16, lit(\"Pastaza\"))\n                        .otherwise(when($\"provincia\" === 17, lit(\"Pichincha\"))\n                        .otherwise(when($\"provincia\" === 18, lit(\"Tungurahua\"))\n                        .otherwise(when($\"provincia\" === 19, lit(\"Zamora Chinchipe\"))\n                        .otherwise(when($\"provincia\" === 20, lit(\"Galapagos\"))\n                        .otherwise(when($\"provincia\" === 21, lit(\"Sucumbios\"))\n                        .otherwise(when($\"provincia\" === 22, lit(\"Orellana\"))\n                        .otherwise(when($\"provincia\" === 23, lit(\"Santo Domingo de los Tsachilas\"))\n                        .otherwise(when($\"provincia\" === 24, lit(\"Santa  Elena\"))\n                    )   ))  )))))))))))))))))))))",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T23:14:26+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [anio: int, mes: int ... 14 more fields]\n\u001b[1m\u001b[34mdata3\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [anio: int, mes: int ... 14 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596322945773_-2104919398",
+      "id": "paragraph_1596322945773_-2104919398",
+      "dateCreated": "2020-08-01T23:02:25+0000",
+      "dateStarted": "2020-08-01T23:14:26+0000",
+      "dateFinished": "2020-08-01T23:14:27+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:106"
+    },
+    {
+      "title": "TODO Descartar Outliers",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T23:14:27+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878690_1906853292",
+      "id": "paragraph_1595703728444_1126382310",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:107"
+    },
+    {
+      "text": "%md\n\n# KNN\nEn está tabla se puede observar la predicciòn de cual será el ingreso salarial segun la edad, sin embargo los datos de edad e ingreso no fueron filtrados; es decir, se pueden mejorar la clasificaciòn\nfiltrando las edades y sueldos con el análisis de los valores átipicos",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T23:14:27+0000",
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/text",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>KNN</h1>\n<p>En está tabla se puede observar la predicciòn de cual será el ingreso salarial segun la edad, sin embargo los datos de edad e ingreso no fueron filtrados; es decir, se pueden mejorar la clasificaciòn<br />\nfiltrando las edades y sueldos con el análisis de los valores átipicos</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878686_-319868828",
+      "id": "paragraph_1596297384861_-1512466560",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "dateStarted": "2020-08-01T23:14:27+0000",
+      "dateFinished": "2020-08-01T23:14:27+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:108"
+    },
+    {
+      "title": "Variable Ingresos (A: KNN)",
+      "text": "import org.apache.spark._\nimport org.apache.spark.sql.SQLContext\nimport org.apache.spark.sql.types._\nimport org.apache.spark.sql.functions._\nimport org.apache.spark.sql._\nimport org.apache.spark.ml.feature.VectorAssembler\nimport org.apache.spark.ml.clustering.KMeans\n\nval header = datosDF.first()\nval dfh = datosDF.filter(_!=header)\ndfh.first()\n\nval   nuevoDF=  dfh.select($\"id_Persona\",$\"edad\",$\"ingreso_laboral\")\nval finalDF = nuevoDF.filter(\"ingreso_laboral is not null\" )\n\nval featureCols = Array(\"edad\",\"ingreso_laboral\")\nval assembler = new VectorAssembler().setInputCols(featureCols).setOutputCol(\"features\")\nval df2 = assembler.transform(finalDF)\n\nval Array(trainingData, testData) = df2.randomSplit(Array(0.3,0.6))\n\nval kmeans = new KMeans().setK(6).setFeaturesCol(\"features\").setPredictionCol(\"prediction\")\nval model = kmeans.fit(df2)\nval categories = model.transform(testData)\n\nz.show(categories.groupBy(\"prediction\").count())\n\nval grafico=categories.select($\"edad\",$\"ingreso_laboral\",$\"prediction\").groupBy(\"edad\",\"ingreso_laboral\",\"prediction\").agg(count(\"prediction\")).orderBy(\"edad\",\"ingreso_laboral\",\"prediction\")\nz.show(grafico)",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T23:14:27+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 11,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "prediction": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 274.5,
+              "optionOpen": false,
+              "setting": {
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "edad",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "ingreso_laboral",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          },
+          "3": {
+            "graph": {
+              "mode": "table",
+              "height": 292.3,
+              "optionOpen": false
+            }
+          }
+        },
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "prediction\tcount\n1\t3\n3\t7476\n5\t12\n4\t262717\n2\t153\n0\t66526\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "edad\tingreso_laboral\tprediction\tcount(prediction)\n15\t0\t4\t24\n15\t8\t4\t1\n15\t9\t4\t1\n15\t10\t4\t2\n15\t13\t4\t1\n15\t15\t4\t5\n15\t19\t4\t1\n15\t20\t4\t13\n15\t24\t4\t1\n15\t25\t4\t4\n15\t26\t4\t1\n15\t28\t4\t1\n15\t30\t4\t13\n15\t32\t4\t2\n15\t35\t4\t2\n15\t36\t4\t3\n15\t40\t4\t21\n15\t42\t4\t1\n15\t45\t4\t3\n15\t47\t4\t1\n15\t48\t4\t3\n15\t50\t4\t15\n15\t51\t4\t1\n15\t52\t4\t1\n15\t54\t4\t2\n15\t55\t4\t3\n15\t57\t4\t1\n15\t58\t4\t1\n15\t60\t4\t14\n15\t63\t4\t2\n15\t64\t4\t3\n15\t68\t4\t1\n15\t70\t4\t10\n15\t74\t4\t1\n15\t75\t4\t3\n15\t76\t4\t1\n15\t80\t4\t12\n15\t84\t4\t1\n15\t85\t4\t2\n15\t90\t4\t4\n15\t92\t4\t3\n15\t95\t4\t1\n15\t96\t4\t3\n15\t100\t4\t25\n15\t105\t4\t4\n15\t108\t4\t1\n15\t110\t4\t4\n15\t112\t4\t2\n15\t113\t4\t1\n15\t114\t4\t1\n15\t116\t4\t2\n15\t120\t4\t21\n15\t122\t4\t1\n15\t125\t4\t1\n15\t128\t4\t3\n15\t130\t4\t5\n15\t132\t4\t2\n15\t135\t4\t1\n15\t136\t4\t1\n15\t140\t4\t9\n15\t142\t4\t1\n15\t144\t4\t4\n15\t145\t4\t1\n15\t148\t4\t1\n15\t150\t4\t10\n15\t152\t4\t2\n15\t153\t4\t1\n15\t155\t4\t1\n15\t160\t4\t14\n15\t162\t4\t1\n15\t170\t4\t4\n15\t173\t4\t1\n15\t175\t4\t1\n15\t176\t4\t2\n15\t180\t4\t12\n15\t182\t4\t1\n15\t185\t4\t1\n15\t196\t4\t3\n15\t200\t4\t21\n15\t204\t4\t1\n15\t205\t4\t1\n15\t208\t4\t1\n15\t210\t4\t2\n15\t215\t4\t1\n15\t216\t4\t1\n15\t220\t4\t4\n15\t222\t4\t1\n15\t225\t4\t2\n15\t230\t4\t3\n15\t240\t4\t8\n15\t250\t4\t5\n15\t260\t4\t5\n15\t265\t4\t1\n15\t270\t4\t3\n15\t280\t4\t4\n15\t282\t4\t1\n15\t290\t4\t2\n15\t300\t4\t10\n15\t306\t4\t1\n15\t308\t4\t1\n15\t310\t4\t2\n15\t320\t4\t3\n15\t324\t4\t1\n15\t336\t4\t1\n15\t340\t4\t4\n15\t348\t4\t1\n15\t350\t4\t1\n15\t360\t4\t9\n15\t368\t4\t1\n15\t370\t4\t1\n15\t380\t4\t1\n15\t390\t4\t2\n15\t394\t4\t1\n15\t400\t4\t2\n15\t410\t4\t1\n15\t420\t4\t1\n15\t425\t4\t1\n15\t430\t4\t1\n15\t440\t4\t2\n15\t445\t4\t1\n15\t460\t4\t1\n15\t470\t4\t1\n15\t476\t4\t1\n15\t560\t4\t3\n16\t0\t4\t48\n16\t3\t4\t1\n16\t8\t4\t2\n16\t9\t4\t1\n16\t10\t4\t2\n16\t13\t4\t2\n16\t14\t4\t1\n16\t15\t4\t9\n16\t16\t4\t1\n16\t18\t4\t2\n16\t20\t4\t18\n16\t23\t4\t1\n16\t24\t4\t2\n16\t25\t4\t7\n16\t30\t4\t12\n16\t32\t4\t1\n16\t35\t4\t1\n16\t36\t4\t5\n16\t37\t4\t1\n16\t40\t4\t25\n16\t44\t4\t1\n16\t45\t4\t3\n16\t47\t4\t1\n16\t48\t4\t2\n16\t50\t4\t31\n16\t52\t4\t3\n16\t55\t4\t3\n16\t56\t4\t1\n16\t57\t4\t1\n16\t58\t4\t3\n16\t60\t4\t28\n16\t61\t4\t1\n16\t62\t4\t1\n16\t63\t4\t2\n16\t65\t4\t1\n16\t68\t4\t3\n16\t70\t4\t11\n16\t71\t4\t1\n16\t72\t4\t1\n16\t75\t4\t2\n16\t76\t4\t1\n16\t78\t4\t2\n16\t80\t4\t44\n16\t82\t4\t2\n16\t83\t4\t1\n16\t84\t4\t1\n16\t85\t4\t1\n16\t86\t4\t1\n16\t87\t4\t1\n16\t90\t4\t10\n16\t92\t4\t3\n16\t93\t4\t1\n16\t94\t4\t1\n16\t95\t4\t2\n16\t96\t4\t8\n16\t97\t4\t1\n16\t100\t4\t37\n16\t104\t4\t4\n16\t105\t4\t1\n16\t108\t4\t2\n16\t110\t4\t7\n16\t112\t4\t2\n16\t115\t4\t2\n16\t119\t4\t2\n16\t120\t4\t32\n16\t125\t4\t3\n16\t126\t4\t1\n16\t128\t4\t1\n16\t130\t4\t12\n16\t132\t4\t1\n16\t136\t4\t3\n16\t140\t4\t13\n16\t144\t4\t8\n16\t145\t4\t1\n16\t149\t4\t1\n16\t150\t4\t28\n16\t155\t4\t1\n16\t157\t4\t1\n16\t159\t4\t1\n16\t160\t4\t23\n16\t162\t4\t1\n16\t163\t4\t1\n16\t165\t4\t2\n16\t168\t4\t2\n16\t170\t4\t13\n16\t175\t4\t3\n16\t178\t4\t2\n16\t180\t4\t21\n16\t184\t4\t2\n16\t185\t4\t3\n16\t186\t4\t1\n16\t190\t4\t7\n16\t192\t4\t4\n16\t196\t4\t1\n16\t198\t4\t1\n16\t200\t4\t39\n16\t203\t4\t1\n16\t205\t4\t1\n16\t208\t4\t1\n16\t210\t4\t4\n16\t216\t4\t1\n16\t220\t4\t5\n16\t222\t4\t1\n16\t224\t4\t1\n16\t225\t4\t1\n16\t230\t4\t4\n16\t233\t4\t1\n16\t235\t4\t3\n16\t240\t4\t39\n16\t244\t4\t1\n16\t245\t4\t4\n16\t248\t4\t1\n16\t250\t4\t11\n16\t255\t4\t1\n16\t260\t4\t9\n16\t264\t4\t1\n16\t265\t4\t1\n16\t268\t4\t1\n16\t270\t4\t6\n16\t280\t4\t14\n16\t285\t4\t1\n16\t288\t4\t3\n16\t290\t4\t5\n16\t292\t4\t1\n16\t295\t4\t1\n16\t296\t4\t1\n16\t300\t4\t31\n16\t301\t4\t1\n16\t302\t4\t2\n16\t305\t4\t1\n16\t308\t4\t1\n16\t310\t4\t4\n16\t315\t4\t1\n16\t320\t4\t13\n16\t330\t4\t2\n16\t333\t4\t1\n16\t335\t4\t1\n16\t340\t4\t6\n16\t345\t4\t1\n16\t350\t4\t7\n16\t355\t4\t1\n16\t360\t4\t11\n16\t368\t4\t1\n16\t370\t4\t1\n16\t373\t4\t1\n16\t380\t4\t6\n16\t390\t4\t2\n16\t396\t4\t1\n16\t399\t4\t1\n16\t400\t4\t12\n16\t403\t4\t1\n16\t404\t4\t1\n16\t410\t4\t2\n16\t414\t4\t1\n16\t417\t4\t1\n16\t418\t4\t1\n16\t420\t4\t1\n16\t427\t4\t1\n16\t440\t4\t2\n16\t454\t4\t1\n16\t460\t4\t1\n16\t470\t4\t1\n16\t480\t4\t1\n16\t496\t4\t1\n16\t530\t4\t1\n16\t540\t4\t2\n16\t557\t4\t1\n16\t570\t4\t1\n16\t597\t4\t1\n17\t0\t4\t70\n17\t5\t4\t3\n17\t9\t4\t1\n17\t10\t4\t10\n17\t12\t4\t1\n17\t15\t4\t2\n17\t16\t4\t1\n17\t17\t4\t1\n17\t18\t4\t2\n17\t20\t4\t18\n17\t22\t4\t2\n17\t23\t4\t1\n17\t24\t4\t5\n17\t25\t4\t2\n17\t26\t4\t2\n17\t27\t4\t2\n17\t28\t4\t1\n17\t30\t4\t20\n17\t32\t4\t2\n17\t33\t4\t2\n17\t35\t4\t3\n17\t36\t4\t3\n17\t37\t4\t1\n17\t40\t4\t36\n17\t42\t4\t1\n17\t44\t4\t2\n17\t45\t4\t8\n17\t46\t4\t1\n17\t47\t4\t1\n17\t48\t4\t10\n17\t50\t4\t32\n17\t51\t4\t1\n17\t52\t4\t3\n17\t53\t4\t1\n17\t54\t4\t2\n17\t55\t4\t4\n17\t56\t4\t2\n17\t57\t4\t1\n17\t60\t4\t51\n17\t61\t4\t1\n17\t63\t4\t1\n17\t64\t4\t2\n17\t65\t4\t3\n17\t68\t4\t3\n17\t70\t4\t22\n17\t72\t4\t5\n17\t73\t4\t1\n17\t75\t4\t2\n17\t76\t4\t2\n17\t80\t4\t43\n17\t84\t4\t2\n17\t85\t4\t4\n17\t88\t4\t4\n17\t90\t4\t13\n17\t91\t4\t1\n17\t92\t4\t2\n17\t94\t4\t1\n17\t95\t4\t6\n17\t96\t4\t6\n17\t97\t4\t1\n17\t100\t4\t57\n17\t102\t4\t2\n17\t103\t4\t1\n17\t104\t4\t2\n17\t105\t4\t3\n17\t108\t4\t3\n17\t110\t4\t6\n17\t112\t4\t4\n17\t114\t4\t2\n17\t115\t4\t5\n17\t116\t4\t4\n17\t120\t4\t75\n17\t121\t4\t1\n17\t123\t4\t1\n17\t125\t4\t6\n17\t126\t4\t1\n17\t128\t4\t2\n17\t130\t4\t10\n17\t132\t4\t4\n17\t133\t4\t1\n17\t135\t4\t3\n17\t136\t4\t1\n17\t138\t4\t2\n17\t140\t4\t27\n17\t144\t4\t8\n17\t145\t4\t6\n17\t148\t4\t2\n17\t150\t4\t59\n17\t152\t4\t2\n17\t153\t4\t1\n17\t154\t4\t1\n17\t155\t4\t2\n17\t156\t4\t4\n17\t159\t4\t1\n17\t160\t4\t29\n17\t164\t4\t1\n17\t165\t4\t4\n17\t168\t4\t2\n17\t169\t4\t1\n17\t170\t4\t10\n17\t174\t4\t1\n17\t175\t4\t2\n17\t176\t4\t1\n17\t180\t4\t36\n17\t181\t4\t1\n17\t182\t4\t1\n17\t184\t4\t2\n17\t185\t4\t3\n17\t186\t4\t1\n17\t189\t4\t1\n17\t190\t4\t10\n17\t192\t4\t4\n17\t195\t4\t1\n17\t196\t4\t1\n17\t200\t4\t82\n17\t202\t4\t1\n17\t204\t4\t1\n17\t205\t4\t3\n17\t208\t4\t3\n17\t210\t4\t17\n17\t212\t4\t1\n17\t215\t4\t2\n17\t218\t4\t2\n17\t220\t4\t13\n17\t222\t4\t1\n17\t224\t4\t2\n17\t225\t4\t2\n17\t228\t4\t2\n17\t230\t4\t4\n17\t232\t4\t1\n17\t235\t4\t3\n17\t240\t4\t62\n17\t241\t4\t1\n17\t245\t4\t4\n17\t248\t4\t1\n17\t249\t4\t1\n17\t250\t4\t29\n17\t255\t4\t4\n17\t260\t4\t15\n17\t263\t4\t1\n17\t265\t4\t1\n17\t266\t4\t2\n17\t270\t4\t2\n17\t271\t4\t1\n17\t276\t4\t1\n17\t280\t4\t29\n17\t285\t4\t6\n17\t288\t4\t3\n17\t290\t4\t11\n17\t295\t4\t2\n17\t296\t4\t3\n17\t297\t4\t1\n17\t298\t4\t1\n17\t300\t4\t48\n17\t305\t4\t1\n17\t310\t4\t5\n17\t312\t4\t3\n17\t315\t4\t2\n17\t318\t4\t1\n17\t320\t4\t26\n17\t322\t4\t1\n17\t326\t4\t1\n17\t330\t4\t7\n17\t340\t4\t8\n17\t341\t4\t1\n17\t342\t4\t1\n17\t345\t4\t2\n17\t350\t4\t9\n17\t352\t4\t2\n17\t354\t4\t1\n17\t355\t4\t3\n17\t358\t4\t2\n17\t360\t4\t27\n17\t362\t4\t1\n17\t364\t4\t2\n17\t365\t4\t1\n17\t370\t4\t5\n17\t375\t4\t3\n17\t377\t4\t1\n17\t378\t4\t1\n17\t380\t4\t13\n17\t382\t4\t3\n17\t383\t4\t1\n17\t384\t4\t1\n17\t385\t4\t1\n17\t386\t4\t1\n17\t390\t4\t4\n17\t394\t4\t2\n17\t395\t4\t1\n17\t396\t4\t1\n17\t398\t4\t1\n17\t399\t4\t1\n17\t400\t4\t25\n17\t404\t4\t2\n17\t407\t4\t1\n17\t408\t4\t2\n17\t409\t4\t1\n17\t410\t4\t3\n17\t414\t4\t1\n17\t420\t4\t6\n17\t424\t4\t1\n17\t425\t4\t2\n17\t426\t4\t1\n17\t430\t4\t1\n17\t432\t4\t1\n17\t440\t4\t7\n17\t445\t4\t1\n17\t448\t4\t3\n17\t450\t4\t4\n17\t454\t4\t1\n17\t460\t4\t4\n17\t461\t4\t1\n17\t465\t4\t2\n17\t467\t4\t1\n17\t470\t4\t1\n17\t480\t4\t6\n17\t487\t4\t1\n17\t490\t4\t1\n17\t495\t4\t1\n17\t500\t4\t6\n17\t520\t4\t1\n17\t529\t4\t1\n17\t532\t4\t1\n17\t540\t4\t2\n17\t551\t4\t1\n17\t557\t4\t1\n17\t560\t4\t1\n17\t575\t4\t1\n17\t580\t4\t1\n17\t590\t4\t1\n17\t600\t4\t1\n17\t650\t0\t1\n17\t675\t0\t1\n17\t680\t0\t1\n17\t726\t0\t1\n17\t730\t0\t1\n17\t778\t0\t1\n17\t2400\t3\t1\n18\t0\t4\t230\n18\t1\t4\t3\n18\t2\t4\t2\n18\t6\t4\t1\n18\t8\t4\t2\n18\t10\t4\t7\n18\t11\t4\t1\n18\t12\t4\t2\n18\t14\t4\t4\n18\t15\t4\t12\n18\t16\t4\t1\n18\t17\t4\t1\n18\t18\t4\t5\n18\t20\t4\t13\n18\t21\t4\t2\n18\t22\t4\t1\n18\t23\t4\t3\n18\t24\t4\t3\n18\t25\t4\t9\n18\t26\t4\t1\n18\t27\t4\t2\n18\t28\t4\t5\n18\t29\t4\t1\n18\t30\t4\t33\n18\t32\t4\t6\n18\t34\t4\t2\n18\t35\t4\t9\n18\t36\t4\t2\n18\t38\t4\t1\n18\t40\t4\t51\n18\t41\t4\t1\n18\t42\t4\t3\n18\t45\t4\t10\n18\t46\t4\t1\n18\t48\t4\t6\n18\t50\t4\t52\n18\t51\t4\t2\n18\t52\t4\t2\n18\t53\t4\t1\n18\t54\t4\t4\n18\t55\t4\t4\n18\t56\t4\t5\n18\t57\t4\t1\n18\t58\t4\t3\n18\t60\t4\t68\n18\t63\t4\t2\n18\t64\t4\t4\n18\t65\t4\t7\n18\t66\t4\t2\n18\t67\t4\t1\n18\t68\t4\t3\n18\t70\t4\t39\n18\t72\t4\t10\n18\t74\t4\t3\n18\t75\t4\t18\n18\t76\t4\t1\n18\t78\t4\t1\n18\t79\t4\t1\n18\t80\t4\t75\n18\t81\t4\t1\n18\t82\t4\t2\n18\t83\t4\t2\n18\t84\t4\t6\n18\t85\t4\t5\n18\t86\t4\t1\n18\t88\t4\t3\n18\t90\t4\t29\n18\t91\t4\t1\n18\t92\t4\t4\n18\t94\t4\t1\n18\t95\t4\t8\n18\t96\t4\t8\n18\t97\t4\t1\n18\t98\t4\t1\n18\t100\t4\t95\n18\t102\t4\t3\n18\t103\t4\t1\n18\t104\t4\t5\n18\t105\t4\t6\n18\t109\t4\t1\n18\t110\t4\t16\n18\t111\t4\t1\n18\t112\t4\t4\n18\t114\t4\t1\n18\t115\t4\t9\n18\t116\t4\t3\n18\t117\t4\t1\n18\t118\t4\t1\n18\t120\t4\t109\n18\t122\t4\t1\n18\t124\t4\t3\n18\t125\t4\t6\n18\t126\t4\t2\n18\t128\t4\t2\n18\t130\t4\t24\n18\t132\t4\t3\n18\t133\t4\t2\n18\t135\t4\t3\n18\t136\t4\t3\n18\t138\t4\t1\n18\t140\t4\t41\n18\t141\t4\t1\n18\t142\t4\t3\n18\t144\t4\t10\n18\t145\t4\t8\n18\t148\t4\t4\n18\t150\t4\t95\n18\t151\t4\t1\n18\t152\t4\t1\n18\t153\t4\t1\n18\t155\t4\t1\n18\t156\t4\t3\n18\t157\t4\t1\n18\t158\t4\t1\n18\t159\t4\t1\n18\t160\t4\t64\n18\t161\t4\t2\n18\t164\t4\t3\n18\t165\t4\t3\n18\t167\t4\t1\n18\t168\t4\t7\n18\t170\t4\t30\n18\t172\t4\t2\n18\t173\t4\t1\n18\t175\t4\t5\n18\t177\t4\t1\n18\t180\t4\t74\n18\t181\t4\t1\n18\t182\t4\t1\n18\t183\t4\t1\n18\t184\t4\t4\n18\t185\t4\t2\n18\t186\t4\t2\n18\t187\t4\t2\n18\t188\t4\t3\n18\t189\t4\t1\n18\t190\t4\t21\n18\t192\t4\t3\n18\t194\t4\t1\n18\t195\t4\t6\n18\t196\t4\t1\n18\t197\t4\t1\n18\t198\t4\t2\n18\t200\t4\t171\n18\t201\t4\t1\n18\t202\t4\t2\n18\t203\t4\t1\n18\t204\t4\t3\n18\t205\t4\t7\n18\t208\t4\t6\n18\t210\t4\t26\n18\t211\t4\t1\n18\t212\t4\t2\n18\t215\t4\t5\n18\t216\t4\t2\n18\t218\t4\t1\n18\t219\t4\t1\n18\t220\t4\t45\n18\t224\t4\t3\n18\t225\t4\t7\n18\t226\t4\t1\n18\t228\t4\t3\n18\t230\t4\t27\n18\t231\t4\t1\n18\t232\t4\t2\n18\t233\t4\t1\n18\t235\t4\t2\n18\t236\t4\t1\n18\t238\t4\t1\n18\t240\t4\t123\n18\t241\t4\t1\n18\t243\t4\t2\n18\t244\t4\t1\n18\t245\t4\t3\n18\t246\t4\t1\n18\t248\t4\t1\n18\t250\t4\t63\n18\t253\t4\t1\n18\t255\t4\t1\n18\t256\t4\t1\n18\t257\t4\t3\n18\t258\t4\t3\n18\t260\t4\t29\n18\t262\t4\t1\n18\t263\t4\t2\n18\t264\t4\t3\n18\t265\t4\t1\n18\t267\t4\t1\n18\t268\t4\t3\n18\t269\t4\t1\n18\t270\t4\t20\n18\t272\t4\t2\n18\t274\t4\t3\n18\t276\t4\t2\n18\t279\t4\t1\n18\t280\t4\t63\n18\t281\t4\t1\n18\t284\t4\t2\n18\t285\t4\t3\n18\t288\t4\t3\n18\t290\t4\t19\n18\t294\t4\t1\n18\t295\t4\t2\n18\t296\t4\t1\n18\t297\t4\t1\n18\t300\t4\t116\n18\t302\t4\t1\n18\t303\t4\t3\n18\t304\t4\t5\n18\t305\t4\t2\n18\t306\t4\t2\n18\t308\t4\t1\n18\t310\t4\t18\n18\t312\t4\t2\n18\t315\t4\t3\n18\t320\t4\t66\n18\t321\t4\t1\n18\t323\t4\t1\n18\t324\t4\t2\n18\t325\t4\t7\n18\t326\t4\t3\n18\t328\t4\t4\n18\t330\t4\t23\n18\t332\t4\t3\n18\t334\t4\t1\n18\t335\t4\t2\n18\t338\t4\t1\n18\t339\t4\t1\n18\t340\t4\t32\n18\t342\t4\t1\n18\t343\t4\t1\n18\t344\t4\t1\n18\t345\t4\t7\n18\t348\t4\t3\n18\t350\t4\t37\n18\t354\t4\t10\n18\t357\t4\t1\n18\t358\t4\t2\n18\t359\t4\t1\n18\t360\t4\t75\n18\t362\t4\t1\n18\t363\t4\t4\n18\t364\t4\t1\n18\t365\t4\t5\n18\t366\t4\t6\n18\t367\t4\t2\n18\t368\t4\t2\n18\t369\t4\t3\n18\t370\t4\t18\n18\t371\t4\t2\n18\t374\t4\t4\n18\t375\t4\t5\n18\t376\t4\t1\n18\t377\t4\t1\n18\t378\t4\t2\n18\t380\t4\t31\n18\t381\t4\t3\n18\t382\t4\t4\n18\t383\t4\t1\n18\t384\t4\t3\n18\t385\t4\t9\n18\t386\t4\t15\n18\t387\t4\t1\n18\t388\t4\t1\n18\t389\t4\t5\n18\t390\t4\t21\n18\t391\t4\t2\n18\t392\t4\t3\n18\t394\t4\t8\n18\t395\t4\t2\n18\t396\t4\t4\n18\t398\t4\t1\n18\t399\t4\t2\n18\t400\t4\t66\n18\t401\t4\t1\n18\t402\t4\t3\n18\t403\t4\t4\n18\t404\t4\t3\n18\t405\t4\t6\n18\t406\t4\t5\n18\t407\t4\t2\n18\t408\t4\t3\n18\t409\t4\t2\n18\t410\t4\t15\n18\t411\t4\t2\n18\t412\t4\t4\n18\t413\t4\t3\n18\t414\t4\t3\n18\t415\t4\t7\n18\t416\t4\t3\n18\t417\t4\t1\n18\t418\t4\t2\n18\t419\t4\t1\n18\t420\t4\t13\n18\t421\t4\t2\n18\t422\t4\t5\n18\t423\t4\t1\n18\t424\t4\t4\n18\t425\t4\t6\n18\t426\t4\t2\n18\t428\t4\t2\n18\t429\t4\t1\n18\t430\t4\t7\n18\t431\t4\t3\n18\t432\t4\t1\n18\t433\t4\t1\n18\t434\t4\t4\n18\t435\t4\t5\n18\t436\t4\t1\n18\t437\t4\t2\n18\t438\t4\t5\n18\t439\t4\t1\n18\t440\t4\t15\n18\t441\t4\t1\n18\t442\t4\t5\n18\t443\t4\t2\n18\t445\t4\t3\n18\t446\t4\t3\n18\t447\t4\t1\n18\t450\t4\t14\n18\t451\t4\t1\n18\t452\t4\t1\n18\t453\t4\t1\n18\t454\t4\t2\n18\t455\t4\t3\n18\t456\t4\t2\n18\t457\t4\t1\n18\t460\t4\t9\n18\t461\t4\t1\n18\t462\t4\t1\n18\t464\t4\t3\n18\t465\t4\t3\n18\t467\t4\t1\n18\t469\t4\t3\n18\t470\t4\t3\n18\t471\t4\t1\n18\t472\t4\t1\n18\t474\t4\t1\n18\t475\t4\t2\n18\t476\t4\t3\n18\t479\t4\t1\n18\t480\t4\t7\n18\t483\t4\t2\n18\t484\t4\t1\n18\t485\t4\t3\n18\t486\t4\t3\n18\t488\t4\t2\n18\t490\t4\t3\n18\t492\t4\t2\n18\t493\t4\t1\n18\t495\t4\t3\n18\t496\t4\t1\n18\t497\t4\t1\n18\t498\t4\t1\n18\t499\t4\t1\n18\t500\t4\t15\n18\t501\t4\t2\n18\t502\t4\t2\n18\t503\t4\t1\n18\t505\t4\t1\n18\t508\t4\t1\n18\t509\t4\t1\n18\t510\t4\t4\n18\t512\t4\t3\n18\t513\t4\t1\n18\t514\t4\t1\n18\t515\t4\t2\n18\t516\t4\t1\n18\t518\t4\t4\n18\t520\t4\t6\n18\t522\t4\t1\n18\t528\t4\t1\n18\t530\t4\t5\n18\t534\t4\t1\n18\t540\t4\t5\n18\t542\t4\t1\n18\t545\t4\t1\n18\t546\t4\t3\n18\t549\t4\t1\n18\t552\t4\t1\n18\t553\t4\t1\n18\t554\t4\t1\n18\t555\t4\t3\n18\t557\t4\t1\n18\t560\t4\t1\n18\t562\t4\t1\n18\t565\t4\t1\n18\t570\t4\t2\n18\t571\t4\t1\n18\t575\t4\t1\n18\t579\t4\t1\n18\t580\t4\t1\n18\t583\t4\t2\n18\t587\t4\t1\n18\t590\t4\t2\n18\t592\t4\t1\n18\t598\t4\t1\n18\t600\t4\t3\n18\t608\t4\t1\n18\t610\t4\t2\n18\t612\t4\t1\n18\t618\t4\t2\n18\t620\t4\t3\n18\t628\t4\t1\n18\t630\t4\t1\n18\t633\t4\t1\n18\t640\t0\t2\n18\t644\t0\t1\n18\t647\t0\t1\n18\t648\t0\t1\n18\t650\t0\t2\n18\t653\t0\t1\n18\t670\t0\t2\n18\t681\t0\t1\n18\t683\t0\t1\n18\t684\t0\t1\n18\t688\t0\t1\n18\t690\t0\t1\n18\t698\t0\t1\n18\t700\t0\t3\n18\t706\t0\t1\n18\t720\t0\t1\n18\t730\t0\t1\n18\t740\t0\t1\n18\t748\t0\t2\n18\t750\t0\t1\n18\t768\t0\t1\n18\t787\t0\t1\n18\t811\t0\t1\n18\t821\t0\t1\n18\t824\t0\t1\n18\t828\t0\t1\n18\t830\t0\t1\n18\t855\t0\t1\n18\t870\t0\t1\n18\t885\t0\t1\n18\t900\t0\t2\n18\t920\t0\t1\n18\t956\t0\t1\n18\t1000\t0\t1\n18\t3040\t3\t1\n19\t0\t4\t262\n19\t3\t4\t3\n19\t4\t4\t1\n19\t5\t4\t3\n19\t7\t4\t2\n19\t8\t4\t1\n19\t10\t4\t19\n19\t12\t4\t6\n19\t13\t4\t2\n19\t15\t4\t7\n19\t16\t4\t4\n19\t17\t4\t1\n19\t18\t4\t1\n19\t19\t4\t1\n19\t20\t4\t27\n19\t21\t4\t2\n19\t23\t4\t1\n19\t24\t4\t4\n19\t25\t4\t10\n19\t26\t4\t1\n19\t27\t4\t1\n19\t28\t4\t2\n19\t29\t4\t1\n19\t30\t4\t27\n19\t32\t4\t4\n19\t34\t4\t5\n19\t35\t4\t8\n19\t36\t4\t4\n"
+          },
+          {
+            "type": "HTML",
+            "data": "<div class=\"result-alert alert-warning\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Output is truncated</strong> to 1000 rows. Learn more about <strong>zeppelin.spark.maxResult</strong></div>\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark._\nimport org.apache.spark.sql.SQLContext\nimport org.apache.spark.sql.types._\nimport org.apache.spark.sql.functions._\nimport org.apache.spark.sql._\nimport org.apache.spark.ml.feature.VectorAssembler\nimport org.apache.spark.ml.clustering.KMeans\n\u001b[1m\u001b[34mheader\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Row\u001b[0m = [20150601015000200517101101,2015,6,1,101,1 - Urbana,1 - Hombre,32,1 - Casado(a),06 - Secundaria,6 - Mestizo,650,1 - Empleo Adecuado/Pleno,1 - Sector Formal,08 - Operadores de instalac. máquinas y montad.,08 - H. Transporte y almacenamiento,158.173348022363]\n\u001b[1m\u001b[34mdfh\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [id_persona: decimal(26,0), anio: int ... 15 more fields]\n\u001b[1m\u001b[34mnuevoDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m..."
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=384",
+              "$$hashKey": "object:1656"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=385",
+              "$$hashKey": "object:1657"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=386",
+              "$$hashKey": "object:1658"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=387",
+              "$$hashKey": "object:1659"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=388",
+              "$$hashKey": "object:1660"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=389",
+              "$$hashKey": "object:1661"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=390",
+              "$$hashKey": "object:1662"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=391",
+              "$$hashKey": "object:1663"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=392",
+              "$$hashKey": "object:1664"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=393",
+              "$$hashKey": "object:1665"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=394",
+              "$$hashKey": "object:1666"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=395",
+              "$$hashKey": "object:1667"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=396",
+              "$$hashKey": "object:1668"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=397",
+              "$$hashKey": "object:1669"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=398",
+              "$$hashKey": "object:1670"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=399",
+              "$$hashKey": "object:1671"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=400",
+              "$$hashKey": "object:1672"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=401",
+              "$$hashKey": "object:1673"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=402",
+              "$$hashKey": "object:1674"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=403",
+              "$$hashKey": "object:1675"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=404",
+              "$$hashKey": "object:1676"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=405",
+              "$$hashKey": "object:1677"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=406",
+              "$$hashKey": "object:1678"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=407",
+              "$$hashKey": "object:1679"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=408",
+              "$$hashKey": "object:1680"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=409",
+              "$$hashKey": "object:1681"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=410",
+              "$$hashKey": "object:1682"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=411",
+              "$$hashKey": "object:1683"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=412",
+              "$$hashKey": "object:1684"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=413",
+              "$$hashKey": "object:1685"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=414",
+              "$$hashKey": "object:1686"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=415",
+              "$$hashKey": "object:1687"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=416",
+              "$$hashKey": "object:1688"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878687_-640930495",
+      "id": "paragraph_1596295705362_-1994019108",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "dateStarted": "2020-08-01T23:14:27+0000",
+      "dateFinished": "2020-08-01T23:15:15+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:109"
+    },
+    {
+      "title": "Variable Ingresos (A): ¿En que rango de salarios se situan los encuestados?",
+      "text": "val data2 = datosDF.drop(\"id_persona\")\n\nval AIL = data2.withColumn(\"range\", when($\"ingreso_laboral\" >  0 and $\"ingreso_laboral\" <= 400, lit(\"1-400 Ingreso menor al salario básico\"))\n                .otherwise(when($\"ingreso_laboral\" > 400 and $\"ingreso_laboral\" <= 1000, lit(\"Ingreso entre  $400 y $1000\"))\n                .otherwise(when($\"ingreso_laboral\" > 1000 and $\"ingreso_laboral\" <= 2000, lit(\"Ingreso mayor a $2000\"))\n                )  ) ).groupBy(\"range\").count().orderBy(\"range\")\nval  registros =data2.count.toDouble  \nval tableAIL = AIL.select($\"range\",$\"count\"/registros*100).withColumnRenamed( \"((count / 622776.0) * 100)\",\"porcentaje\")\nz.show(tableAIL)\ntableAIL.createOrReplaceTempView(\"AIL\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T04:33:44+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "range": "string",
+                      "porcentaje": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "range\tporcentaje\nnull\t22.89763895846982\n1-400 Ingreso menor al salario básico\t43.82924197464257\nIngreso entre  $400 y $1000\t27.23306614256169\nIngreso mayor a $2000\t6.040052924325921\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [anio: int, mes: int ... 14 more fields]\n\u001b[1m\u001b[34mAIL\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [range: string, count: bigint]\n\u001b[1m\u001b[34mregistros\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 622776.0\n\u001b[1m\u001b[34mtableAIL\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [range: string, porcentaje: double]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=750",
+              "$$hashKey": "object:1862"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=751",
+              "$$hashKey": "object:1863"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596342541597_1848035225",
+      "id": "paragraph_1596342541597_1848035225",
+      "dateCreated": "2020-08-02T04:29:01+0000",
+      "dateStarted": "2020-08-02T04:33:37+0000",
+      "dateFinished": "2020-08-02T04:33:41+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:110"
+    },
+    {
+      "title": "Variable Ingresos: ¿Cual es el ingreso laboral máximo y promedio de cada rama de actividad?",
+      "text": "z.show(datosDF.groupBy(\"rama_actividad\")\n        .agg(\n            max(\"ingreso_laboral\").as(\"SueldoMaximo\"),\n            avg(\"ingreso_laboral\").as(\"SueldoPromedio\")\n        ))\n        \n        // TODO Realizar un redondeo un un corte a los decimales\n        ",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T23:15:15+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "rama_actividad0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "SueldoMaximo1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "SueldoPromedio2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {
+                          "priority": 0,
+                          "direction": "desc"
+                        },
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rama_actividad": "string",
+                      "SueldoMaximo": "string",
+                      "SueldoPromedio": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "rama_actividad\tSueldoMaximo\tSueldoPromedio\n11 - K. Actividades financieras y de seguros\t40000\t958.8430639887903\n07 - G. Comercio, reparación vehículos\t146030\t475.90089729398744\n08 - H. Transporte y almacenamiento\t17000\t505.5524149558663\n15 - O .Administración pública, defensa y seguridad social\t26771\t1066.8357761762086\n19 - S. Otras actividades de servicios\t9886\t299.0756843800322\nnull\t3640\t48.432308698495746\n01 - A. Agricultura, ganadería caza y silvicultura y pesca\t30015\t266.7872302821664\n21 - U  Actividades de organizaciones extraterritoriales\t11850\t1709.1052631578948\n14 - N. Actividades y servicios administrativos y de apoyo\t17000\t482.4607137267178\n03 - C. Industrias manufactureras\t55000\t480.24952539614895\n04 - D. Suministros de electricidad, gas, aire acondicionado\t18000\t1051.2075471698113\n18 - R. Artes, entretenimiento y recreación\t10500\t531.7453793103448\n20 - T  Actividades en hogares privados con servicio doméstico\t3455\t326.20922146636434\n22 - No especificado\t700\t407.1818181818182\n13 - M. Actividades profesionales, científicas y técnicas\t15000\t714.2027082478457\n16 - P. Enseñanza\t25194\t879.209165731388\n09 - I. Actividades de alojamiento y servicios de comida\t27000\t414.07745071005104\n10 - J. Información y comunicación\t120000\t680.4303797468355\n05 - E. Distribución de agua, alcantarillado\t14900\t704.983606557377\n06 - F. Construcción\t100000\t461.87737311686413\n17 - Q. Actividades, servicios sociales y de salud\t14848\t896.7538367926442\n12 - L. Actividades inmobiliarias\t82200\t764.2232841007819\n02 - B. Explotación de minas y canteras\t15000\t913.464972234088\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=417",
+              "$$hashKey": "object:1913"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=418",
+              "$$hashKey": "object:1914"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=419",
+              "$$hashKey": "object:1915"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=420",
+              "$$hashKey": "object:1916"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=421",
+              "$$hashKey": "object:1917"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878690_-1623881452",
+      "id": "20200702-191926_297083296",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "dateStarted": "2020-08-01T23:15:15+0000",
+      "dateFinished": "2020-08-01T23:15:19+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:111"
+    },
+    {
+      "title": "Variable Ingresos: En base a un rango de edades ¿Quienes son los que reciben más ingresos en promedio?",
+      "text": "import org.apache.spark.sql.functions._\n\n\nz.show(datosDF.withColumn(\"edad\", when($\"edad\" >= 15 and $\"edad\" <= 25, lit(\"15-25\"))\n\t\t         \t.when($\"edad\" > 25 and $\"edad\" <= 35, lit(\"26-35\"))\n\t\t         \t.when($\"edad\" > 35 and $\"edad\" <= 45, lit(\"36-45\"))\n\t\t         \t.when($\"edad\" > 45 and $\"edad\" <= 55, lit(\"46-55\"))\n\t\t         \t.when($\"edad\" > 55 and $\"edad\" <= 65, lit(\"56-65\"))\n\t\t         \t.when($\"edad\" > 65 and $\"edad\" <= 75, lit(\"66-75\"))\n\t\t          \t.otherwise(\"otros\")\n              ).groupBy(\"edad\").agg(avg($\"ingreso_laboral\")).orderBy(avg($\"ingreso_laboral\")) )\n         ",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T23:15:19+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "edad": "string",
+                      "avg(ingreso_laboral)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "edad",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "avg(ingreso_laboral)",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "edad\tavg(ingreso_laboral)\notros\t198.6514279736374\n66-75\t302.97071691740865\n15-25\t331.5962854481893\n56-65\t487.15662890081495\n26-35\t516.9264729169965\n46-55\t556.7992070383195\n36-45\t561.2936419970779\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.functions._\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=422",
+              "$$hashKey": "object:1979"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878691_-151234076",
+      "id": "paragraph_1595695684953_2022984322",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "dateStarted": "2020-08-01T23:15:19+0000",
+      "dateFinished": "2020-08-01T23:15:23+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:112"
+    },
+    {
+      "title": "Variable Ingresos (A.: Pivot): ¿ Cuál es el promedio del ingreso laboral de hombres y mujeres segun la sectorizacion?",
+      "text": "z.show( datosDF.groupBy(\"sectorizacion\").pivot(\"genero\").agg(avg(\"ingreso_laboral\")).orderBy($\"sectorizacion\").withColumn(\"2 - Mujer\", format_number($\"2 - Mujer\",2))\n.withColumn(\"1 - Hombre\",format_number($\"1 - Hombre\",2)) )",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T01:15:11+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "sectorizacion": "string",
+                      "1 - Hombre": "string",
+                      "2 - Mujer": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "sectorizacion\t1 - Hombre\t2 - Mujer\nnull\t63.88\t31.26\n1 - Sector Formal\t755.83\t661.31\n2 - Sector Informal\t281.83\t165.18\n3 - Empleo Doméstico\t418.03\t321.43\n4 - No Clasificados por Sector\t318.47\t234.94\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=497",
+              "$$hashKey": "object:2025"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=498",
+              "$$hashKey": "object:2026"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596322623162_-253801126",
+      "id": "paragraph_1596322623162_-253801126",
+      "dateCreated": "2020-08-01T22:57:03+0000",
+      "dateStarted": "2020-08-02T01:15:11+0000",
+      "dateFinished": "2020-08-02T01:15:18+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:113"
+    },
+    {
+      "title": "Variable Ingresos: ¿Cual es el porcentaje de personas que ganan menos del salario básico por provincia en el año 2015?",
+      "text": "val humanos = data3.select($\"provincia\",$\"anio\",$\"ingreso_laboral\").filter(pro(\"anio\") === 2015 && pro(\"ingreso_laboral\") < 400).groupBy(\"provincia\").count\n\nval result = humanos.select($\"provincia\",$\"count\"/62130.0*100).withColumnRenamed(\"((count / 62130.0) * 100)\",\"Porcentaje\").withColumn(\"Porcentaje\", format_number($\"Porcentaje\", 3))\nz.show( result )\nresult.select(sum(\"Porcentaje\")).show",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T03:04:40+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "org.apache.spark.sql.AnalysisException: Resolved attribute(s) anio#12616,ingreso_laboral#12626 missing from provincia#10060,anio#10011,ingreso_laboral#10021 in operator !Filter ((cast(anio#12616 as int) = 2015) && (cast(ingreso_laboral#12626 as int) < 400)). Attribute(s) with the same name appear in the operation: anio,ingreso_laboral. Please check if the right attribute(s) are used.;;\n!Filter ((cast(anio#12616 as int) = 2015) && (cast(ingreso_laboral#12626 as int) < 400))\n+- Project [provincia#10060, anio#10011, ingreso_laboral#10021]\n   +- Project [anio#10011, mes#10012, CASE WHEN (cast(provincia#10013 as int) = 1) THEN Azuay ELSE CASE WHEN (cast(provincia#10013 as int) = 2) THEN Bovilar ELSE CASE WHEN (cast(provincia#10013 as int) = 3) THEN Caniar ELSE CASE WHEN (cast(provincia#10013 as int) = 4) THEN Carchi ELSE CASE WHEN (cast(provincia#10013 as int) = 5) THEN Cotopaxi ELSE CASE WHEN (cast(provincia#10013 as int) = 6) THEN Chimborazo ELSE CASE WHEN (cast(provincia#10013 as int) = 7) THEN El Oro ELSE CASE WHEN (cast(provincia#10013 as int) = 8) THEN Esmeraldas ELSE CASE WHEN (cast(provincia#10013 as int) = 9) THEN Guayas ELSE CASE WHEN (cast(provincia#10013 as int) = 10) THEN Imbabura ELSE CASE WHEN (cast(provincia#10013 as int) = 11) THEN Loja ELSE CASE WHEN (cast(provincia#10013 as int) = 12) THEN Los Rios ELSE CASE WHEN (cast(provincia#10013 as int) = 13) THEN Manabi ELSE CASE WHEN (cast(provincia#10013 as int) = 14) THEN Morona Santiago ELSE CASE WHEN (cast(provincia#10013 as int) = 15) THEN Napo ELSE CASE WHEN (cast(provincia#10013 as int) = 16) THEN Pastaza ELSE CASE WHEN (cast(provincia#10013 as int) = 17) THEN Pichincha ELSE CASE WHEN (cast(provincia#10013 as int) = 18) THEN Tungurahua ELSE CASE WHEN (cast(provincia#10013 as int) = 19) THEN Zamora Chinchipe ELSE CASE WHEN (cast(provincia#10013 as int) = 20) THEN Galapagos ELSE CASE WHEN (cast(provincia#10013 as int) = 21) THEN Sucumbios ELSE CASE WHEN (cast(provincia#10013 as int) = 22) THEN Orellana ELSE CASE WHEN (cast(provincia#10013 as int) = 23) THEN Santo Domingo de los Tsachilas ELSE CASE WHEN (cast(provincia#10013 as int) = 24) THEN Santa  Elena END END END END END END END END END END END END END END END END END END END END END END END END AS provincia#10060, canton#10014, area#10015, genero#10016, edad#10017, estado_civil#10018, nivel_de_instruccion#10019, etnia#10020, ingreso_laboral#10021, condicion_actividad#10022, sectorizacion#10023, grupo_ocupacion#10024, rama_actividad#10025, factor_expansion#10026]\n      +- Project [anio#10011, mes#10012, provincia#10013, canton#10014, area#10015, genero#10016, edad#10017, estado_civil#10018, nivel_de_instruccion#10019, etnia#10020, ingreso_laboral#10021, condicion_actividad#10022, sectorizacion#10023, grupo_ocupacion#10024, rama_actividad#10025, factor_expansion#10026]\n         +- Relation[id_persona#10010,anio#10011,mes#10012,provincia#10013,canton#10014,area#10015,genero#10016,edad#10017,estado_civil#10018,nivel_de_instruccion#10019,etnia#10020,ingreso_laboral#10021,condicion_actividad#10022,sectorizacion#10023,grupo_ocupacion#10024,rama_actividad#10025,factor_expansion#10026] csv\n\n  at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$class.failAnalysis(CheckAnalysis.scala:43)\n  at org.apache.spark.sql.catalyst.analysis.Analyzer.failAnalysis(Analyzer.scala:95)\n  at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1.apply(CheckAnalysis.scala:369)\n  at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1.apply(CheckAnalysis.scala:86)\n  at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:127)\n  at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$class.checkAnalysis(CheckAnalysis.scala:86)\n  at org.apache.spark.sql.catalyst.analysis.Analyzer.checkAnalysis(Analyzer.scala:95)\n  at org.apache.spark.sql.catalyst.analysis.Analyzer$$anonfun$executeAndCheck$1.apply(Analyzer.scala:108)\n  at org.apache.spark.sql.catalyst.analysis.Analyzer$$anonfun$executeAndCheck$1.apply(Analyzer.scala:105)\n  at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.markInAnalyzer(AnalysisHelper.scala:201)\n  at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:105)\n  at org.apache.spark.sql.execution.QueryExecution.analyzed$lzycompute(QueryExecution.scala:57)\n  at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:55)\n  at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:47)\n  at org.apache.spark.sql.Dataset.<init>(Dataset.scala:176)\n  at org.apache.spark.sql.Dataset.<init>(Dataset.scala:182)\n  at org.apache.spark.sql.Dataset$.apply(Dataset.scala:64)\n  at org.apache.spark.sql.Dataset.withTypedPlan(Dataset.scala:3417)\n  at org.apache.spark.sql.Dataset.filter(Dataset.scala:1490)\n  ... 123 elided\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596337213206_1439875925",
+      "id": "paragraph_1596337213206_1439875925",
+      "dateCreated": "2020-08-02T03:00:13+0000",
+      "dateStarted": "2020-08-02T03:04:40+0000",
+      "dateFinished": "2020-08-02T03:04:41+0000",
+      "status": "ERROR",
+      "$$hashKey": "object:114"
+    },
+    {
+      "title": "Variable Ingresos: TODO Algoritmo de tendencias y su gráfica (seria genial hacerlo por cada rama de actividad)",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T21:04:38+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878690_-277873621",
+      "id": "20200702-192924_1928009883",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:115"
+    },
+    {
+      "title": "Variable Género (A: crosstab) : ¿Cual es la frecuencia de hombres y mujeres por provincia?",
+      "text": "\n\nval anioGeneroDF = data3.stat.crosstab(\"provincia\", \"genero\").orderBy(\"provincia_genero\")\nval r2= anioGeneroDF.select($\"provincia_genero\",anioGeneroDF(\"1 - Hombre\") + anioGeneroDF(\"2 - Mujer\") )\nz.show( anioGeneroDF.join(r2,Seq(\"provincia_genero\")).withColumnRenamed(\"(1 - Hombre + 2 - Mujer)\",\"TOTAL\") )",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T23:02:08+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "provincia_genero": "string",
+                      "1 - Hombre": "string",
+                      "2 - Mujer": "string",
+                      "TOTAL": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "provincia_genero\t1 - Hombre\t2 - Mujer\tTOTAL\nAzuay\t22842\t21649\t44491\nBovilar\t8089\t6648\t14737\nCaniar\t7720\t7660\t15380\nCarchi\t8701\t6405\t15106\nChimborazo\t10635\t10932\t21567\nCotopaxi\t15818\t15337\t31155\nEl Oro\t24063\t16017\t40080\nEsmeraldas\t14268\t8684\t22952\nGalapagos\t2340\t1885\t4225\nGuayas\t45170\t29640\t74810\nImbabura\t15521\t12725\t28246\nLoja\t10511\t8493\t19004\nLos Rios\t17683\t9185\t26868\nManabi\t22059\t12080\t34139\nMorona Santiago\t7692\t6936\t14628\nNapo\t9243\t7506\t16749\nOrellana\t9587\t6632\t16219\nPastaza\t7763\t6612\t14375\nPichincha\t32405\t26741\t59146\nSanta  Elena\t10320\t4797\t15117\nSanto Domingo de los Tsachilas\t9040\t5907\t14947\nSucumbios\t8791\t5286\t14077\nTungurahua\t25751\t24617\t50368\nZamora Chinchipe\t8166\t6224\t14390\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [anio: int, mes: int ... 14 more fields]\n\u001b[1m\u001b[34mdata3\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [anio: int, mes: int ... 14 more fields]\n\u001b[1m\u001b[34manioGeneroDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [provincia_genero: string, 1 - Hombre: bigint ... 1 more field]\n\u001b[1m\u001b[34mr2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [provincia_genero: string, (1 - Hombre + 2 - Mujer): bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=177",
+              "$$hashKey": "object:2156"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=178",
+              "$$hashKey": "object:2157"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=179",
+              "$$hashKey": "object:2158"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=180",
+              "$$hashKey": "object:2159"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=181",
+              "$$hashKey": "object:2160"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=182",
+              "$$hashKey": "object:2161"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=183",
+              "$$hashKey": "object:2162"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=184",
+              "$$hashKey": "object:2163"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=185",
+              "$$hashKey": "object:2164"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=186",
+              "$$hashKey": "object:2165"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596319658796_1956314611",
+      "id": "paragraph_1596319658796_1956314611",
+      "dateCreated": "2020-08-01T22:07:38+0000",
+      "dateStarted": "2020-08-01T22:12:52+0000",
+      "dateFinished": "2020-08-01T22:12:57+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:116"
+    },
+    {
+      "title": "Variable Género (A.: CrossTab): ¿Cuál es la frecuencia de Hombres y Mujeres por provincia?",
+      "text": "val anioGeneroDF = data3.stat.crosstab(\"provincia\", \"genero\").orderBy(\"provincia_genero\")\nval r2= anioGeneroDF.select($\"provincia_genero\",anioGeneroDF(\"1 - Hombre\") + anioGeneroDF(\"2 - Mujer\") )\nz.show( anioGeneroDF.join(r2,Seq(\"provincia_genero\")).withColumnRenamed(\"(1 - Hombre + 2 - Mujer)\",\"TOTAL\") )",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T00:50:45+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "provincia_genero": "string",
+                      "1 - Hombre": "string",
+                      "2 - Mujer": "string",
+                      "TOTAL": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "provincia_genero\t1 - Hombre\t2 - Mujer\tTOTAL\nAzuay\t22842\t21649\t44491\nBovilar\t8089\t6648\t14737\nCaniar\t7720\t7660\t15380\nCarchi\t8701\t6405\t15106\nChimborazo\t10635\t10932\t21567\nCotopaxi\t15818\t15337\t31155\nEl Oro\t24063\t16017\t40080\nEsmeraldas\t14268\t8684\t22952\nGalapagos\t2340\t1885\t4225\nGuayas\t45170\t29640\t74810\nImbabura\t15521\t12725\t28246\nLoja\t10511\t8493\t19004\nLos Rios\t17683\t9185\t26868\nManabi\t22059\t12080\t34139\nMorona Santiago\t7692\t6936\t14628\nNapo\t9243\t7506\t16749\nOrellana\t9587\t6632\t16219\nPastaza\t7763\t6612\t14375\nPichincha\t32405\t26741\t59146\nSanta  Elena\t10320\t4797\t15117\nSanto Domingo de los Tsachilas\t9040\t5907\t14947\nSucumbios\t8791\t5286\t14077\nTungurahua\t25751\t24617\t50368\nZamora Chinchipe\t8166\t6224\t14390\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34manioGeneroDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [provincia_genero: string, 1 - Hombre: bigint ... 1 more field]\n\u001b[1m\u001b[34mr2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [provincia_genero: string, (1 - Hombre + 2 - Mujer): bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=454",
+              "$$hashKey": "object:2247"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=455",
+              "$$hashKey": "object:2248"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=456",
+              "$$hashKey": "object:2249"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=457",
+              "$$hashKey": "object:2250"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=458",
+              "$$hashKey": "object:2251"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=459",
+              "$$hashKey": "object:2252"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=460",
+              "$$hashKey": "object:2253"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=461",
+              "$$hashKey": "object:2254"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=462",
+              "$$hashKey": "object:2255"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=463",
+              "$$hashKey": "object:2256"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596329282472_-1880172684",
+      "id": "paragraph_1596329282472_-1880172684",
+      "dateCreated": "2020-08-02T00:48:02+0000",
+      "dateStarted": "2020-08-02T00:50:39+0000",
+      "dateFinished": "2020-08-02T00:50:43+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:117"
+    },
+    {
+      "title": "Variable Genero (A): ¿Cual es el porcentaje de hombres y mujeres por cada año en la provincia de Loja?",
+      "text": "def provincia(provincia:String, anio:Int)={\n    val met1 = data3.select(\"provincia\",\"anio\",\"genero\").filter($\"provincia\"  === provincia && $\"anio\" ===anio).groupBy(\"provincia\",\"genero\").count()//.show\n    val total = data3.filter($\"provincia\" === provincia && $\"anio\" ===anio).count()\n    \n    val hombres  = met1.filter('genero === \"1 - Hombre\")\n    val mujeres =  met1.filter('genero === \"2 - Mujer\")\n    \n    val h = hombres.select($\"provincia\",'count.cast(\"Double\")/total *100)\n    val m  =mujeres.select($\"provincia\",'count.cast(\"Double\")/total *100)  \n    \n    val h1 =  h.withColumnRenamed(h.schema.last.name,\"Hombres\").withColumn(\"Hombres\", format_number('Hombres, 2))\n    val m1 =  m.withColumnRenamed(m.schema.last.name,\"Mujeres\").withColumn(\"Mujeres\", format_number('Mujeres, 2))\n    \n    val result = h1.join( m1 ,Seq(\"provincia\") )//.withColumn(\"porcentaje\", format_number($\"porcentaje\", 3)\n    \n    result.show\n    \n    println(\" Análisis del  % género en el año : \"+anio+\", y provincia de: \"+ provincia.toUpperCase)\n}\n\nprovincia(\"Loja\",2015)\n\nprovincia(\"Loja\",2016)\n\nprovincia(\"Loja\",2017)\n\nprovincia(\"Loja\",2018)",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T01:57:57+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------+-------+-------+\n|provincia|Hombres|Mujeres|\n+---------+-------+-------+\n|     Loja|  56.78|  43.22|\n+---------+-------+-------+\n\n Análisis del  % género en el año : 2015, y provincia de: LOJA\n+---------+-------+-------+\n|provincia|Hombres|Mujeres|\n+---------+-------+-------+\n|     Loja|  55.16|  44.84|\n+---------+-------+-------+\n\n Análisis del  % género en el año : 2016, y provincia de: LOJA\n+---------+-------+-------+\n|provincia|Hombres|Mujeres|\n+---------+-------+-------+\n|     Loja|  55.53|  44.47|\n+---------+-------+-------+\n\n Análisis del  % género en el año : 2017, y provincia de: LOJA\n+---------+-------+-------+\n|provincia|Hombres|Mujeres|\n+---------+-------+-------+\n|     Loja|  55.36|  44.64|\n+---------+-------+-------+\n\n Análisis del  % género en el año : 2018, y provincia de: LOJA\n\u001b[1m\u001b[34mprovincia\u001b[0m: \u001b[1m\u001b[32m(provincia: String, anio: Int)Unit\u001b[0m\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=573",
+              "$$hashKey": "object:2338"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=574",
+              "$$hashKey": "object:2339"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=575",
+              "$$hashKey": "object:2340"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=576",
+              "$$hashKey": "object:2341"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=577",
+              "$$hashKey": "object:2342"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=578",
+              "$$hashKey": "object:2343"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=579",
+              "$$hashKey": "object:2344"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=580",
+              "$$hashKey": "object:2345"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=581",
+              "$$hashKey": "object:2346"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=582",
+              "$$hashKey": "object:2347"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=583",
+              "$$hashKey": "object:2348"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=584",
+              "$$hashKey": "object:2349"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=585",
+              "$$hashKey": "object:2350"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=586",
+              "$$hashKey": "object:2351"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=587",
+              "$$hashKey": "object:2352"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=588",
+              "$$hashKey": "object:2353"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=589",
+              "$$hashKey": "object:2354"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=590",
+              "$$hashKey": "object:2355"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=591",
+              "$$hashKey": "object:2356"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=592",
+              "$$hashKey": "object:2357"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=593",
+              "$$hashKey": "object:2358"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=594",
+              "$$hashKey": "object:2359"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=595",
+              "$$hashKey": "object:2360"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=596",
+              "$$hashKey": "object:2361"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596332557400_1052501408",
+      "id": "paragraph_1596332557400_1052501408",
+      "dateCreated": "2020-08-02T01:42:37+0000",
+      "dateStarted": "2020-08-02T01:57:57+0000",
+      "dateFinished": "2020-08-02T01:58:47+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:118"
+    },
+    {
+      "title": "Carga de datos de tipo cantón",
+      "text": "val CantonProvinciaDF = spark.read.format(\"csv\")\n                    .option(\"sep\", \"\\t\")\n                    .option(\"inferSchema\", \"true\")\n                    .option(\"header\", \"true\")\n                    .load(\"/datos/DatosCodProvinciaAndConCanton.csv\")\n                    \nz.show(CantonProvinciaDF)",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T21:04:38+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "cod_provincia": "string",
+                      "nombre_provincia": "string",
+                      "cod_canton": "string",
+                      "nombre_canton": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "cod_provincia\tnombre_provincia\tcod_canton\tnombre_canton\n1\tAZUAY\t101\tCUENCA\n1\tAZUAY\t102\tGIRON\n1\tAZUAY\t103\tGUALACEO\n1\tAZUAY\t104\tNABON\n1\tAZUAY\t105\tPAUTE\n1\tAZUAY\t106\tPUCARA\n1\tAZUAY\t107\tSAN FERNANDO\n1\tAZUAY\t108\tSANTA ISABEL\n1\tAZUAY\t109\tSIGSIG\n1\tAZUAY\t110\tO�A\n1\tAZUAY\t111\tCHORDELEG\n1\tAZUAY\t112\tEL PAN\n1\tAZUAY\t113\tSEVILLA DE ORO\n1\tAZUAY\t114\tGUACHAPALA\n1\tAZUAY\t115\tCAMILO PONCE ENRIQUEZ\n2\tBOLIVAR\t201\tGUARANDA\n2\tBOLIVAR\t202\tCHILLANES\n2\tBOLIVAR\t203\tCHIMBO\n2\tBOLIVAR\t204\tECHEANDIA\n2\tBOLIVAR\t205\tSAN MIGUEL\n2\tBOLIVAR\t206\tCALUMA\n2\tBOLIVAR\t207\tLAS NAVES\n3\tCA�AR\t301\tAZOGUES\n3\tCA�AR\t302\tBIBLIAN\n3\tCA�AR\t303\tCA�AR\n3\tCA�AR\t304\tLA TRONCAL\n3\tCA�AR\t305\tEL TAMBO\n3\tCA�AR\t306\tDELEG\n3\tCA�AR\t307\tSUSCAL\n4\tCARCHI\t401\tTULCAN\n4\tCARCHI\t402\tBOLIVAR\n4\tCARCHI\t403\tESPEJO\n4\tCARCHI\t404\tMIRA\n4\tCARCHI\t405\tMONTUFAR\n4\tCARCHI\t406\tSAN PEDRO DE HUACA\n5\tCOTOPAXI\t501\tLATACUNGA\n5\tCOTOPAXI\t502\tLA MANA\n5\tCOTOPAXI\t503\tPANGUA\n5\tCOTOPAXI\t504\tPUJILI\n5\tCOTOPAXI\t505\tSALCEDO\n5\tCOTOPAXI\t506\tSAQUISILI\n5\tCOTOPAXI\t507\tSIGCHOS\n6\tCHIMBORAZO\t601\tRIOBAMBA\n6\tCHIMBORAZO\t602\tALAUSI\n6\tCHIMBORAZO\t603\tCOLTA\n6\tCHIMBORAZO\t604\tCHAMBO\n6\tCHIMBORAZO\t605\tCHUNCHI\n6\tCHIMBORAZO\t606\tGUAMOTE\n6\tCHIMBORAZO\t607\tGUANO\n6\tCHIMBORAZO\t608\tPALLATANGA\n6\tCHIMBORAZO\t609\tPENIPE\n6\tCHIMBORAZO\t610\tCUMANDA\n7\tEL ORO\t701\tMACHALA\n7\tEL ORO\t702\tARENILLAS\n7\tEL ORO\t703\tATAHUALPA\n7\tEL ORO\t704\tBALSAS\n7\tEL ORO\t705\tCHILLA\n7\tEL ORO\t706\tEL GUABO\n7\tEL ORO\t707\tHUAQUILLAS\n7\tEL ORO\t708\tMARCABELI\n7\tEL ORO\t709\tPASAJE\n7\tEL ORO\t710\tPI�AS\n7\tEL ORO\t711\tPORTOVELO\n7\tEL ORO\t712\tSANTA ROSA\n7\tEL ORO\t713\tZARUMA\n7\tEL ORO\t714\tLAS LAJAS\n8\tESMERALDAS\t801\tESMERALDAS\n8\tESMERALDAS\t802\tELOY ALFARO\n8\tESMERALDAS\t803\tMUISNE\n8\tESMERALDAS\t804\tQUININDE\n8\tESMERALDAS\t805\tSAN LORENZO\n8\tESMERALDAS\t806\tATACAMES\n8\tESMERALDAS\t807\tRIO VERDE\n9\tGUAYAS\t901\tGUAYAQUIL\n9\tGUAYAS\t902\tALFREDO BAQUERIZO MORENO\n9\tGUAYAS\t903\tBALAO\n9\tGUAYAS\t904\tBALZAR\n9\tGUAYAS\t905\tCOLIMES\n9\tGUAYAS\t906\tDAULE\n9\tGUAYAS\t907\tDURAN\n9\tGUAYAS\t908\tEL EMPALME\n9\tGUAYAS\t909\tEL TRIUNFO\n9\tGUAYAS\t910\tMILAGRO\n9\tGUAYAS\t911\tNARANJAL\n9\tGUAYAS\t912\tNARANJITO\n9\tGUAYAS\t913\tPALESTINA\n9\tGUAYAS\t914\tPEDRO CARBO\n9\tGUAYAS\t916\tSAMBORONDON\n9\tGUAYAS\t918\tSANTA LUCIA\n9\tGUAYAS\t919\tSALITRE\n9\tGUAYAS\t920\tSAN JACINTO DE YAGUACHI\n9\tGUAYAS\t921\tPLAYAS (GENERAL VILLAMIL)\n9\tGUAYAS\t922\tSIMON BOLIVAR\n9\tGUAYAS\t923\tCORONEL MARCELINO MARIDUE�A\n9\tGUAYAS\t924\tLOMAS DE SARGENTILLO\n9\tGUAYAS\t925\tNOBOL (VICENTE PIEDRAHITA)\n9\tGUAYAS\t927\tGENERAL ANTONIO ELIZALDE\n9\tGUAYAS\t928\tISIDRO AYORA\n10\tIMBABURA\t1001\tIBARRA\n10\tIMBABURA\t1002\tANTONIO ANTE\n10\tIMBABURA\t1003\tCOTACACHI\n10\tIMBABURA\t1004\tOTAVALO\n10\tIMBABURA\t1005\tPIMAMPIRO\n10\tIMBABURA\t1006\tSAN MIGUEL DE URCUQUI\n11\tLOJA\t1101\tLOJA\n11\tLOJA\t1102\tCALVAS\n11\tLOJA\t1103\tCATAMAYO\n11\tLOJA\t1104\tCELICA\n11\tLOJA\t1105\tCHAHUARPAMBA\n11\tLOJA\t1106\tESPINDOLA\n11\tLOJA\t1107\tGONZANAMA\n11\tLOJA\t1108\tMACARA\n11\tLOJA\t1109\tPALTAS\n11\tLOJA\t1110\tPUYANGO\n11\tLOJA\t1111\tSARAGURO\n11\tLOJA\t1112\tSOZORANGA\n11\tLOJA\t1113\tZAPOTILLO\n11\tLOJA\t1114\tPINDAL\n11\tLOJA\t1115\tQUILANGA\n11\tLOJA\t1116\tOLMEDO\n12\tLOS RIOS\t1201\tBABAHOYO\n12\tLOS RIOS\t1202\tBABA\n12\tLOS RIOS\t1203\tMONTALVO\n12\tLOS RIOS\t1204\tPUEBLO VIEJO\n12\tLOS RIOS\t1205\tQUEVEDO\n12\tLOS RIOS\t1206\tURDANETA\n12\tLOS RIOS\t1207\tVENTANAS\n12\tLOS RIOS\t1208\tVINCES\n12\tLOS RIOS\t1209\tPALENQUE\n12\tLOS RIOS\t1210\tBUENA FE\n12\tLOS RIOS\t1211\tVALENCIA\n12\tLOS RIOS\t1212\tMOCACHE\n12\tLOS RIOS\t1213\tQUINSALOMA\n13\tMANABI\t1301\tPORTOVIEJO\n13\tMANABI\t1302\tBOLIVAR\n13\tMANABI\t1303\tCHONE\n13\tMANABI\t1304\tEL CARMEN\n13\tMANABI\t1305\tFLAVIO ALFARO\n13\tMANABI\t1306\tJIPIJAPA\n13\tMANABI\t1307\tJUNIN\n13\tMANABI\t1308\tMANTA\n13\tMANABI\t1309\tMONTECRISTI\n13\tMANABI\t1310\tPAJAN\n13\tMANABI\t1311\tPICHINCHA\n13\tMANABI\t1312\tROCAFUERTE\n13\tMANABI\t1313\tSANTA ANA\n13\tMANABI\t1314\tSUCRE\n13\tMANABI\t1315\tTOSAGUA\n13\tMANABI\t1316\t24 DE MAYO\n13\tMANABI\t1317\tPEDERNALES\n13\tMANABI\t1318\tOLMEDO\n13\tMANABI\t1319\tPUERTO LOPEZ\n13\tMANABI\t1320\tJAMA\n13\tMANABI\t1321\tJARAMIJO\n13\tMANABI\t1322\tSAN VICENTE\n14\tMORONA SANTIAGO\t1401\tMORONA\n14\tMORONA SANTIAGO\t1402\tGUALAQUIZA\n14\tMORONA SANTIAGO\t1403\tLIMON - INDANZA\n14\tMORONA SANTIAGO\t1404\tPALORA\n14\tMORONA SANTIAGO\t1405\tSANTIAGO\n14\tMORONA SANTIAGO\t1406\tSUCUA\n14\tMORONA SANTIAGO\t1407\tHUAMBOYA\n14\tMORONA SANTIAGO\t1408\tSAN JUAN BOSCO\n14\tMORONA SANTIAGO\t1409\tTAISHA\n14\tMORONA SANTIAGO\t1410\tLOGRO�O\n14\tMORONA SANTIAGO\t1411\tPABLO SEXTO\n14\tMORONA SANTIAGO\t1412\tTIWINTZA\n15\tNAPO\t1501\tTENA\n15\tNAPO\t1503\tARCHIDONA\n15\tNAPO\t1504\tEL CHACO\n15\tNAPO\t1507\tQUIJOS\n15\tNAPO\t1509\tCARLOS JULIO AROSEMENA T.\n16\tPASTAZA\t1601\tPASTAZA\n16\tPASTAZA\t1602\tMERA\n16\tPASTAZA\t1603\tSANTA CLARA\n16\tPASTAZA\t1604\tARAJUNO\n17\tPICHINCHA\t1701\tQUITO\n17\tPICHINCHA\t1702\tCAYAMBE\n17\tPICHINCHA\t1703\tMEJIA\n17\tPICHINCHA\t1704\tPEDRO MONCAYO\n17\tPICHINCHA\t1705\tRUMI�AHUI\n17\tPICHINCHA\t1707\tSAN MIGUEL DE LOS BANCOS\n17\tPICHINCHA\t1708\tPEDRO VICENTE MALDONADO\n17\tPICHINCHA\t1709\tPUERTO QUITO\n18\tTUNGURAHUA\t1801\tAMBATO\n18\tTUNGURAHUA\t1802\tBA�OS DE AGUA SANTA\n18\tTUNGURAHUA\t1803\tCEVALLOS\n18\tTUNGURAHUA\t1804\tMOCHA\n18\tTUNGURAHUA\t1805\tPATATE\n18\tTUNGURAHUA\t1806\tQUERO\n18\tTUNGURAHUA\t1807\tSAN PEDRO DE PELILEO\n18\tTUNGURAHUA\t1808\tSANTIAGO DE PILLARO\n18\tTUNGURAHUA\t1809\tTISALEO\n19\tZAMORA CHINCHIPE\t1901\tZAMORA\n19\tZAMORA CHINCHIPE\t1902\tCHINCHIPE\n19\tZAMORA CHINCHIPE\t1903\tNANGARITZA\n19\tZAMORA CHINCHIPE\t1904\tYACUAMBI\n19\tZAMORA CHINCHIPE\t1905\tYANTZAZA\n19\tZAMORA CHINCHIPE\t1906\tEL PANGUI\n19\tZAMORA CHINCHIPE\t1907\tCENTINELA DEL CONDOR\n19\tZAMORA CHINCHIPE\t1908\tPALANDA\n19\tZAMORA CHINCHIPE\t1909\tPAQUISHA\n20\tGALAPAGOS\t2001\tSAN CRISTOBAL\n20\tGALAPAGOS\t2002\tISABELA\n20\tGALAPAGOS\t2003\tSANTA CRUZ\n21\tSUCUMBIOS\t2101\tLAGO AGRIO\n21\tSUCUMBIOS\t2102\tGONZALO PIZARRO\n21\tSUCUMBIOS\t2103\tPUTUMAYO\n21\tSUCUMBIOS\t2104\tSHUSHUFINDI\n21\tSUCUMBIOS\t2105\tSUCUMBIOS\n21\tSUCUMBIOS\t2106\tCASCALES\n21\tSUCUMBIOS\t2107\tCUYABENO\n22\tORELLANA\t2201\tFRANCISCO DE ORELLANA\n22\tORELLANA\t2202\tAGUARICO\n22\tORELLANA\t2203\tLA JOYA DE LOS SACHAS\n22\tORELLANA\t2204\tLORETO\n23\tSANTO DOMINGO DE LOS TS�CHILAS\t2301\tSANTO DOMINGO\n23\tSANTO DOMINGO DE LOS TS�CHILAS\t2302\tLA CONCORDIA\n24\tSANTA ELENA\t2401\tSANTA ELENA\n24\tSANTA ELENA\t2402\tLA LIBERTAD\n24\tSANTA ELENA\t2403\tSALINAS\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mCantonProvinciaDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [cod_provincia: int, nombre_provincia: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878689_730553718",
+      "id": "paragraph_1595550620280_-674617903",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:119"
+    },
+    {
+      "title": "Variable Ingresos: TODO ¿Cuales son principales actividades a las que se dedican los encuestados que no reciben ningun ingreso?",
+      "text": "datosDF.groupBy()",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T21:04:38+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres3\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.RelationalGroupedDataset\u001b[0m = RelationalGroupedDataset: [grouping expressions: [], value: [id_persona: decimal(26,0), anio: int ... 15 more fields], type: GroupBy]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878691_2085480935",
+      "id": "20200702-195854_1744029708",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:120"
+    },
+    {
+      "title": "Variable Ingresos: ¿Cuantas personas reciben un sueldo mayor o igual al salario básico?",
+      "text": "datosDF.select(\"ingreso_laboral\").where($\"ingreso_laboral\" >= 390).count\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T21:04:38+0000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres9\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 239593\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878691_61455807",
+      "id": "20200627-140536_295482208",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:121"
+    },
+    {
+      "title": "Variable Ingresos (A) : ¿ Cuál es el promedio del ingreso laboral de hombres y mujeres segun la sectorizacion?",
+      "text": "z.show( data2.groupBy(\"sectorizacion\").pivot(\"genero\").agg(avg(\"ingreso_laboral\")).orderBy($\"sectorizacion\").withColumn(\"2 - Mujer\", format_number($\"2 - Mujer\",2))\n.withColumn(\"1 - Hombre\",format_number($\"1 - Hombre\",2)) )",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T00:29:29+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "sectorizacion": "string",
+                      "1 - Hombre": "string",
+                      "2 - Mujer": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "sectorizacion\t1 - Hombre\t2 - Mujer\nnull\t63.88\t31.26\n1 - Sector Formal\t755.83\t661.31\n2 - Sector Informal\t281.83\t165.18\n3 - Empleo Doméstico\t418.03\t321.43\n4 - No Clasificados por Sector\t318.47\t234.94\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=428",
+              "$$hashKey": "object:2619"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=429",
+              "$$hashKey": "object:2620"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596328021727_224518400",
+      "id": "paragraph_1596328021727_224518400",
+      "dateCreated": "2020-08-02T00:27:01+0000",
+      "dateStarted": "2020-08-02T00:27:48+0000",
+      "dateFinished": "2020-08-02T00:27:55+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:122"
+    },
+    {
+      "title": "Variable ingresos: ¿A que actividad se dedican principalmente aquellas personas que perciben 1000$ o más?",
+      "text": "z.show(datosDF.select(\"rama_actividad\").where($\"ingreso_laboral\" >= 1000).groupBy(\"rama_actividad\").count.orderBy(desc(\"count\")))",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T21:04:38+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rama_actividad": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "rama_actividad\tcount\n15 - O .Administración pública, defensa y seguridad social\t10865\n16 - P. Enseñanza\t7052\n07 - G. Comercio, reparación vehículos\t6982\n17 - Q. Actividades, servicios sociales y de salud\t4830\n03 - C. Industrias manufactureras\t3945\n01 - A. Agricultura, ganadería caza y silvicultura y pesca\t2680\n08 - H. Transporte y almacenamiento\t2439\n13 - M. Actividades profesionales, científicas y técnicas\t2004\n09 - I. Actividades de alojamiento y servicios de comida\t1652\n06 - F. Construcción\t1616\n02 - B. Explotación de minas y canteras\t1390\n11 - K. Actividades financieras y de seguros\t1344\n10 - J. Información y comunicación\t863\n04 - D. Suministros de electricidad, gas, aire acondicionado\t772\n14 - N. Actividades y servicios administrativos y de apoyo\t732\n19 - S. Otras actividades de servicios\t509\n18 - R. Artes, entretenimiento y recreación\t453\n05 - E. Distribución de agua, alcantarillado\t308\n12 - L. Actividades inmobiliarias\t158\n20 - T  Actividades en hogares privados con servicio doméstico\t37\nnull\t31\n21 - U  Actividades de organizaciones extraterritoriales\t31\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878692_1030662468",
+      "id": "20200627-173715_1162485375",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:123"
+    },
+    {
+      "title": "Variable Ingresos: ¿Cuales son los 10 mayores sueldos entre los encuestados?",
+      "text": "datosDF.select(\"ingreso_laboral\").orderBy(desc(\"ingreso_laboral\")).show(10)",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T21:04:38+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------+\n|ingreso_laboral|\n+---------------+\n|         146030|\n|         120000|\n|         100000|\n|          83000|\n|          82200|\n|          81352|\n|          80000|\n|          70000|\n|          60504|\n|          60000|\n+---------------+\nonly showing top 10 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878692_743062038",
+      "id": "20200627-183107_969232580",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:124"
+    },
+    {
+      "title": "Variable Ingresos: ¿Cual es el salario promedio percibido por un profesional científico e intelectual de la enseñanza?",
+      "text": "datosDF.filter(\"grupo_ocupacion == '02 - Profesionales científicos e intelectuales'\").filter(\"rama_actividad == '16 - P. Enseñanza'\").select(avg(\"ingreso_laboral\").as(\"sueldo promedio\")).show",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T00:30:13+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------+\n|  sueldo promedio|\n+-----------------+\n|902.0888548793662|\n+-----------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878692_-1402658358",
+      "id": "20200628-092544_151926918",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:125"
+    },
+    {
+      "title": "Variable Ingresos (A): ¿Cuál es el porcentaje de personas que ganan menos del básico por porvincia en el año 2015?",
+      "text": "val humanos = data3.select($\"provincia\",$\"anio\",$\"ingreso_laboral\").filter(data3(\"anio\") === 2015 && data3(\"ingreso_laboral\") < 400).groupBy(\"provincia\").count\n\nval result = humanos.select($\"provincia\",$\"count\"/62130.0*100).withColumnRenamed(\"((count / 62130.0) * 100)\",\"Porcentaje\").withColumn(\"Porcentaje\", format_number($\"Porcentaje\", 3))\nz.show( result )\nresult.select(sum(\"Porcentaje\")).show",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T03:10:59+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "provincia": "string",
+                      "Porcentaje": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "provincia\tPorcentaje\nManabi\t5.340\nCotopaxi\t5.807\nSanta  Elena\t3.778\nPichincha\t4.936\nBovilar\t3.217\nChimborazo\t3.312\nMorona Santiago\t2.958\nGuayas\t8.022\nLoja\t3.382\nImbabura\t6.393\nCarchi\t4.082\nEl Oro\t6.074\nCaniar\t3.214\nAzuay\t5.107\nSucumbios\t2.862\nGalapagos\t0.261\nTungurahua\t5.920\nNapo\t3.098\nPastaza\t2.751\nZamora Chinchipe\t3.143\nSanto Domingo de los Tsachilas\t2.994\nOrellana\t2.868\nLos Rios\t5.369\nEsmeraldas\t5.110\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "+-----------------+\n|  sum(Porcentaje)|\n+-----------------+\n|99.99799999999999|\n+-----------------+\n\n\u001b[1m\u001b[34mhumanos\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [provincia: string, count: bigint]\n\u001b[1m\u001b[34mresult\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [provincia: string, Porcentaje: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=702",
+              "$$hashKey": "object:2790"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=703",
+              "$$hashKey": "object:2791"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=704",
+              "$$hashKey": "object:2792"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=705",
+              "$$hashKey": "object:2793"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=706",
+              "$$hashKey": "object:2794"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=707",
+              "$$hashKey": "object:2795"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596334865847_-1814240369",
+      "id": "paragraph_1596334865847_-1814240369",
+      "dateCreated": "2020-08-02T02:21:05+0000",
+      "dateStarted": "2020-08-02T03:10:50+0000",
+      "dateFinished": "2020-08-02T03:10:57+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:126"
+    },
+    {
+      "title": "Variable \"EstadoCivil\" (A): ¿Cuál es el promedio del ingreso laboral de hombres y mujeres según su estado_civil?",
+      "text": "z.show( datosDF.groupBy(\"estado_civil\").pivot(\"genero\").agg(avg(\"ingreso_laboral\")).orderBy($\"estado_civil\").withColumn(\"2 - Mujer\", format_number($\"2 - Mujer\",2))\n.withColumn(\"1 - Hombre\",format_number($\"1 - Hombre\",2)) )",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T00:32:33+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "estado_civil": "string",
+                      "1 - Hombre": "string",
+                      "2 - Mujer": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "estado_civil\t1 - Hombre\t2 - Mujer\n1 - Casado(a)\t638.57\t486.49\n2 - Separado(a)\t432.84\t357.98\n3 - Divorciado(a)\t653.06\t577.05\n4 - Viudo(a)\t334.46\t276.20\n5 - Unión libre\t466.16\t345.63\n6 - Soltero(a)\t400.14\t433.46\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=430",
+              "$$hashKey": "object:2861"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=431",
+              "$$hashKey": "object:2862"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596328219965_-1256395889",
+      "id": "paragraph_1596328219965_-1256395889",
+      "dateCreated": "2020-08-02T00:30:19+0000",
+      "dateStarted": "2020-08-02T00:32:24+0000",
+      "dateFinished": "2020-08-02T00:32:31+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:127"
+    },
+    {
+      "title": "Variable Sectorización: ¿Cuantas personas al momento de la encuesta no se encuentran vinculadas a ningun sector?",
+      "text": "datosDF.select(\"sectorizacion\").where($\"sectorizacion\".isNull).count",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T21:04:38+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres13\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26261\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878692_711065548",
+      "id": "20200627-141122_543518986",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:128"
+    },
+    {
+      "title": "Variable Sectorización (A.: Crosstab) : ¿Cuál es la frecuencia de la variable sectorizacion respecto de las provincias?",
+      "text": "z.show( datosDF.stat.crosstab(\"provincia\", \"sectorizacion\").orderBy(\"provincia_sectorizacion\")\n )",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T22:53:42+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "provincia_sectorizacion": "string",
+                      "1 - Sector Formal": "string",
+                      "2 - Sector Informal": "string",
+                      "3 - Empleo Doméstico": "string",
+                      "4 - No Clasificados por Sector": "string",
+                      "null": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "provincia_sectorizacion\t1 - Sector Formal\t2 - Sector Informal\t3 - Empleo Doméstico\t4 - No Clasificados por Sector\tnull\n1\t24935\t15271\t1031\t1648\t1606\n10\t11753\t12035\t584\t2454\t1420\n11\t6606\t10648\t308\t679\t763\n12\t10766\t12513\t408\t2106\t1075\n13\t11050\t19463\t649\t1927\t1050\n14\t4826\t8823\t168\t494\t317\n15\t6241\t9131\t194\t543\t640\n16\t6300\t6854\t192\t463\t566\n17\t37562\t13116\t2460\t1974\t4034\n18\t30493\t15777\t891\t1242\t1965\n19\t5026\t8010\t172\t689\t493\n2\t3624\t9709\t172\t920\t312\n20\t3237\t684\t119\t91\t94\n21\t5857\t6480\t177\t729\t834\n22\t6148\t8698\t166\t550\t657\n23\t6767\t6367\t361\t871\t581\n24\t5948\t7190\t372\t930\t677\n3\t5818\t8105\t219\t713\t525\n4\t5752\t6589\t252\t1801\t712\n5\t11624\t17148\t398\t1365\t620\n6\t6360\t13825\t224\t742\t416\n7\t21382\t13402\t915\t2596\t1785\n8\t8610\t10038\t433\t1944\t1927\n9\t35084\t31313\t2374\t2847\t3192\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=193",
+              "$$hashKey": "object:2952"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=194",
+              "$$hashKey": "object:2953"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=195",
+              "$$hashKey": "object:2954"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=196",
+              "$$hashKey": "object:2955"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=197",
+              "$$hashKey": "object:2956"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=198",
+              "$$hashKey": "object:2957"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596321894419_-1884556500",
+      "id": "paragraph_1596321894419_-1884556500",
+      "dateCreated": "2020-08-01T22:44:54+0000",
+      "dateStarted": "2020-08-01T22:53:36+0000",
+      "dateFinished": "2020-08-01T22:53:40+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:129"
+    },
+    {
+      "title": "Variable sectorización (A.: crosstab): ¿Cuál es la frecuencia de la variable sectorizacion respecto de las provincias? ",
+      "text": "z.show( datosDF.stat.crosstab(\"provincia\", \"sectorizacion\").orderBy(\"provincia_sectorizacion\")\n )",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T00:58:10+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "provincia_sectorizacion": "string",
+                      "1 - Sector Formal": "string",
+                      "2 - Sector Informal": "string",
+                      "3 - Empleo Doméstico": "string",
+                      "4 - No Clasificados por Sector": "string",
+                      "null": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "provincia_sectorizacion\t1 - Sector Formal\t2 - Sector Informal\t3 - Empleo Doméstico\t4 - No Clasificados por Sector\tnull\n1\t24935\t15271\t1031\t1648\t1606\n10\t11753\t12035\t584\t2454\t1420\n11\t6606\t10648\t308\t679\t763\n12\t10766\t12513\t408\t2106\t1075\n13\t11050\t19463\t649\t1927\t1050\n14\t4826\t8823\t168\t494\t317\n15\t6241\t9131\t194\t543\t640\n16\t6300\t6854\t192\t463\t566\n17\t37562\t13116\t2460\t1974\t4034\n18\t30493\t15777\t891\t1242\t1965\n19\t5026\t8010\t172\t689\t493\n2\t3624\t9709\t172\t920\t312\n20\t3237\t684\t119\t91\t94\n21\t5857\t6480\t177\t729\t834\n22\t6148\t8698\t166\t550\t657\n23\t6767\t6367\t361\t871\t581\n24\t5948\t7190\t372\t930\t677\n3\t5818\t8105\t219\t713\t525\n4\t5752\t6589\t252\t1801\t712\n5\t11624\t17148\t398\t1365\t620\n6\t6360\t13825\t224\t742\t416\n7\t21382\t13402\t915\t2596\t1785\n8\t8610\t10038\t433\t1944\t1927\n9\t35084\t31313\t2374\t2847\t3192\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=464",
+              "$$hashKey": "object:3023"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=465",
+              "$$hashKey": "object:3024"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=466",
+              "$$hashKey": "object:3025"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=467",
+              "$$hashKey": "object:3026"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=468",
+              "$$hashKey": "object:3027"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=469",
+              "$$hashKey": "object:3028"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596329771889_1260266370",
+      "id": "paragraph_1596329771889_1260266370",
+      "dateCreated": "2020-08-02T00:56:11+0000",
+      "dateStarted": "2020-08-02T00:58:04+0000",
+      "dateFinished": "2020-08-02T00:58:07+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:130"
+    },
+    {
+      "title": "Variable nivel_instrucción: ¿Que nivel formativo han recibido mayoritariamente los encuestados?",
+      "text": "z.show( datosDF.select(\"nivel_de_instruccion\").groupBy(\"nivel_de_instruccion\").count().orderBy(desc(\"count\")) )",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T04:18:59+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "nivel_de_instruccion": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "nivel_de_instruccion\tcount\n04 - Primaria\t201133\n06 - Secundaria\t176127\n09 - Superior Universitario\t109625\n07 - Educación  Media\t58749\n05 - Educación Básica\t28548\n01 - Ninguno\t22978\n08 - Superior no universitario\t11875\n10 - Post-grado\t10381\n02 - Centro de alfabetización\t3360\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=708",
+              "$$hashKey": "object:3094"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878693_1228945652",
+      "id": "20200627-173323_844044057",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "dateStarted": "2020-08-02T04:18:53+0000",
+      "dateFinished": "2020-08-02T04:18:57+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:131"
+    },
+    {
+      "title": "Variable nivel_instrucción: ¿Cuantas personas tienen formación de tercer nivel universitaria?",
+      "text": "datosDF.select(\"nivel_de_instruccion\").filter( \"nivel_de_instruccion == '09 - Superior Universitario' \").count",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T21:04:38+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres15\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 109625\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878693_1517989397",
+      "id": "20200627-195113_2010980559",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:132"
+    },
+    {
+      "title": "Variable nivel_instruccion: Según su nivel de instrucción ¿A que sector pertenecen los encuestados?",
+      "text": "z.show(datosDF.stat.crosstab(\"nivel_de_instruccion\", \"sectorizacion\"))",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T21:04:38+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "nivel_de_instruccion_sectorizacion0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "1 - Sector Formal1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2 - Sector Informal2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "3 - Empleo Doméstico3",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {
+                          "priority": 0,
+                          "direction": "asc"
+                        },
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "4 - No Clasificados por Sector4",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "null5",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "nivel_de_instruccion_sectorizacion": "string",
+                      "1 - Sector Formal": "string",
+                      "2 - Sector Informal": "string",
+                      "3 - Empleo Doméstico": "string",
+                      "4 - No Clasificados por Sector": "string",
+                      "null": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "nivel_de_instruccion_sectorizacion",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "1 - Sector Formal",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "nivel_de_instruccion_sectorizacion\t1 - Sector Formal\t2 - Sector Informal\t3 - Empleo Doméstico\t4 - No Clasificados por Sector\tnull\n04 - Primaria\t53467\t124603\t6337\t13248\t3478\n06 - Secundaria\t92302\t64686\t4588\t7535\t7016\n07 - Educación  Media\t21751\t25969\t875\t3816\t6338\n10 - Post-grado\t9785\t261\t0\t24\t311\n08 - Superior no universitario\t8948\t1882\t99\t193\t753\n02 - Centro de alfabetización\t380\t2739\t56\t146\t39\n09 - Superior Universitario\t87383\t13799\t430\t1301\t6712\n01 - Ninguno\t1965\t18987\t361\t1469\t196\n05 - Educación Básica\t5788\t18263\t493\t2586\t1418\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878693_-1254442177",
+      "id": "paragraph_1595136956597_-972022444",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:133"
+    },
+    {
+      "title": "Variable Edad: ¿En que grupos de ocupación trabajan mayoritariamennte los menores de 30 años?",
+      "text": "z.show(datosDF.select(\"grupo_ocupacion\").where($\"edad\" < 30).groupBy(\"grupo_ocupacion\").count.orderBy(asc(\"grupo_ocupacion\")) )",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T21:04:38+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "grupo_ocupacion": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "grupo_ocupacion",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "grupo_ocupacion\tcount\nnull\t14833\n01 - Personal direct./admin. pública y empresas\t598\n02 - Profesionales científicos e intelectuales\t9105\n03 - Técnicos y profesionales de nivel medio\t7613\n04 - Empleados de oficina\t7965\n05 - Trabajad. de los servicios y comerciantes\t33479\n06 - Trabajad. calificados agropecuarios y pesqueros\t18005\n07 - Oficiales operarios y artesanos\t14790\n08 - Operadores de instalac. máquinas y montad.\t8206\n09 - Trabajadores no calificados, ocupaciones elementales\t61253\n10 - Fuerzas Armadas\t448\n99 - No especificado\t4\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878693_-367076263",
+      "id": "20200627-191530_2146631291",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:134"
+    },
+    {
+      "title": "Variable Rama actividad: Segun la rama de actividad a la que se dedican ¿Donde se localizan los encuestados?",
+      "text": "z.show(datosDF.stat.crosstab(\"rama_actividad\", \"area\"))",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T21:04:38+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "rama_actividad_area0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "1 - Urbana1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {
+                          "priority": 0,
+                          "direction": "desc"
+                        },
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2 - Rural2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rama_actividad_area": "string",
+                      "1 - Urbana": "string",
+                      "2 - Rural": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "rama_actividad_area\t1 - Urbana\t2 - Rural\n08 - H. Transporte y almacenamiento\t24655\t6342\nnull\t21082\t5179\n04 - D. Suministros de electricidad, gas, aire acondicionado\t1394\t374\n11 - K. Actividades financieras y de seguros\t3987\t380\n03 - C. Industrias manufactureras\t43429\t15103\n07 - G. Comercio, reparación vehículos\t83475\t17492\n14 - N. Actividades y servicios administrativos y de apoyo\t10867\t2302\n16 - P. Enseñanza\t21770\t5179\n20 - T  Actividades en hogares privados con servicio doméstico\t10093\t3166\n13 - M. Actividades profesionales, científicas y técnicas\t9599\t735\n21 - U  Actividades de organizaciones extraterritoriales\t57\t2\n19 - S. Otras actividades de servicios\t12672\t2401\n05 - E. Distribución de agua, alcantarillado\t1315\t430\n09 - I. Actividades de alojamiento y servicios de comida\t28160\t6998\n18 - R. Artes, entretenimiento y recreación\t3294\t623\n22 - No especificado\t11\t1\n12 - L. Actividades inmobiliarias\t1113\t103\n17 - Q. Actividades, servicios sociales y de salud\t13083\t2032\n02 - B. Explotación de minas y canteras\t2589\t2228\n15 - O .Administración pública, defensa y seguridad social\t19267\t5611\n01 - A. Agricultura, ganadería caza y silvicultura y pesca\t32958\t161027\n06 - F. Construcción\t22924\t11777\n10 - J. Información y comunicación\t4820\t677\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878694_1453196630",
+      "id": "paragraph_1595138185788_-1429443571",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:135"
+    },
+    {
+      "title": "Variable Ingresos:  Brecha salarial entre hombres y mujeres entre las distintas ramas de actividad",
+      "text": "z.show( datosDF.groupBy(\"rama_actividad\").pivot(\"genero\").avg(\"ingreso_laboral\").orderBy(\"rama_actividad\") )",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T22:33:16+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rama_actividad": "string",
+                      "1 - Hombre": "string",
+                      "2 - Mujer": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "40"
+                  },
+                  "xLabelStatus": "hide",
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "rama_actividad",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "1 - Hombre",
+                  "index": 1,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "2 - Mujer",
+                  "index": 2,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "rama_actividad\t1 - Hombre\t2 - Mujer\nnull\t63.87981366459627\t31.256560773480665\n01 - A. Agricultura, ganadería caza y silvicultura y pesca\t301.4636116587627\t177.1517313572629\n02 - B. Explotación de minas y canteras\t924.9813898704358\t801.5949656750572\n03 - C. Industrias manufactureras\t544.6302032047265\t361.10492020542273\n04 - D. Suministros de electricidad, gas, aire acondicionado\t1145.9055472263867\t746.8048192771084\n05 - E. Distribución de agua, alcantarillado\t699.8033261026753\t727.0276923076923\n06 - F. Construcción\t449.01623905825534\t865.7535545023696\n07 - G. Comercio, reparación vehículos\t584.7462725056264\t366.051175886055\n08 - H. Transporte y almacenamiento\t502.4654562350334\t543.6008810572687\n09 - I. Actividades de alojamiento y servicios de comida\t539.169948630137\t354.647701850722\n10 - J. Información y comunicación\t805.9235233868214\t500.953125\n11 - K. Actividades financieras y de seguros\t1054.5831611570247\t879.8350383631714\n12 - L. Actividades inmobiliarias\t808.3759213759214\t657.5756676557863\n13 - M. Actividades profesionales, científicas y técnicas\t786.4018070235254\t605.1043276661514\n14 - N. Actividades y servicios administrativos y de apoyo\t561.8588205581513\t353.0609178843383\n15 - O .Administración pública, defensa y seguridad social\t1092.4528681253696\t1011.2136620441705\n16 - P. Enseñanza\t943.0063482466747\t841.5367130786624\n17 - Q. Actividades, servicios sociales y de salud\t1130.8\t804.2480898028488\n18 - R. Artes, entretenimiento y recreación\t540.0824303405573\t511.0509125840538\n19 - S. Otras actividades de servicios\t404.96201824613667\t235.26110861759426\n20 - T  Actividades en hogares privados con servicio doméstico\t417.9237668161435\t321.32449645728843\n21 - U  Actividades de organizaciones extraterritoriales\t2021.1333333333334\t1362.4074074074074\n22 - No especificado\t386.6666666666667\t431.8\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878694_-1970723204",
+      "id": "paragraph_1595138468316_106559560",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:136"
+    },
+    {
+      "title": "Variable provincia/canton: ¿Cual fue el salario promedio de hombres y mujeres de cada cantón del pais?  TODO Hacer un join con provincia y canton, ademas haver un truncade",
+      "text": "z.show( datosDF.groupBy(\"provincia\", \"canton\").pivot(\"genero\").avg(\"ingreso_laboral\") )",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T21:04:38+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "provincia0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "canton1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "1 - Hombre2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {
+                          "priority": 0,
+                          "direction": "asc"
+                        },
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2 - Mujer3",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "provincia": "string",
+                      "canton": "string",
+                      "1 - Hombre": "string",
+                      "2 - Mujer": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "provincia\tcanton\t1 - Hombre\t2 - Mujer\n14\t1401\t568.8408045977011\t472.6840855106888\n4\t405\t418.697520661157\t350.9196538936959\n12\t1210\t422.9784102060844\t291.54564315352695\n18\t1804\t327.28409090909093\t229.28571428571428\n1\t114\t256.53333333333336\t205.3846153846154\n4\t406\t394.3910714285714\t299.2685714285714\n20\t2001\t1392.0742857142857\t1121.7813765182186\n1\t102\t352.54612546125463\t222.6275167785235\n14\t1410\t292.57915057915056\t240.54814814814816\n13\t1322\t336.45754716981133\t314.3244680851064\n12\t1204\t403.09842519685037\t239.06713780918727\n13\t1321\t727.5749128919861\t381.08\n4\t401\t480.0042372881356\t377.9637972646822\n13\t1306\t309.75568743818\t325.3755980861244\n6\t610\t446.61538461538464\t375.59016393442624\n16\t1601\t548.6165113182424\t473.63028878441906\n14\t1404\t400.7834101382488\t406.5229357798165\n13\t1320\t478.7\t345.5268817204301\n10\t1003\t339.4691588785047\t256.5049833887043\n14\t1409\t277.0303797468354\t161.69395017793593\n6\t607\t373.298418972332\t262.42248062015506\n17\t1702\t500.22949586155005\t362.067044381492\n19\t1904\t317.0316205533597\t224.1037037037037\n6\t606\t277.61312607944734\t134.4959349593496\n9\t903\t387.1748251748252\t255.9770992366412\n8\t801\t546.2976901632816\t458.84705528846155\n5\t505\t428.718945487042\t299.14978775015163\n21\t2105\t430.07462686567163\t377.9642857142857\n12\t1208\t359.6610562971561\t283.1473136915078\n4\t404\t337.52537313432833\t268.35971223021585\n11\t1106\t185.8891304347826\t147.0974025974026\n17\t1703\t521.4022457067372\t364.9688612099644\n13\t1301\t462.95098547717845\t417.3607092860476\n9\t922\t328.46060606060604\t240.20388349514562\n21\t2101\t529.8776539278132\t416.4334117647059\n22\t2202\t378.402489626556\t379.7651515151515\n21\t2102\t468.1439024390244\t376.467032967033\n11\t1109\t286.2337917485265\t223.6768558951965\n10\t1001\t597.8748882931188\t422.70048661800485\n8\t803\t281.8359941944848\t268.6047619047619\n3\t305\t464.5\t250.79044117647058\n11\t1116\t178.04907975460122\t82.07058823529412\n2\t203\t347.47846889952154\t282.26943005181346\n5\t503\t392.6499282639885\t354.7243243243243\n11\t1114\t509.41750841750843\t132.6216216216216\n14\t1406\t407.67954911433173\t329.1002132196162\n3\t303\t368.9923842999414\t268.219926199262\n9\t925\t331.00442477876106\t403.11764705882354\n1\t105\t432.5223880597015\t262.2266666666667\n6\t603\t255.99234972677596\t141.8953488372093\n24\t2403\t382.8931841302136\t340.81358189081226\n14\t1407\t323.2936507936508\t244.51470588235293\n24\t2401\t371.23726235741447\t320.7080291970803\n19\t1906\t473.32530120481925\t278.29318181818184\n9\t913\t295.4859813084112\t176.925\n18\t1806\t470.15119363395223\t212.40860215053763\n8\t802\t333.0813953488372\t353.04242424242426\n12\t1209\t277.1613545816733\t257.64462809917353\n13\t1309\t458.52978918423463\t331.557761732852\n5\t506\t417.90128755364805\t298.44871794871796\n6\t602\t289.36717428087985\t210.91222570532915\n13\t1319\t337.77884615384613\t155.34\n13\t1318\t227.81884057971016\t154.7948717948718\n15\t1503\t433.45011971268957\t428.82916666666665\n14\t1411\t549.4352331606218\t392.18666666666667\n20\t2003\t1367.4922279792745\t1034.6435452793835\n11\t1101\t659.1747865394274\t430.3960264900662\n5\t502\t453.47511612475114\t326.0975274725275\n18\t1803\t438.19736842105266\t266.9342105263158\n9\t907\t519.6788546255507\t390.3179190751445\n1\t104\t298.68831168831167\t211.75943396226415\n19\t1908\t274.9835164835165\t193.95970695970695\n14\t1405\t563.5741935483871\t867.1883408071749\n1\t115\t465.7647058823529\t263.099173553719\n21\t2104\t486.63231197771586\t395.62869198312234\n4\t402\t330.71090670170827\t235.062\n13\t1307\t340.6382428940569\t251.30722891566265\n1\t110\t442.0625\t143.0344827586207\n11\t1108\t387.4592145015106\t362.7926829268293\n3\t304\t476.50762281197063\t316.0963045912654\n13\t1302\t328.34395604395604\t273.84302325581393\n9\t914\t260.885\t238.63392857142858\n7\t712\t469.7303010890455\t365.39092872570194\n13\t1305\t348.3157894736842\t290.8709677419355\n12\t1213\t340.69174311926605\t238.1948717948718\n10\t1005\t369.09547738693465\t299.97402597402595\n17\t1705\t881.2182741116751\t725.4102141680395\n1\t113\t572.2767295597484\t265.3801652892562\n7\t709\t476.785667752443\t371.24\n15\t1509\t341.98324022346367\t371.1969696969697\n14\t1408\t546.0206611570248\t523.2545454545455\n21\t2103\t442.77272727272725\t315.44043321299637\n2\t202\t320.2542885973764\t252.2933618843683\n9\t909\t458.3212121212121\t324.6181818181818\n24\t2402\t459.9413808076422\t371.120532003325\n9\t904\t311.9505178365938\t207.51394422310756\n13\t1317\t375.1764705882353\t290.7845117845118\n13\t1314\t318.8184480234261\t241.65917602996254\n12\t1211\t433.49576669802445\t353.94513715710724\n21\t2107\t302.7682926829268\t279.4054054054054\n17\t1701\t767.5363411671066\t620.586385477843\n5\t504\t365.8271523178808\t265.21019677996424\n14\t1403\t429.64383561643837\t333.4761904761905\n3\t302\t432.28333333333336\t248.51346153846154\n21\t2106\t344.92676767676767\t389.7810650887574\n1\t112\t357.6136363636364\t118.6078431372549\n1\t101\t696.9901518747033\t525.8946153846153\n19\t1903\t390.1702786377709\t229.9025974025974\n7\t710\t594.331158238173\t360.57716049382714\n9\t901\t558.2820042073054\t429.4821046707935\n9\t905\t290.466814159292\t230.97413793103448\n9\t919\t272.4404761904762\t206.64308681672026\n11\t1110\t449.48837209302326\t323.4018691588785\n13\t1311\t292.65994962216627\t165.16129032258064\n7\t704\t503.83576642335765\t334.30827067669173\n10\t1004\t422.9025762511105\t335.4017536867278\n15\t1504\t546.4823284823285\t413.07936507936506\n8\t805\t385.2638352638353\t366.08187134502924\n11\t1102\t366.45588235294116\t331.8705882352941\n1\t103\t379.74468085106383\t246.03556485355648\n7\t706\t472.41205673758867\t280.069918699187\n2\t201\t435.631288766368\t370.05446058091286\n12\t1203\t362.3478260869565\t254.78\n6\t604\t747.8725490196078\t235.07777777777778\n18\t1809\t484.29801324503313\t335.6448598130841\n19\t1902\t359.1156914893617\t300.5040214477212\n18\t1808\t481.75550405561995\t274.4186746987952\n9\t923\t345.5238095238095\t113.375\n7\t707\t455.7165876777251\t293.34615384615387\n10\t1002\t486.3831417624521\t344.9506008010681\n13\t1303\t434.78406326034064\t385.2006745362563\n13\t1315\t413.47857142857146\t255.48299319727892\n17\t1707\t421.20348837209303\t365.01162790697674\n18\t1802\t536.6378600823045\t420.4607329842932\n9\t908\t390.98465829846583\t217.0865051903114\n3\t307\t337.1369426751592\t163.68284789644014\n14\t1402\t521.5441176470588\t394.31781701444623\n19\t1905\t528.1091065292096\t415.2328767123288\n6\t605\t345.3135135135135\t318.2312925170068\n9\t920\t398.0749063670412\t314.52742616033754\n6\t609\t295.78629032258067\t299.93457943925233\n22\t2203\t500.5560859188544\t378.89136490250695\n9\t928\t319.6095238095238\t199.66666666666666\n9\t906\t491.96870109546165\t492.92345276872965\n8\t806\t339.19518072289156\t344.1390887290168\n20\t2002\t1295.86301369863\t935.24\n2\t205\t401.2490272373541\t415.77222222222224\n12\t1201\t425.11365935919054\t375.5480701754386\n9\t927\t345.3150684931507\t309.4047619047619\n18\t1801\t686.401868657037\t522.0735563847954\n5\t501\t589.7519325368938\t392.83226660781287\n16\t1602\t665.9285714285714\t421.5495049504951\n7\t702\t367.7007481296758\t271.3736263736264\n13\t1313\t322.8782412626832\t206.29432624113474\n12\t1207\t427.85923566878984\t436.6394472361809\n12\t1205\t484.2682145716573\t345.48631123919307\n13\t1308\t555.6256077795786\t446.96357793251207\n11\t1103\t404.5532786885246\t255.003300330033\n2\t206\t438.1450676982592\t380.0975609756098\n8\t804\t367.02705989662513\t285.0540293040293\n15\t1501\t431.0154025670945\t425.9342857142857\n17\t1704\t523.376923076923\t523.6700767263427\n19\t1901\t538.9143576826197\t477.3770864946889\n13\t1304\t357.9457831325301\t257.6194690265487\n7\t703\t503.08045977011494\t418.1190476190476\n11\t1113\t408.85064935064935\t255.85507246376812\n9\t924\t336.47474747474746\t302.51428571428573\n16\t1604\t324.3217550274223\t253.44247787610618\n9\t918\t231.9352014010508\t186.64814814814815\n17\t1709\t308.1782178217822\t244.68421052631578\n2\t204\t368.3968\t273.56115107913666\n12\t1206\t342.95783926218706\t297.8445945945946\n11\t1112\t300.50632911392404\t310.2903225806452\n2\t207\t424.20851063829787\t359.80833333333334\n7\t713\t482.48609077598826\t379.7185628742515\n22\t2201\t544.1351274787536\t433.0857314148681\n8\t807\t281.051912568306\t233.99767441860465\n9\t916\t760.1643835616438\t595.2432950191571\n3\t301\t547.6700426439232\t411.93914916532043\n14\t1412\t573.061475409836\t390.46280991735534\n12\t1212\t344.2999353587589\t230.35504201680672\n22\t2204\t353.30269058295966\t364.9330855018587\n7\t708\t420.5691056910569\t212.71428571428572\n9\t902\t347.19767441860466\t313.968253968254\n10\t1006\t359.66617647058825\t283.29411764705884\n3\t306\t469.2173913043478\t479.9259259259259\n12\t1202\t367.24411400247834\t252.1950354609929\n11\t1105\t356.1946902654867\t151.36\n1\t107\t421.578431372549\t330.4950495049505\n1\t109\t311.44533333333334\t156.57790368271955\n19\t1909\t425.417695473251\t324.690036900369\n15\t1507\t682.6019656019656\t473.1306306306306\n7\t714\t369.75182481751824\t321.9846153846154\n11\t1107\t276.53554502369667\t205.4181818181818\n7\t711\t465.36690647482015\t431.18666666666667\n17\t1708\t381.40562248995985\t294.23478260869564\n13\t1310\t247.2225237449118\t214.3287037037037\n13\t1312\t326.5210918114144\t255.48648648648648\n18\t1805\t403.93485342019545\t315.17289719626166\n23\t2302\t424.6275167785235\t250.77914110429447\n9\t910\t527.1193284936479\t418.34096290449884\n1\t111\t302.22424242424245\t164.808\n6\t601\t604.5324710320668\t457.8507512520868\n1\t108\t344.34328358208955\t224.97524752475246\n5\t507\t393.58706467661693\t308.5339366515837\n19\t1907\t428.0857142857143\t364.41735537190084\n23\t2301\t508.0059794618484\t384.1130924448616\n11\t1111\t460.22439024390246\t269.5750708215297\n16\t1603\t510.1515151515151\t433.74226804123714\n7\t701\t552.5798012277112\t435.8029504741834\n6\t608\t290.29447852760734\t169.4262295081967\n13\t1316\t360.2471482889734\t316.30120481927713\n11\t1104\t412.1488469601677\t391.7744107744108\n18\t1807\t427.4433312460864\t313.24146981627297\n9\t911\t459.6796256299496\t294.4912587412587\n4\t403\t398.89389067524115\t316.54769230769233\n7\t705\t147.0\t58.0\n11\t1115\t226.1290322580645\t129.57142857142858\n9\t921\t396.6205533596838\t267.4040404040404\n1\t106\t299.26459143968873\t174.44525547445255\n9\t912\t425.2875318066158\t290.037558685446\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878694_802864456",
+      "id": "paragraph_1595138906808_-1644830297",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:137"
+    },
+    {
+      "title": "Variable provincia/cantón (A): ¿A que provincia pertenecen mayoritariamente los encuestados? ",
+      "text": "val met1 = data3.select(\"provincia\").groupBy(\"provincia\").count().orderBy(desc(\"count\"))\nval total = data3.count\nval met2 = met1.select($\"provincia\",'count.cast(\"Double\")/total *100)\n\nz.show( met2.withColumnRenamed(met2.schema.last.name,\"Porcentaje\").withColumn(\"Porcentaje\", format_number('Porcentaje, 2)) )\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T02:17:53+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "provincia": "string",
+                      "Porcentaje": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "provincia\tPorcentaje\nGuayas\t12.01\nPichincha\t9.50\nTungurahua\t8.09\nAzuay\t7.14\nEl Oro\t6.44\nManabi\t5.48\nCotopaxi\t5.00\nImbabura\t4.54\nLos Rios\t4.31\nEsmeraldas\t3.69\nChimborazo\t3.46\nLoja\t3.05\nNapo\t2.69\nOrellana\t2.60\nCaniar\t2.47\nSanta  Elena\t2.43\nCarchi\t2.43\nSanto Domingo de los Tsachilas\t2.40\nBovilar\t2.37\nMorona Santiago\t2.35\nZamora Chinchipe\t2.31\nPastaza\t2.31\nSucumbios\t2.26\nGalapagos\t0.68\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mmet1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [provincia: string, count: bigint]\n\u001b[1m\u001b[34mtotal\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 622776\n\u001b[1m\u001b[34mmet2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [provincia: string, ((CAST(count AS DOUBLE) / 622776) * 100): double]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=599",
+              "$$hashKey": "object:3380"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=600",
+              "$$hashKey": "object:3381"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596333606223_-949216620",
+      "id": "paragraph_1596333606223_-949216620",
+      "dateCreated": "2020-08-02T02:00:06+0000",
+      "dateStarted": "2020-08-02T02:03:54+0000",
+      "dateFinished": "2020-08-02T02:03:58+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:138"
+    },
+    {
+      "title": "Variable provincia/cantón (A): ¿Cuantos cantones tiene cada provincia?",
+      "text": "def numCantones(canton: String){\nprintln(\"el número de cantonces de la provincia de: \" +canton+ \" ,son: \" +pro.select(\"provincia\",\"canton\").groupBy($\"provincia\",$\"canton\").count.filter('provincia  === canton).distinct().count() )\n}\n\nval cantones = data3.select(\"provincia\").distinct().collectAsList\n//cantones.get(19).toString.substring(1,cantones.get(19).toString.length-1)\n//val ncs=pro.stat.freqItems(Array(\"provincia\")).collectAsList\n\nvar i= 0\nwhile(i < 24 ){\n    numCantones(cantones.get(i).toString.substring(1,cantones.get(i).toString.length-1))\n    i= i+1;\n}",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T03:13:51+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "el número de cantonces de la provincia de: Manabi ,son: 22\nel número de cantonces de la provincia de: Cotopaxi ,son: 7\nel número de cantonces de la provincia de: Santa  Elena ,son: 3\nel número de cantonces de la provincia de: Pichincha ,son: 8\nel número de cantonces de la provincia de: Bovilar ,son: 7\nel número de cantonces de la provincia de: Chimborazo ,son: 10\nel número de cantonces de la provincia de: Morona Santiago ,son: 12\nel número de cantonces de la provincia de: Guayas ,son: 25\nel número de cantonces de la provincia de: Loja ,son: 16\nel número de cantonces de la provincia de: Imbabura ,son: 6\nel número de cantonces de la provincia de: Carchi ,son: 6\nel número de cantonces de la provincia de: El Oro ,son: 14\nel número de cantonces de la provincia de: Caniar ,son: 7\nel número de cantonces de la provincia de: Azuay ,son: 15\nel número de cantonces de la provincia de: Sucumbios ,son: 7\nel número de cantonces de la provincia de: Galapagos ,son: 3\nel número de cantonces de la provincia de: Tungurahua ,son: 9\nel número de cantonces de la provincia de: Napo ,son: 5\nel número de cantonces de la provincia de: Pastaza ,son: 4\nel número de cantonces de la provincia de: Zamora Chinchipe ,son: 9\nel número de cantonces de la provincia de: Santo Domingo de los Tsachilas ,son: 2\nel número de cantonces de la provincia de: Orellana ,son: 4\nel número de cantonces de la provincia de: Los Rios ,son: 13\nel número de cantonces de la provincia de: Esmeraldas ,son: 7\n\u001b[1m\u001b[34mcantones\u001b[0m: \u001b[1m\u001b[32mjava.util.List[org.apache.spark.sql.Row]\u001b[0m = [[Manabi], [Cotopaxi], [Santa  Elena], [Pichincha], [Bovilar], [Chimborazo], [Morona Santiago], [Guayas], [Loja], [Imbabura], [Carchi], [El Oro], [Caniar], [Azuay], [Sucumbios], [Galapagos], [Tungurahua], [Napo], [Pastaza], [Zamora Chinchipe], [Santo Domingo de los Tsachilas], [Orellana], [Los Rios], [Esmeraldas]]\n\u001b[1m\u001b[34mi\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m = 24\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=653",
+              "$$hashKey": "object:3431"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=654",
+              "$$hashKey": "object:3432"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=655",
+              "$$hashKey": "object:3433"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=656",
+              "$$hashKey": "object:3434"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=657",
+              "$$hashKey": "object:3435"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=658",
+              "$$hashKey": "object:3436"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=659",
+              "$$hashKey": "object:3437"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=660",
+              "$$hashKey": "object:3438"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=661",
+              "$$hashKey": "object:3439"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=662",
+              "$$hashKey": "object:3440"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=663",
+              "$$hashKey": "object:3441"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=664",
+              "$$hashKey": "object:3442"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=665",
+              "$$hashKey": "object:3443"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=666",
+              "$$hashKey": "object:3444"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=667",
+              "$$hashKey": "object:3445"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=668",
+              "$$hashKey": "object:3446"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=669",
+              "$$hashKey": "object:3447"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=670",
+              "$$hashKey": "object:3448"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=671",
+              "$$hashKey": "object:3449"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=672",
+              "$$hashKey": "object:3450"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=673",
+              "$$hashKey": "object:3451"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=674",
+              "$$hashKey": "object:3452"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=675",
+              "$$hashKey": "object:3453"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=676",
+              "$$hashKey": "object:3454"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=677",
+              "$$hashKey": "object:3455"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596334663275_-2089338446",
+      "id": "paragraph_1596334663275_-2089338446",
+      "dateCreated": "2020-08-02T02:17:43+0000",
+      "dateStarted": "2020-08-02T02:20:13+0000",
+      "dateFinished": "2020-08-02T02:21:40+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:139"
+    },
+    {
+      "user": "anonymous",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=752",
+              "$$hashKey": "object:15571"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=753",
+              "$$hashKey": "object:15572"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=754",
+              "$$hashKey": "object:15573"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=755",
+              "$$hashKey": "object:15574"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=756",
+              "$$hashKey": "object:15575"
+            },
+            {
+              "jobUrl": "http://f49d7e63f94f:4040/jobs/job?id=757",
+              "$$hashKey": "object:15576"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596343372246_-1038283744",
+      "id": "paragraph_1596343372246_-1038283744",
+      "dateCreated": "2020-08-02T04:42:52+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:15160",
+      "dateUpdated": "2020-08-02T04:52:48+0000",
+      "dateFinished": "2020-08-02T04:52:27+0000",
+      "dateStarted": "2020-08-02T04:52:19+0000",
+      "title": "Consulta desconocida",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------+----------+\n|       provincia|Porcentaje|\n+----------------+----------+\n|          Manabi|     5.340|\n|        Cotopaxi|     5.807|\n|    Santa  Elena|     3.778|\n|       Pichincha|     4.936|\n|         Bovilar|     3.217|\n|      Chimborazo|     3.312|\n| Morona Santiago|     2.958|\n|          Guayas|     8.022|\n|            Loja|     3.382|\n|        Imbabura|     6.393|\n|          Carchi|     4.082|\n|          El Oro|     6.074|\n|          Caniar|     3.214|\n|           Azuay|     5.107|\n|       Sucumbios|     2.862|\n|       Galapagos|     0.261|\n|      Tungurahua|     5.920|\n|            Napo|     3.098|\n|         Pastaza|     2.751|\n|Zamora Chinchipe|     3.143|\n+----------------+----------+\nonly showing top 20 rows\n\n+-----------------+\n|  sum(Porcentaje)|\n+-----------------+\n|99.99799999999999|\n+-----------------+\n\n\u001b[1m\u001b[34mprovincias\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [anio: int, mes: int ... 14 more fields]\n\u001b[1m\u001b[34mhumanos\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [provincia: string, count: bigint]\n\u001b[1m\u001b[34mresult\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [provincia: string, Porcentaje: string]\n"
+          }
+        ]
+      },
+      "text": "\nval provincias=data2.withColumn(\"provincia\", when($\"provincia\" ===  1 , lit(\"Azuay\"))\n                .otherwise(when($\"provincia\" ===  2 , lit(\"Bovilar\"))\n                        .otherwise(when($\"provincia\" === 3, lit(\"Caniar\"))\n                        .otherwise(when($\"provincia\" === 4, lit(\"Carchi\"))\n                        .otherwise(when($\"provincia\" === 5, lit(\"Cotopaxi\"))\n                        .otherwise(when($\"provincia\" === 6, lit(\"Chimborazo\"))\n                        .otherwise(when($\"provincia\" === 7, lit(\"El Oro\"))\n                        .otherwise(when($\"provincia\" === 8, lit(\"Esmeraldas\"))\n                        .otherwise(when($\"provincia\" === 9, lit(\"Guayas\"))\n                        .otherwise(when($\"provincia\" === 10, lit(\"Imbabura\"))\n                        .otherwise(when($\"provincia\" === 11, lit(\"Loja\"))\n                        .otherwise(when($\"provincia\" === 12, lit(\"Los Rios\"))\n                        .otherwise(when($\"provincia\" === 13, lit(\"Manabi\"))\n                        .otherwise(when($\"provincia\" === 14, lit(\"Morona Santiago\"))\n                        .otherwise(when($\"provincia\" === 15, lit(\"Napo\"))\n                        .otherwise(when($\"provincia\" === 16, lit(\"Pastaza\"))\n                        .otherwise(when($\"provincia\" === 17, lit(\"Pichincha\"))\n                        .otherwise(when($\"provincia\" === 18, lit(\"Tungurahua\"))\n                        .otherwise(when($\"provincia\" === 19, lit(\"Zamora Chinchipe\"))\n                        .otherwise(when($\"provincia\" === 20, lit(\"Galapagos\"))\n                        .otherwise(when($\"provincia\" === 21, lit(\"Sucumbios\"))\n                        .otherwise(when($\"provincia\" === 22, lit(\"Orellana\"))\n                        .otherwise(when($\"provincia\" === 23, lit(\"Santo Domingo de los Tsachilas\"))\n                        .otherwise(when($\"provincia\" === 24, lit(\"Santa  Elena\"))\n                ))))))))))))))))))))))))\n\nval humanos = provincias.select($\"provincia\",$\"anio\",$\"ingreso_laboral\").filter(provincias(\"anio\") === 2015 && provincias(\"ingreso_laboral\") < 400).groupBy(\"provincia\").count\n//val registros  = humanos.select(sum(\"count\"))\n//registros.show\n//val registros = humanos.s.count.toDouble \nval result = humanos.select($\"provincia\",$\"count\"/62130.0*100).withColumnRenamed(\"((count / 62130.0) * 100)\",\"Porcentaje\").withColumn(\"Porcentaje\", format_number($\"Porcentaje\", 3))\nresult.show\nresult.select(sum(\"Porcentaje\")).show"
+    },
+    {
+      "title": "TODO Variable rama_actividad: Segun su rango de ingresos ¿Cual es la principal actividad a la que se dedican los encuestados?",
+      "text": "import org.apache.spark.sql.functions._\n\n/*\nz.show( datosDF.withColumn(\"ingreso_laboral\"), when( $\"ingreso_laboral\" >= 0 && $\"ingreso_laboral\" <= 250 || col(\"ingreso_laboral\") >= NULL )\n                           \t\t\t.when( $\"ingreso_laboral\" >= 251 && $\"ingreso_laboral\" <= 500 )\n                           \t\t\t.otherwise(\"otros\")\n                          ).groupBy(\"rama_actividad\").count.agg(max(struct(\"count\" +: grouping: _*)))\n        )\n*/",
+      "user": "anonymous",
+      "dateUpdated": "2020-08-02T04:12:15+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "<console>:8: \u001b[31merror: \u001b[0m';' expected but ')' found.\n        )\n        ^\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878695_-1851417494",
+      "id": "paragraph_1595697882109_-1465339620",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:140"
+    },
+    {
+      "user": "anonymous",
+      "dateUpdated": "2020-08-01T21:04:38+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1596315878696_-2138702099",
+      "id": "paragraph_1595699254394_295558251",
+      "dateCreated": "2020-08-01T21:04:38+0000",
+      "status": "READY",
+      "$$hashKey": "object:141"
+    }
+  ],
+  "name": "IntegracionFinal",
+  "id": "2FG4NCWB7",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0-preview1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {
+    "isRunning": false
+  },
+  "path": "/IntegracionFinal"
+}

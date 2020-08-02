@@ -1,4 +1,30 @@
-## Welcome to GitHub Pages
+## Proyecto de Analisis de datos - Programación Avanzada
+
+El siguiente proyecto analiza los datos de estadisticas y empleo proporcionado por el INEN con el fin de recabar datos 
+de interes para el usuario en general. 
+
+
+# KNN
+
+En está tabla se puede observar la predicciòn de cual será el ingreso salarial segun la edad, sin embargo los datos de edad e ingreso no fueron filtrados; es decir, se pueden mejorar la clasificaciòn
+filtrando las edades y sueldos con el análisis de los valores átipicos
+
+<iframe src="http://localhost:8080/#/notebook/2FG4NCWB7/paragraph/paragraph_1596295705362_-1994019108?asIframe"
+style="width: 500px; height: 130px; border: 0px">
+</iframe>
+
+# Crosstab
+## ¿Cual es la frecuencia de hombres y mujeres?
+<iframe src="http://localhost:8080/#/notebook/2FG4NCWB7/paragraph/paragraph_1596319658796_1956314611?asIframe"
+style="width: 500px; height: 130px; border: 0px">
+</iframe>
+
+
+## ¿Cuál es la frecuencia de la variable sectorizacion respecto de las provincias?
+<iframe src=""
+style="width: 500px; height: 130px; border: 0px">
+</iframe>
+
 
 You can use the [editor on GitHub](https://github.com/daniel-alejandro-t/AnalisisDatos-ProgAvanzda/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
